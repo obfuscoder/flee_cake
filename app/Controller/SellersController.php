@@ -17,7 +17,7 @@ class SellersController extends AppController {
 	}
 
 	public function register() {
-		if ($this->request->is("post")) {
+		if ($this->request->isPost()) {
 			$this->Seller->create();
 			if ($this->Seller->save($this->request->data)) {
 				$this->Session->setFlash(__("Seller has been successfully registered."));
@@ -28,7 +28,7 @@ class SellersController extends AppController {
 	}
 
 	public function delete($id = null) {
-		if (!$this->request->is("delete")) {
+		if ($this->request->isGet()) {
 			throw new MethodNotAllowedException();
 		}
 		if ($this->Seller->delete($id)) {

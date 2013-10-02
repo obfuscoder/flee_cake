@@ -1,6 +1,8 @@
 <?php
 
 class Seller extends AppModel {
+	public $hasMany = "Item";
+
 	public $validate = array(
 		"firstname" => "notEmpty",
 		"lastname" => "notEmpty",

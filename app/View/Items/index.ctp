@@ -6,7 +6,7 @@
 		<th>Category</th>
 		<th>Size</th>
 		<th>Price</th>
-		<th>&nbsp;</th>
+		<th><?php echo $this->Html->link("Add item", array("controller" => "items", "action" => "create", $seller_id)); ?></th>
 	</tr>
 	<?php foreach ($items as $item): ?>
 	<tr>
@@ -21,4 +21,5 @@
 	<?php endforeach; ?>
 	<?php unset($item); ?>
 </table>
-<?php echo $this->Html->link("Add item", array("controller" => "items", "action" => "create", $seller_id)); ?>
+
+<p><?php echo $this->Html->link("Download PDF", array("controller" => "items", "action" => "pdf", $seller_id)); ?></p>

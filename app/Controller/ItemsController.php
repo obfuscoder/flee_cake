@@ -52,6 +52,16 @@ class ItemsController extends AppController {
 			return $this->redirect(array("action" => "index", $item["Item"]["seller_id"]));
 		}
 	}
+
+	public function pdf($sellerId) {
+        //Configure::write('debug',0); // Otherwise we cannot use this method while developing
+
+        $items = $this->Item->findAllBySellerId($sellerId);
+        $this->set("items", $items);
+        
+        $this->layout = 'pdf'; //this will use the pdf.ctp layout
+        $this->render(); 
+	}
 }
 
 ?>

@@ -1,0 +1,138 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2013-10-05 21:53+0200\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/ItemsController.php:21
+msgid "Item has been created."
+msgstr "Artikel wurde gespeichert."
+
+#: Controller/ItemsController.php:24
+msgid "Unable to create item"
+msgstr "Artikel konnte nicht erstellt werden."
+
+#: Controller/ItemsController.php:37
+msgid "Item has been updated."
+msgstr "Artikel aktualisiert."
+
+#: Controller/ItemsController.php:40
+msgid "Unable to update item"
+msgstr "Aktualisierung fehlgeschlagen."
+
+#: Controller/ItemsController.php:55
+msgid "The item has been deleted."
+msgstr "Artikel gelöscht."
+
+#: Controller/SellersController.php:14
+msgid "Invalid seller"
+msgstr "Falscher Verkäufer"
+
+#: Controller/SellersController.php:23
+msgid "Seller has been successfully registered."
+msgstr "Registrierung erfolgreich."
+
+#: Controller/SellersController.php:26
+msgid "Unable to register seller"
+msgstr "Registrierung fehlgeschlagen."
+
+#: Controller/SellersController.php:35
+msgid "The seller has been deleted."
+msgstr "Verkäufer gelöscht."
+
+#: View/Items/edit.ctp:1
+msgid "Create/Edit item"
+msgstr "Artikel bearbeiten"
+
+#: View/Items/edit.ctp:10
+msgid "Save"
+msgstr "Speichern"
+
+#: View/Items/index.ctp:1
+#: View/Sellers/index.ctp:16
+msgid "Items"
+msgstr "Artikel"
+
+#: View/Items/index.ctp:4
+msgid "Number"
+msgstr "Nummer"
+
+#: View/Items/index.ctp:5
+msgid "Description"
+msgstr "Beschreibung"
+
+#: View/Items/index.ctp:6
+msgid "Category"
+msgstr "Kategorie"
+
+#: View/Items/index.ctp:7
+msgid "Size"
+msgstr "Größe"
+
+#: View/Items/index.ctp:8
+msgid "Price"
+msgstr "Preis"
+
+#: View/Items/index.ctp:9
+msgid "Add item"
+msgstr "Artikel hinzufügen"
+
+#: View/Items/index.ctp:18
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: View/Items/index.ctp:19
+#: View/Sellers/index.ctp:15
+msgid "Delete"
+msgstr "Löschen"
+
+#: View/Items/index.ctp:25
+msgid "Download PDF"
+msgstr "PDF herunterladen"
+
+#: View/Sellers/index.ctp:4
+msgid "First name"
+msgstr "Vorname"
+
+#: View/Sellers/index.ctp:5
+msgid "Last name"
+msgstr "Nachname"
+
+#: View/Sellers/index.ctp:6
+msgid "eMail"
+msgstr "eMail"
+
+#: View/Sellers/index.ctp:14
+msgid "Details"
+msgstr "Details"
+
+#: View/Sellers/index.ctp:21
+msgid "Register new seller"
+msgstr "Neue Registrierung"
+
+#: View/Sellers/register.ctp:1
+msgid "Register seller"
+msgstr "Registrierung"
+
+#: View/Sellers/register.ctp:11
+msgid "Register"
+msgstr "Registrierung"
+
+#: View/Sellers/view.ctp:1
+msgid "Seller details"
+msgstr "Verkäuferdetails"
+
+#: Model/Seller.php:validation for field zipcode
+msgid "postal code may only consist of 5 digits"
+msgstr "Postleitzahl darf nur aus 5 Ziffern bestehen."
+

@@ -1,4 +1,4 @@
-<h1>Seller details</h1>
+<h1><?php echo __("Seller details") ?></h1>
 <strong><?php echo $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] ?></strong><br/>
 <?php echo $seller["Seller"]["street"] ?><br/>
 <?php echo $seller["Seller"]["zip_code"] . " " . $seller["Seller"]["city"] ?></br>

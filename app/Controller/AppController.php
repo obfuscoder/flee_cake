@@ -22,6 +22,8 @@
  */
 App::uses('Controller', 'Controller');
 
+Configure::write('Config.language', 'deu');
+
 /**
  * Application Controller
  *

@@ -1,25 +1,26 @@
-<h1>Items</h1>
+<h1><?php echo __("Items") ?></h1>
 <table>
 	<tr>
-		<th>Number</th>
-		<th>Description</th>
-		<th>Category</th>
-		<th>Size</th>
-		<th>Price</th>
-		<th><?php echo $this->Html->link("Add item", array("controller" => "items", "action" => "create", $seller_id)); ?></th>
+		<th><?php echo __("Number") ?></th>
+		<th><?php echo __("Description") ?></th>
+		<th><?php echo __("Category") ?></th>
+		<th><?php echo __("Size") ?></th>
+		<th><?php echo __("Price") ?></th>
+		<th><?php if (count($items) < 50) echo $this->Html->link(__("Add item"), array("controller" => "items", "action" => "create", $seller_id)); ?></th>
 	</tr>
-	<?php foreach ($items as $item): ?>
+	<?php for ($i=0; $i<count($items); $i++): ?>
 	<tr>
-		<td><?php echo $item["Item"]["seller_id"] + "-" + 12334 ?></td>
+		<?php $item = $items[$i]; ?>
+		<td><?php echo $i+1 ?></td>
 		<td><?php echo $item["Item"]["description"]; ?></td>
 		<td><?php echo $item["Category"]["name"]; ?></td>
 		<td><?php echo $item["Item"]["size"]; ?></td>
 		<td><?php echo $this->Number->currency($item["Item"]["price"], "EUR"); ?></td>
-		<td><?php echo $this->Html->link("Edit", array("controller" => "items", "action" => "update", $item["Item"]['id'])); ?> |
-			<?php echo $this->Form->postLink("Delete", array("controller" => "items", "action" => "delete", $item["Item"]['id']), array("confirm" => "Are you sure?")); ?></td>
+		<td><?php echo $this->Html->link(__("Edit"), array("controller" => "items", "action" => "update", $item["Item"]['id'])); ?> |
+			<?php echo $this->Form->postLink(__("Delete"), array("controller" => "items", "action" => "delete", $item["Item"]['id']), array("confirm" => __("Are you sure?"))); ?></td>
 	</tr>
-	<?php endforeach; ?>
+	<?php endfor; ?>
 	<?php unset($item); ?>
 </table>
 
-<p><?php echo $this->Html->link("Download PDF", array("controller" => "items", "action" => "pdf", $seller_id)); ?></p>
+<p><?php echo $this->Html->link(__("Download PDF"), array("controller" => "items", "action" => "pdf", $seller_id)); ?></p>

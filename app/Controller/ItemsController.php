@@ -5,6 +5,7 @@ class ItemsController extends AppController {
 	public $components = array("Session");
 
 	public function index($sellerId) {
+		debug(Configure::read('Config.language'));
 		$items = $this->Item->findAllBySellerId($sellerId);
 		$this->set("items", $items);
 		$this->set("seller_id", $sellerId);

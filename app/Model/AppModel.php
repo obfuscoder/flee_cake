@@ -23,6 +23,8 @@
 
 App::uses('Model', 'Model');
 
+App::uses('DeValidation', 'Localized.Validation');
+
 /**
  * Application model for Cake.
  *

@@ -20,8 +20,7 @@ class SellersController extends AppController {
 		if ($this->request->isPost()) {
 			$this->Seller->create();
 			if ($this->Seller->save($this->request->data)) {
-				$this->Session->setFlash(__("Seller has been successfully registered."));
-				return $this->redirect(array("action" => "index"));
+				return $this->redirect("/pages/registered");
 			}
 			$this->Session->setFlash(__("Unable to register seller"));
 		}
@@ -32,7 +31,7 @@ class SellersController extends AppController {
 			throw new MethodNotAllowedException();
 		}
 		if ($this->Seller->delete($id)) {
-			$this->Session->setFlash(__("The seller has been deleted."));
+			$this->Session->setFlash(__("The seller has been deleted."), "default", array('class' => 'success'));
 			return $this->redirect(array("action" => "index"));
 		}
 	}

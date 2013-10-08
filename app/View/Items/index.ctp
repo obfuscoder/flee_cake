@@ -1,4 +1,4 @@
-<h1><?php echo __("Items") ?></h1>
+<h2><?php echo __("Items") ?></h2>
 <table>
 	<tr>
 		<th><?php echo __("Number") ?></th>

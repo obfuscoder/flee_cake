@@ -1,4 +1,4 @@
-<h1><?php echo __("Register seller") ?></h1>
+<h2><?php echo __("Register seller") ?></h2>
 <?php
 	echo $this->Form->create("Seller");
 	echo $this->Form->input("first_name", array("label" => __("first name")));

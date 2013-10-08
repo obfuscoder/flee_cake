@@ -1,4 +1,4 @@
-<h1><?php echo __("Sellers") ?></h1>
+<h2><?php echo __("Sellers") ?></h2>
 <table>
 	<tr>
 		<th><?php echo __("First name") ?></th>
@@ -19,3 +19,4 @@
 	<?php unset($seller); ?>
 </table>
 <?php echo $this->Html->link(__("Register new seller"), array("controller" => "sellers", "action" => "register")); ?>
+<p><?php echo $this->Html->link(__("Categories"), array("controller" => "categories", "action" => "index")); ?></p>

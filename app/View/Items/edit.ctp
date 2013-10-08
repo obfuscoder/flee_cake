@@ -1,4 +1,4 @@
-<h1><?php echo __("Create/Edit item") ?></h1>
+<h2><?php echo __("Create/Edit item") ?></h2>
 <?php
 	echo $this->Form->create("Item");
 	echo $this->Form->hidden("id");

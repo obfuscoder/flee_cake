@@ -14,7 +14,7 @@ class ItemsController extends AppController {
 		if ($this->request->isPost()) {
 			$this->Item->create();
 			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__("Item has been created."));
+				$this->Session->setFlash(__("Item has been created."), "default", array('class' => 'success'));
 				return $this->redirect(array("action" => "index", $this->request->data["Item"]["seller_id"]));
 			}
 			$this->Session->setFlash(__("Unable to create item"));
@@ -30,7 +30,7 @@ class ItemsController extends AppController {
 		if ($this->request->isPut() || $this->request->isPost()) {
 			debug($this->request->data);
 			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__("Item has been updated."));
+				$this->Session->setFlash(__("Item has been updated."), "default", array('class' => 'success'));
 				return $this->redirect(array("action" => "index", $this->request->data["Item"]["seller_id"]));
 			}
 			$this->Session->setFlash(__("Unable to update item"));
@@ -48,7 +48,7 @@ class ItemsController extends AppController {
 		$item = $this->Item->findById($id);
 		debug($item);
 		if ($this->Item->delete($id)) {
-			$this->Session->setFlash(__("The item has been deleted."));
+			$this->Session->setFlash(__("The item has been deleted."), "default", array('class' => 'success'));
 			return $this->redirect(array("action" => "index", $item["Item"]["seller_id"]));
 		}
 	}

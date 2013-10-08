@@ -54,6 +54,22 @@ msgstr "Verkäufer gelöscht."
 msgid "Create/Edit item"
 msgstr "Artikel bearbeiten"
 
+#: View/Items/edit.ctp:6
+msgid "description"
+msgstr "Beschreibung"
+
+#: View/Items/edit.ctp:7
+msgid "category"
+msgstr "Kategorie"
+
+#: View/Items/edit.ctp:8
+msgid "size"
+msgstr "Größe"
+
+#: View/Items/edit.ctp:9
+msgid "price"
+msgstr "Preis"
+
 #: View/Items/edit.ctp:10
 msgid "Save"
 msgstr "Speichern"
@@ -100,6 +116,10 @@ msgstr "Löschen"
 msgid "Download PDF"
 msgstr "PDF herunterladen"
 
++#: View/Sellers/index.ctp:1
++msgid "Sellers"
++msgstr "Verkäufer"
+
 #: View/Sellers/index.ctp:4
 msgid "First name"
 msgstr "Vorname"
@@ -126,11 +146,43 @@ msgstr "Registrierung"
 
 #: View/Sellers/register.ctp:11
 msgid "Register"
-msgstr "Registrierung"
+msgstr "Registrieren"
 
 #: View/Sellers/view.ctp:1
 msgid "Seller details"
 msgstr "Verkäuferdetails"
+
+#: View/Sellers/index.ctp:15
+msgid "Are you sure?"
+msgstr "Sind Sie sicher"
+
+#: View/Sellers/register.ctp:4
+msgid "first name"
+msgstr "Vorname"
+
+#: View/Sellers/register.ctp:5
+msgid "last name"
+msgstr "Nachname"
+
+#: View/Sellers/register.ctp:6
+msgid "street"
+msgstr "registrieren"
+
+#: View/Sellers/register.ctp:7
+msgid "zip code"
+msgstr "PLZ"
+
+#: View/Sellers/register.ctp:8
+msgid "city"
+msgstr "Stadt"
+
+#: View/Sellers/register.ctp:9
+msgid "phone number"
+msgstr "Tel.:"
+
+#: View/Sellers/register.ctp:10
+msgid "email"
+msgstr "Email"
 
 #: Model/Seller.php:validation for field zipcode
 msgid "postal code may only consist of 5 digits"

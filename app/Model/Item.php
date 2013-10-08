@@ -1,7 +1,7 @@
 <?php
 
 class Item extends AppModel {
-	public $belongsTo = ["Seller", "Category"];
+	public $belongsTo = array("Seller", "Category");
 }
 
 ?>

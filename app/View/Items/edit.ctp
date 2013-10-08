@@ -3,9 +3,9 @@
 	echo $this->Form->create("Item");
 	echo $this->Form->hidden("id");
 	echo $this->Form->hidden("seller_id");
-	echo $this->Form->input("description");
-	echo $this->Form->input("category_id", $categories);
-	echo $this->Form->input("size");
-	echo $this->Form->input("price");
+	echo $this->Form->input("description", array("label" => __("description")));
+	echo $this->Form->input("category_id", array("options" => $categories, "label" => __("category")));
+	echo $this->Form->input("size", array("label" => __("size")));
+	echo $this->Form->input("price", array("label" => __("price")));
 	echo $this->Form->end(__("Save"));
 ?>

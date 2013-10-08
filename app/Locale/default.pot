@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
-"POT-Creation-Date: 2013-10-05 22:05+0200\n"
+"POT-Creation-Date: 2013-10-08 18:15+0200\n"
 "PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
 "Last-Translator: NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
@@ -14,23 +14,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: Controller/ItemsController.php:18
+#: Controller/ItemsController.php:17
 msgid "Item has been created."
 msgstr ""
 
-#: Controller/ItemsController.php:21
+#: Controller/ItemsController.php:20
 msgid "Unable to create item"
 msgstr ""
 
-#: Controller/ItemsController.php:34
+#: Controller/ItemsController.php:33
 msgid "Item has been updated."
 msgstr ""
 
-#: Controller/ItemsController.php:37
+#: Controller/ItemsController.php:36
 msgid "Unable to update item"
 msgstr ""
 
-#: Controller/ItemsController.php:52
+#: Controller/ItemsController.php:51
 msgid "The item has been deleted."
 msgstr ""
 
@@ -52,6 +52,22 @@ msgstr ""
 
 #: View/Items/edit.ctp:1
 msgid "Create/Edit item"
+msgstr ""
+
+#: View/Items/edit.ctp:6
+msgid "description"
+msgstr ""
+
+#: View/Items/edit.ctp:7
+msgid "category"
+msgstr ""
+
+#: View/Items/edit.ctp:8
+msgid "size"
+msgstr ""
+
+#: View/Items/edit.ctp:9
+msgid "price"
 msgstr ""
 
 #: View/Items/edit.ctp:10
@@ -87,17 +103,26 @@ msgstr ""
 msgid "Add item"
 msgstr ""
 
-#: View/Items/index.ctp:18
+#: View/Items/index.ctp:19
 msgid "Edit"
 msgstr ""
 
-#: View/Items/index.ctp:19
+#: View/Items/index.ctp:20
 #: View/Sellers/index.ctp:15
 msgid "Delete"
 msgstr ""
 
-#: View/Items/index.ctp:25
+#: View/Items/index.ctp:20
+#: View/Sellers/index.ctp:15
+msgid "Are you sure?"
+msgstr ""
+
+#: View/Items/index.ctp:26
 msgid "Download PDF"
+msgstr ""
+
+#: View/Sellers/index.ctp:1
+msgid "Sellers"
 msgstr ""
 
 #: View/Sellers/index.ctp:4
@@ -124,6 +149,34 @@ msgstr ""
 msgid "Register seller"
 msgstr ""
 
+#: View/Sellers/register.ctp:4
+msgid "first name"
+msgstr ""
+
+#: View/Sellers/register.ctp:5
+msgid "last name"
+msgstr ""
+
+#: View/Sellers/register.ctp:6
+msgid "street"
+msgstr ""
+
+#: View/Sellers/register.ctp:7
+msgid "zip code"
+msgstr ""
+
+#: View/Sellers/register.ctp:8
+msgid "city"
+msgstr ""
+
+#: View/Sellers/register.ctp:9
+msgid "phone number"
+msgstr ""
+
+#: View/Sellers/register.ctp:10
+msgid "email"
+msgstr ""
+
 #: View/Sellers/register.ctp:11
 msgid "Register"
 msgstr ""
@@ -132,7 +185,7 @@ msgstr ""
 msgid "Seller details"
 msgstr ""
 
-#: Model/Seller.php:validation for field zipcode
+#: Model/Seller.php:validation for field zip_code
 msgid "postal code may only consist of 5 digits"
 msgstr ""
 

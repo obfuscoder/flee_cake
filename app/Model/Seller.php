@@ -4,10 +4,10 @@ class Seller extends AppModel {
 	public $hasMany = "Item";
 
 	public $validate = array(
-		"firstname" => "notEmpty",
-		"lastname" => "notEmpty",
+		"first_name" => "notEmpty",
+		"last_name" => "notEmpty",
 		"street" => "notEmpty",
-		"zipcode" => array(
+		"zip_code" => array(
 			"rule" => array("between", 5, 5),
 			"message" => "postal code may only consist of 5 digits"
 		),

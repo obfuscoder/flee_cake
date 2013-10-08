@@ -166,7 +166,7 @@ msgstr "Nachname"
 
 #: View/Sellers/register.ctp:6
 msgid "street"
-msgstr "registrieren"
+msgstr "Straße"
 
 #: View/Sellers/register.ctp:7
 msgid "zip code"

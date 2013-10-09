@@ -15,7 +15,7 @@ Mail: <?php echo $email ?>
 
 Um Ihre Registrierung zu aktivieren, klicken Sie bitte auf den folgenden Link:
 
-<?php echo $this->Html->url("/seller/activate/$id", true) ?>
+<?php echo $this->Html->url("/sellers/activate/$id", true) ?>
 
 
 Um Ihre angebotenen Produkte zu verwalten, rufen Sie bitte den folgenden Link auf:

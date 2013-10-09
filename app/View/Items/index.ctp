@@ -1,4 +1,5 @@
 <h2><?php echo __("Items") ?></h2>
+<p>Hier können Sie Ihre Artikel verwalten und anschließend die Etiketten erzeugen. Die Etiketten werden als PDF-Dokument erzeugt. Zum Anzeigen und Ausdrucken von PDF-Dateien benötigen Sie ein entsprechendes Programm. Falls noch nicht vorhanden, installieren Sie sich bitte ein dazu passendes Programm. Wir empfehlen den <a href="http://get.adobe.com/reader/">Adobe Acrobat Reader</a> oder den <a href="http://www.foxitsoftware.com/Secure_PDF_Reader/">FoxIt Reader</a>.</p>
 <table>
 	<tr>
 		<th><?php echo __("Number") ?></th>
@@ -22,5 +23,6 @@
 	<?php endfor; ?>
 	<?php unset($item); ?>
 </table>
-
-<p><?php echo $this->Html->link(__("Download PDF"), array("controller" => "items", "action" => "pdf", $seller_id)); ?></p>
+<?php if (count($items) > 0): ?>
+<p><?php echo $this->Html->link("Etiketten erzeugen und herunterladen", array("controller" => "items", "action" => "pdf", $seller_id)); ?></p>
+<?php endif; ?>

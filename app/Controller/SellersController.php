@@ -19,11 +19,23 @@ class SellersController extends AppController {
 	public function register() {
 		if ($this->request->isPost()) {
 			$this->Seller->create();
-			if ($this->Seller->save($this->request->data)) {
-				return $this->redirect("/pages/registered");
+			if ($seller = $this->Seller->save($this->request->data)) {
+				App::uses('CakeEmail', 'Network/Email');
+				$mail = new CakeEmail();
+				$mail->template("register", "default")
+					->emailFormat("text")
+					->from(array("flohmarkt@obfusco.de" => "Flohmarkt Königsbach"))
+					->to($this->request->data["Seller"]["email"])
+					->subject("Registrierungsbestätigung")
+					->viewVars($seller["Seller"])
+					->send();
+				return $this->render("registered");
 			}
 			$this->Session->setFlash(__("Unable to register seller"));
 		}
+	}
+
+	public function activate() {
 	}
 
 	public function delete($id = null) {

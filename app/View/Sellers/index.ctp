@@ -4,7 +4,7 @@
 		<th><?php echo __("First name") ?></th>
 		<th><?php echo __("Last name") ?></th>
 		<th><?php echo __("eMail") ?></th>
-		<th>&nbsp;</th>
+		<th><?php echo $this->Html->link(__("Register new seller"), array("controller" => "sellers", "action" => "register")); ?></th>
 	</tr>
 	<?php foreach ($sellers as $seller): ?>
 	<tr>
@@ -18,5 +18,4 @@
 	<?php endforeach; ?>
 	<?php unset($seller); ?>
 </table>
-<?php echo $this->Html->link(__("Register new seller"), array("controller" => "sellers", "action" => "register")); ?>
-<p><?php echo $this->Html->link(__("Categories"), array("controller" => "categories", "action" => "index")); ?></p>
+<p><?php echo $this->Html->link("Kategorien", array("controller" => "categories", "action" => "index")); ?></p>

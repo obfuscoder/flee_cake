@@ -16,7 +16,7 @@ class CategoriesController extends AppController {
 		if ($this->request->isPost()) {
 			$this->Category->create();
 			if ($this->Category->save($this->request->data)) {
-				$this->Session->setFlash(__("Category created."), "default", array('class' => 'success'));
+				$this->Session->setFlash("Kategorie erstellt.", "default", array('class' => 'success'));
 				return $this->redirect(array("action" => "index"));
 			}
 			$this->Session->setFlash(__("Creating category failed!"));
@@ -24,12 +24,13 @@ class CategoriesController extends AppController {
 	}
 
 	public function update($id) {
-		if ($this->request->isPost()) {
+		if ($this->request->is(array("post", "put"))) {
+			$this->Category->id = $id;
 			if ($this->Category->save($this->request->data)) {
-				$this->Session->setFlash(__("Category created."), "default", array('class' => 'success'));
+				$this->Session->setFlash("Änderung gespeichert", "default", array('class' => 'success'));
 				return $this->redirect(array("action" => "index"));
 			}
-			$this->Session->setFlash(__("Creating category failed!"));
+			$this->Session->setFlash("Speichern der Kategorie fehlgeschlagen");
 		}
 		if (!$this->request->data) {
 			$this->request->data = $this->Category->findById($id);
@@ -41,7 +42,7 @@ class CategoriesController extends AppController {
 			throw new MethodNotAllowedException();
 		}
 		if ($this->Category->delete($id)) {
-			$this->Session->setFlash(__("The category has been deleted."), "default", array('class' => 'success'));
+			$this->Session->setFlash("Die Kategorie wurde gelöscht.", "default", array('class' => 'success'));
 			return $this->redirect(array("action" => "index"));
 		}
 	}

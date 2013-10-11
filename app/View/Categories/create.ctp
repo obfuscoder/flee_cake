@@ -1,6 +1,6 @@
-<h2><?php echo __("Create category") ?></h2>
+<h2>Kategorie erstellen</h2>
 <?php
 	echo $this->Form->create("Category");
-	echo $this->Form->input("name", array("label" => __("name")));
-	echo $this->Form->end(__("Create"));
+	echo $this->Form->input("name", array("label" => "Name"));
+	echo $this->Form->end("Speichern");
 ?>

@@ -1,11 +1,25 @@
 <?php
 
 class SellersController extends AppController {
-	public $helpers = array("Html", "Form", "Session");
+	public $helpers = array("Html", "Form", "Session", "Time");
 	public $components = array("Session");
 
+	function lastUpdated($seller) {
+		$updated = $seller["Seller"]["modified"];
+		foreach ($seller["Item"] as $item) {
+			if ($updated < $item["modified"]) {
+				$updated = $item["modified"];
+			}
+		}
+		return $updated;
+	}
+
 	public function index() {
-		$this->set("sellers", $this->Seller->find("all"));
+		$sellers = $this->Seller->find("all");
+		for($i=0; $i<count($sellers); $i++) {
+			$sellers[$i]["Seller"]["lastUpdated"] = $this->lastUpdated($sellers[$i]);
+		}
+		$this->set("sellers", $sellers);
 	}
 
 	public function view($id = null) {
@@ -19,6 +33,7 @@ class SellersController extends AppController {
 	public function register() {
 		if ($this->request->isPost()) {
 			$this->Seller->create();
+			$this->request->data["Seller"]["token"] = md5(uniqid("Vs3_%&/90kF307iohjSD2", true));
 			if ($seller = $this->Seller->save($this->request->data)) {
 				App::uses('CakeEmail', 'Network/Email');
 				$mail = new CakeEmail();
@@ -29,13 +44,34 @@ class SellersController extends AppController {
 					->subject("Registrierungsbestätigung")
 					->viewVars($seller["Seller"])
 					->send();
+				debug($mail);
 				return $this->render("registered");
 			}
 			$this->Session->setFlash(__("Unable to register seller"));
 		}
 	}
 
-	public function activate() {
+	function activateIfNecessary($seller) {
+		$seller["Seller"]["active"] = true;
+		unset($seller["Seller"]['modified']);
+		$this->Seller->save($seller);
+	}
+
+	public function activate($token) {
+		$seller = $this->Seller->findByToken($token);
+		if (empty($seller)) {
+			return $this->render("activationFailed");
+		}
+		$this->activateIfNecessary($seller);
+	}
+
+	public function login($token) {
+		$seller = $this->Seller->findByToken($token);
+		if (empty($seller)) {
+			return $this->render("loginFailed");
+		}
+		$this->activateIfNecessary($seller);
+		return $this->redirect(array("controller" => "items", "action" => "index", $seller["Seller"]['id']));
 	}
 
 	public function delete($id = null) {

@@ -6,6 +6,7 @@
 		<th>eMail</th>
 		<th>Artikel</th>
 		<th>Registriert</th>
+		<th>Aktiviert</th>
 		<th>Letzte Änderung</th>
 		<th><?php echo $this->Html->link("Neue Registrierung", array("controller" => "sellers", "action" => "register")); ?></th>
 	</tr>
@@ -15,15 +16,9 @@
 		<td><?php echo $seller["Seller"]["last_name"]; ?></td>
 		<td><?php echo $seller["Seller"]["email"]; ?></td>
 		<td><?php echo count($seller["Item"]) ?></td>
-		<td><?php echo $seller["Seller"]["created"] ?></td>
-		<td><?php
-		$lastupdated = null;
-	foreach ($seller["Item"] as $item) {
-		if ($lastupdated === null or $lastupdated < $item["modified"]) {
-			$lastupdated = $item["modified"];
-		}
-	}
-	echo $lastupdated ?></td>
+		<td><?php echo $this->Time->timeAgoInWords($seller["Seller"]["created"], array('format' => 'd.m.Y')) ?></td>
+		<td><?php echo $seller["Seller"]["active"] ? "ja":"nein" ?></td>
+		<td><?php echo $this->Time->timeAgoInWords($seller["Seller"]["lastUpdated"], array('format' => 'd.m.Y')) ?></td>
 		<td><?php echo $this->Html->link("Details", array("controller" => "sellers", "action" => "view", $seller["Seller"]['id'])); ?> |
 			<?php echo $this->Form->postLink("Löschen", array("controller" => "sellers", "action" => "delete",
 					$seller["Seller"]['id']), array("confirm" => "Verkäufer wirklich löschen?")); ?> |

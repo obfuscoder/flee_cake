@@ -15,12 +15,12 @@ Mail: <?php echo $email ?>
 
 Um Ihre Registrierung zu aktivieren, klicken Sie bitte auf den folgenden Link:
 
-<?php echo $this->Html->url("/sellers/activate/$id", true) ?>
+<?php echo $this->Html->url("/sellers/activate/$token", true) ?>
 
 
 Um Ihre angebotenen Produkte zu verwalten, rufen Sie bitte den folgenden Link auf:
 
-<?php echo $this->Html->url("/items/index/$id", true) ?>
+<?php echo $this->Html->url("/sellers/login/$token", true) ?>
 
 
 Viele Grüße,

@@ -30,6 +30,9 @@ class SellersController extends AppController {
 		$this->set("seller", $seller);
 	}
 
+	public function terms() {
+	}
+
 	public function register() {
 		if ($this->request->isPost()) {
 			$this->Seller->create();
@@ -47,7 +50,7 @@ class SellersController extends AppController {
 				debug($mail);
 				return $this->render("registered");
 			}
-			$this->Session->setFlash(__("Unable to register seller"));
+			$this->Session->setFlash("Registrierung fehlgeschlagen!");
 		}
 	}
 

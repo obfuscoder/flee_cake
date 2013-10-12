@@ -4,4 +4,4 @@
 </p>
 <p>Die Anzahl der Verkäufer ist begrenzt. Es wird <strong>zwei Wochen</strong> vor Stattfinden des Flohmarkts die Vergabe der Verkäuferplätze stattfinden. Dazu werden alle vorregistrierte Interessenten kurz zuvor eine gesonderte Benachrichtigung per Mail erhalten. In dieser Mail befindet sich ein Link, der ab zwei Wochen vor Markttag um 9:00 Uhr freigeschaltet sein wird, mit dem Sie sich Ihren Verkäuferplatz sichern können.</p>
 
-<p><a href="sellers/register">Zur Registrierung</a></p>
+<p><a href="pages/terms">Zur Registrierung</a></p>

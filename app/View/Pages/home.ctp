@@ -1,4 +1,5 @@
 <h2>Flohmarkt Königsbach</h2>
+<p><img src="img/kitaregenbogen.jpg"/>
 <p>
 	Auf diesen Seiten können Sie sich für unseren kommenden am <strong>20. Februar 2014</strong> stattfindenden Flohmarkt als Interessent zum Verkauf von Kommissionsware registrieren. Sie werden dann zeitnah per Mail über den weiteren Ablauf informiert.
 </p>

@@ -47,7 +47,6 @@ class SellersController extends AppController {
 					->subject("Registrierungsbestätigung")
 					->viewVars($seller["Seller"])
 					->send();
-				debug($mail);
 				return $this->render("registered");
 			}
 			$this->Session->setFlash("Registrierung fehlgeschlagen!");

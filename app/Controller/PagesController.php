@@ -30,22 +30,23 @@ App::uses('AppController', 'Controller');
  * @link http://book.cakephp.org/2.0/en/controllers/pages-controller.html
  */
 class PagesController extends AppController {
+	public $helpers = array("Html", "Form", "Session", "Time");
 
-/**
- * This controller does not use a model
- *
- * @var array
- */
+	/**
+	 * This controller does not use a model
+	 *
+	 * @var array
+	 */
 	public $uses = array();
 
-/**
- * Displays a view
- *
- * @param mixed What page to display
- * @return void
- * @throws NotFoundException When the view file could not be found
- *	or MissingViewException in debug mode.
- */
+	/**
+	 * Displays a view
+	 *
+	 * @param mixed What page to display
+	 * @return void
+	 * @throws NotFoundException When the view file could not be found
+	 *	or MissingViewException in debug mode.
+	 */
 	public function display() {
 		$path = func_get_args();
 
@@ -65,6 +66,15 @@ class PagesController extends AppController {
 			$title_for_layout = Inflector::humanize($path[$count - 1]);
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
+
+		$event = ClassRegistry::init('Event')->getCurrent();
+		$this->set("event", $event);
+
+		App::uses('CakeTime', 'Utility');
+		$exact_date_format = "am %A, %e. %B %Y";
+		$vague_date_format = "voraussichtlich im %B %Y";
+		$format = ($event["Event"]["date_confirmed"]) ? $exact_date_format : $vague_date_format;
+		$this->set("event_date", CakeTime::format($event["Event"]["date"], $format));
 
 		try {
 			$this->render(implode('/', $path));

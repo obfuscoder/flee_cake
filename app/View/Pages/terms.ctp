@@ -7,10 +7,9 @@ Fahrräder, Spielsachen etc. <strong>Jacken und Kleider bitte mit Kleiderbügeln
 <h3>WICHTIG!</h3>
 <p>Die Ware muss ...
 	<ol>
-		<li>einzeln mit dem beiliegenden Etikett ausgezeichnet sein <strong>(Bitte nicht mit der Nähmaschine annähen und nicht laminieren !)</strong>,</li>
-		<li>in beiliegender Liste <strong>gut lesbar</strong> eingetragen sein,</li>
+		<li>zuvor in unserem Warensystem komplett eingetragen worden sein,</li>
+		<li>einzeln mit dem entsprechenden Etikett ausgezeichnet sein. <strong>Der Barcode und die Zahl darunter muss vollständig lesbar und sauber sein. Es werden nur Etiketten akzeptiert, die mit unserem System erzeugt wurden.</strong></li>
 		<li>in einem <strong>Karton/Wäschekorb</strong> angeliefert werden, der mit der <strong>Teilnehmernummer gut sichtbar</strong> gekennzeichnet ist. (2-teilige oder mehrteilige Kleidungsstücke bitte zusammennähen.)</li>
-		<li>Etiketten sind korrektund gut lesbar auszufüllen. (bei Büchern + Spielen die Etiketten nicht an allen 4 Ecken ankleben. Etiketten nur oben ankleben !)</li>
 		<li>in einem <strong>einwandfreien und zeitgemäßen Zustand</strong> sein</li>
 	</ol>
 </p>
@@ -21,9 +20,7 @@ zeitgemäße Ware und behalten uns vor, Teile auszusortieren.</p>
 Haftung</strong> übernommen werden. Für die Rückgabe von Kleiderbügeln kann 
 keine Gewähr übernommen werden.</p>
 <p>Es entfällt pro Liste eine <strong>Teilnahmegebühr</strong> von <strong>2,50 €</strong>.</p>
-<p>Wir behalten uns vor, bei der Abrechnung die Auszahlungsbeträge auf 
-ganze 10 Cent-Beträge abzurunden (z.B. bei 25,76€ werden 25,70€ 
-ausbezahlt).</p>
+<p>Es werden nur Preise akzeptiert, die auf 10 Cent gerundet sind.</p>
 <p>Die Teilnehmer müssen die nicht verkaufte Ware, sowie den Erlös der 
 verkauften Teile <strong>sofort kontrollieren</strong>.</p>
 <p>Sollte Ihre nicht verkaufte Ware bis 18.30 Uhr am Verkaufstag <strong>nicht abgeholt</strong> 

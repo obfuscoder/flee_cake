@@ -6,25 +6,25 @@ App::uses('AppModel', 'Model');
  */
 class Event extends AppModel {
 
-/**
- * Use database config
- *
- * @var string
- */
+	/**
+	 * Use database config
+	 *
+	 * @var string
+	 */
 	public $useDbConfig = 'dev';
 
-/**
- * Display field
- *
- * @var string
- */
+	/**
+	 * Display field
+	 *
+	 * @var string
+	 */
 	public $displayField = 'name';
 
-/**
- * Validation rules
- *
- * @var array
- */
+	/**
+	 * Validation rules
+	 *
+	 * @var array
+	 */
 	public $validate = array(
 		'date' => array(
 			'date' => array(
@@ -113,4 +113,10 @@ class Event extends AppModel {
 			),
 		),
 	);
+
+	public function getCurrent() {
+		return $this->find("first", array(
+        	'conditions' => array('current' => 1)
+    	));
+	}
 }

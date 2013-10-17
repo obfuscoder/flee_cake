@@ -1,0 +1,38 @@
+- Text - Registrierung für Erhalt Neuigkeiten und soweiter und teilnahme
+- Impressum
+- datenschutzerklärung
+- barcode checksumme
+- teilnahmebedingungen auf aktuelle infos anpassen
+- acrobat reader hinweis auf teilnahmebedingungen
+- Einführungstext, wozu Registrierung dient und wozu daten benutzt werden
+- pflichtfelder kurz erklären
+- plz und stadt in eine zeile
+- registrierung rückgängig machen lassen (daten löschen)
+- artikel für bearbeitung sperren, die schon gedruckt wurden
+- gedruckte artikel können gelöscht werden, bleiben dabei aber noch in tabelle und werden durchgestrichen gezeigt
+- artikel bearbeiten -> zurückbutton
+- BUG: speichern artikel, => "Artikel konnte nicht erstellt werden.", eingaben sind weg
+- BUG: nix ausfüllen Artikel, Submit, Ausfüllen pflichtfelder, Submit => Trotzdem fehler => kann nciht gepseichert werden
+- etikettendrucken erst nach platzzuweisung
+- nummer bei etikedttendruck festschreiben
+- gedruckt häkchen checkbox
+- verkäufer/ereigniszuordnung mit platzvergabe
+- warteliste
+- urls in email anpassen
+- herr/frau erfassen und anrede in email anpassen
+- "preis in € auf 10 Cent genau"
+- größe alphanumerisch
+- Kategorie Sonstige ganz unten
+- Kategorie, größe und preis nebeneinander
+- alle fehlermeldungen/validierungen prüfen, ggf. die vom browser deaktivieren, da nicht aussagekräftig
+- formular bei feedback oder problemen
+- onlinehilfe
+- teilnahmebedingungen als mailanhang bei registrierungsbestätigung
+- artikelpflege ende
+- artikelbearbeitung ab artikelpflegeende sperren und hinweisen
+- vor sperrdatum hinweisen
+- verkäuferliste paginierbar und sortierbar machen
+- button für ein und austragen zum ereignis in verkäuferliste (mit abfrage)
+- mail nach erfolgreicher platzzuweisung mit verkäufernummer und datum bis wann artikel einzutragen sind
+- nutzerverwaltung mit zugriff nur auf eigene items
+- adminbereich mit authentifizierung / passwortvergabe

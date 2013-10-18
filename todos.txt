@@ -1,6 +1,3 @@
-- Text - Registrierung für Erhalt Neuigkeiten und soweiter und teilnahme
-- Impressum
-- datenschutzerklärung
 - barcode checksumme
 - teilnahmebedingungen auf aktuelle infos anpassen
 - acrobat reader hinweis auf teilnahmebedingungen

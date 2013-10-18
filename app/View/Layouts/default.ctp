@@ -44,6 +44,9 @@
 			<?php echo $this->fetch('content'); ?>
 		</div>
 	</div>
-	<div id="footer"><a href="pages/imprint">Impressum</a></div>
+	<div id="footer">
+		<?php echo $this->Html->link("Impressum", "/pages/imprint"); ?>
+		<?php echo $this->Html->link("Datenschutz", "/pages/privacy"); ?>
+	</div>
 </body>
 </html>

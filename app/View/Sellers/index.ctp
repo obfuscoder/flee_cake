@@ -1,5 +1,4 @@
 <h2><?php echo __("Sellers") ?></h2>
-	<?php debug($this->Time->timeAgoInWords("2014-05-14", array('format' => 'l, M.Y'))) ?>
 <table>
 	<tr>
 		<th>Vorname</th>

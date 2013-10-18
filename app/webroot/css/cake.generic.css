@@ -293,10 +293,10 @@ form div {
 form .input {
 	color: #444;
 }
-form .required {
+form .required,.required-example {
 	font-weight: bold;
 }
-form .required label:after {
+form .required label:after,.required-example:after {
 	color: #e32;
 	content: '*';
 	display:inline;

@@ -44,5 +44,6 @@
 			<?php echo $this->fetch('content'); ?>
 		</div>
 	</div>
+	<div id="footer"><a href="pages/imprint">Impressum</a></div>
 </body>
 </html>

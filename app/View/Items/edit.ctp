@@ -8,4 +8,5 @@
 	echo $this->Form->input("size", array("label" => __("size")));
 	echo $this->Form->input("price", array("label" => __("price"), "min" => "0.10", "max" => "200", "step" => "0.10"));
 	echo $this->Form->end(__("Save"));
+	echo $this->Html->link("Zurück", array('action' => 'index', $this->request->data["Item"]["seller_id"]));
 ?>

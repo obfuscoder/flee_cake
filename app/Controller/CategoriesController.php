@@ -38,9 +38,7 @@ class CategoriesController extends AppController {
 	}
 
 	public function delete($id) {
-		if ($this->request->isGet()) {
-			throw new MethodNotAllowedException();
-		}
+		$this->request->onlyAllow('post', 'delete');
 		if ($this->Category->delete($id)) {
 			$this->Session->setFlash("Die Kategorie wurde gelöscht.", "default", array('class' => 'success'));
 			return $this->redirect(array("action" => "index"));

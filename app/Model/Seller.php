@@ -1,7 +1,20 @@
 <?php
 
 class Seller extends AppModel {
-	public $hasMany = "Item";
+	public $hasMany = array(
+		"Item",
+		"Reservation"
+	);
+
+	public function findAllUnreserved($eventId) {
+		return $this->find('all', array(
+			"recursive" => 0,
+    		"conditions" => array(
+    			"Seller.active" => true,
+    			"Seller.id not in (select seller_id from reservations where reservations.event_id = $eventId)"
+			)
+     	));
+	}
 
 	public $validate = array(
 		"first_name" => array("rule" => "notEmpty", "message" => "Bitte geben Sie einen Vornamen ein."),

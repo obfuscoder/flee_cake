@@ -28,6 +28,7 @@ class SellersController extends AppController {
 			throw new NotFoundException(__("Invalid seller"));
 		}
 		$this->set("seller", $seller);
+		$this->set("reservations", $this->Seller->Reservation->findAllBySellerId($id));
 	}
 
 	public function terms() {
@@ -77,9 +78,7 @@ class SellersController extends AppController {
 	}
 
 	public function delete($id = null) {
-		if ($this->request->isGet()) {
-			throw new MethodNotAllowedException();
-		}
+		$this->request->onlyAllow('post', 'delete');
 		if ($this->Seller->delete($id)) {
 			$this->Session->setFlash(__("The seller has been deleted."), "default", array('class' => 'success'));
 			return $this->redirect(array("action" => "index"));

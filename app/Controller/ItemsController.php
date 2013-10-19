@@ -43,9 +43,7 @@ class ItemsController extends AppController {
 	}
 
 	public function delete($id) {
-		if ($this->request->isGet()) {
-			throw new MethodNotAllowedException();
-		}
+		$this->request->onlyAllow('post', 'delete');
 		$item = $this->Item->findById($id);
 		if ($this->Item->delete($id)) {
 			$this->Session->setFlash(__("The item has been deleted."), "default", array('class' => 'success'));

@@ -48,5 +48,8 @@
 		<?php echo $this->Html->link("Impressum", "/pages/imprint"); ?>
 		<?php echo $this->Html->link("Datenschutz", "/pages/privacy"); ?>
 	</div>
+
+<?php /*echo $this->element('sql_dump');*/ ?>
+
 </body>
 </html>

@@ -1,6 +1,4 @@
-- BUG: speichern artikel, => "Artikel konnte nicht erstellt werden.", eingaben sind weg
-- BUG: nix ausfüllen Artikel, Submit, Ausfüllen pflichtfelder, Submit => Trotzdem fehler => kann nciht gepseichert werden
-- verkäufer/ereigniszuordnung mit platzvergabe
+- verkäufer/ereigniszuordnung mit platzvergabe für verkäufer
 - etikettendrucken erst nach platzzuweisung
 - artikel für bearbeitung sperren, die schon gedruckt wurden
 - gedruckte artikel können gelöscht werden, bleiben dabei aber noch in tabelle und werden durchgestrichen gezeigt
@@ -25,7 +23,6 @@
 - artikelbearbeitung ab artikelpflegeende sperren und hinweisen
 - vor sperrdatum hinweisen
 - verkäuferliste paginierbar und sortierbar machen
-- button für ein und austragen zum ereignis in verkäuferliste (mit abfrage)
 - mail nach erfolgreicher platzzuweisung mit verkäufernummer und datum bis wann artikel einzutragen sind
 - nutzerverwaltung mit zugriff nur auf eigene items
 - adminbereich mit authentifizierung / passwortvergabe

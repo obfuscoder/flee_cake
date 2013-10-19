@@ -15,7 +15,8 @@
 		<td class="actions">
 			<?php echo $this->Html->link("Anzeigen", array('action' => 'view', $event['Event']['id'])); ?>
 			<?php echo $this->Html->link("Bearbeiten", array('action' => 'edit', $event['Event']['id'])); ?>
-			<?php echo $this->Form->postLink("Löschen", array('action' => 'delete', $event['Event']['id']), null, "Wollen Sie wirklich diesen Eintrag löschen? Die Flohmarktnummer geht dabei verloren.", $event['Event']['id']); ?>
+			<?php echo $this->Form->postLink("Löschen", array('action' => 'delete', $event['Event']['id']), null,
+				"Wollen Sie wirklich diesen Eintrag löschen? Die Flohmarktnummer geht dabei verloren.", $event['Event']['id']); ?>
 		</td>
 	</tr>
 <?php endforeach; ?>

@@ -1,9 +1,9 @@
+- BUG: speichern artikel, => "Artikel konnte nicht erstellt werden.", eingaben sind weg
+- BUG: nix ausfüllen Artikel, Submit, Ausfüllen pflichtfelder, Submit => Trotzdem fehler => kann nciht gepseichert werden
 - verkäufer/ereigniszuordnung mit platzvergabe
 - etikettendrucken erst nach platzzuweisung
 - artikel für bearbeitung sperren, die schon gedruckt wurden
 - gedruckte artikel können gelöscht werden, bleiben dabei aber noch in tabelle und werden durchgestrichen gezeigt
-- BUG: speichern artikel, => "Artikel konnte nicht erstellt werden.", eingaben sind weg
-- BUG: nix ausfüllen Artikel, Submit, Ausfüllen pflichtfelder, Submit => Trotzdem fehler => kann nciht gepseichert werden
 - nummer bei etikedttendruck festschreiben
 - barcode checksumme
 - gedruckt häkchen checkbox

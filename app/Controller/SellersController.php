@@ -97,6 +97,34 @@ class SellersController extends AppController {
 			return $this->redirect(array("action" => "index"));
 		}
 	}
+
+	public function reservation($token, $eventId) {
+		$seller = $this->Seller->findByToken($token);
+		$this->set("seller", $seller);
+		$event = $this->Seller->Reservation->Event->findById($eventId);
+		$this->set("event", $event);
+		if (empty($seller)) {
+			return $this->render("loginFailed");
+		}
+		foreach($seller["Reservation"] as $reservation) {
+			if ($reservation["event_id"] == $eventId) {
+				$this->set("reservation", $reservation);
+				return $this->render("alreadyReserved");
+			}
+		}
+		if (strtotime($event["Event"]["reservation_start"]) > time() || strtotime($event["Event"]["reservation_end"]) < time()) {
+			return $this->render("reservationNotAllowed");
+		}
+		$reservation_count = $this->Seller->Reservation->find("count", array('conditions' => array('Reservation.event_id' => $eventId)));
+		if ($reservation_count >= $event["Event"]["max_sellers"]) {
+			return $this->render("reservationFull");
+		}
+		$reservationNumber = $this->Seller->Reservation->add(array("seller_id" => $seller["Seller"]["id"], "event_id" => $eventId));
+		if (!$reservationNumber) {
+			return $this->render("reservationFailed");
+		}
+		$this->set("number", $reservationNumber);
+	}
 }
 
 ?>

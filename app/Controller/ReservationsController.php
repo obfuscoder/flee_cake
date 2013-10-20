@@ -19,10 +19,7 @@ class ReservationsController extends AppController {
 	public function create() {
 		$this->request->onlyAllow('post');
 		$reservation = $this->request->data["Reservation"];
-		$nextReservationNumber = $this->Reservation->getNextReservationNumber($reservation["event_id"]);
-		$this->Reservation->create();
-		$reservation["number"] = $nextReservationNumber;
-		if ($this->Reservation->save($reservation)) {
+		if ($this->Reservation->add($reservation)) {
 			$this->Session->setFlash("Reservierung durchgeführt", "default", array('class' => 'success'));
 		} else {
 			$this->Session->setFlash("Reservierung fehlgeschlagen");

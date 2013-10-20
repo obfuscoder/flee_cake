@@ -2,7 +2,7 @@
 App::uses('AppController', 'Controller');
 
 class EventsController extends AppController {
-
+	public $helpers = array("Html", "Form", "Session", "Time");
 	public $components = array('Paginator');
 
 	public function index() {
@@ -54,12 +54,37 @@ class EventsController extends AppController {
 
 	public function invite($id) {
 		$event = $this->Event->findById($id);
-		$reservations = count($event["Reservation"]);
-		$unreservedSellers = $this->Event->Reservation->Seller->findAllUnreserved($id);
-		$invitationCount = count($unreservedSellers);
-		$this->Session->setFlash(
-			"Es wurden $invitationCount Einladung(en) verschickt. Es gibt bereits $reservations Reservierung(en).",
-			"default", array('class' => 'success'));
+		if ($event["Event"]["invitation_sent"] !== null) {
+			App::uses('CakeTime', 'Utility');
+			$this->Session->setFlash("Die Einladung für diesen Termin wurde bereits " .
+				CakeTime::timeAgoInWords($event["Event"]["invitation_sent"], array('format' => 'd.m.Y')) . " versendet.");
+		} else {
+			$reservations = count($event["Reservation"]);
+			$invitationCount = $this->sendInvitations($event);
+			$this->Session->setFlash(
+				"Es wurden $invitationCount Einladung(en) verschickt. Es gibt bereits $reservations Reservierung(en).",
+				"default", array('class' => 'success'));
+		}
 		return $this->redirect(array('action' => 'view', $id));
+	}
+
+	private function sendInvitations($event) {
+		$id = $event["Event"]["id"];
+		$unreservedSellers = $this->Event->Reservation->Seller->findAllUnreserved($id);
+		App::uses('CakeEmail', 'Network/Email');
+		$mail = new CakeEmail();
+		foreach($unreservedSellers as $seller) {
+			$mail->template("invite", "default")
+				->emailFormat("text")
+				->from(array("flohmarkt@flohmarkt-koenigsbach.de" => "Flohmarkt Königsbach"))
+				->to($seller["Seller"]["email"])
+				->subject("Reservierung zum Flohmarkt startet in Kürze")
+				->viewVars(compact("seller", "event"))
+				->send();
+		}
+		$event["Event"]["invitation_sent"] = date("Y-m-d H:i:s");
+		$this->Event->save($event);
+
+		return count($unreservedSellers);
 	}
 }

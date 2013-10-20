@@ -54,6 +54,19 @@ class SellersController extends AppController {
 		}
 	}
 
+	public function edit($id) {
+		$seller = $this->Seller->findById($id);
+		if ($this->request->isPut()) {
+			if ($this->Seller->save($this->request->data)) {
+				$this->Session->setFlash("Verkäufer aktualisiert.", "default", array('class' => 'success'));
+				return $this->redirect(array('action' => 'view', $id));
+			}
+			$this->Session->setFlash("Verkäufer konnte nicht gespeichert werden.");
+		} else {
+			$this->request->data = $seller;
+		}
+	}
+
 	function activateIfNecessary($seller) {
 		$seller["Seller"]["active"] = true;
 		unset($seller["Seller"]['modified']);

@@ -24,6 +24,6 @@ Mail: <a href="mailto:<?php echo $seller["Seller"]["email"] ?>"><?php echo $sell
 
 <h3>Aktionen</h3>
 <p class="actions">
-	<?php echo $this->Html->link("Bearbeiten", array("action" => "edit")); ?>
+	<?php echo $this->Html->link("Bearbeiten", array("action" => "edit", $seller["Seller"]["id"])); ?>
 	<?php echo $this->Html->link("Artikel auflisten", array("controller" => "items", "action" => "index", $seller["Seller"]["id"])); ?>
 </p>

@@ -51,4 +51,15 @@ class EventsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+
+	public function invite($id) {
+		$event = $this->Event->findById($id);
+		$reservations = count($event["Reservation"]);
+		$unreservedSellers = $this->Event->Reservation->Seller->findAllUnreserved($id);
+		$invitationCount = count($unreservedSellers);
+		$this->Session->setFlash(
+			"Es wurden $invitationCount Einladung(en) verschickt. Es gibt bereits $reservations Reservierung(en).",
+			"default", array('class' => 'success'));
+		return $this->redirect(array('action' => 'view', $id));
+	}
 }

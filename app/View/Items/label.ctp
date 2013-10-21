@@ -46,22 +46,20 @@
 
 	$leftColWidth = 0.23;
 
-	for ($i = 0; $i<count($items); $i++) {
-		$code = sprintf("02%03d%02d8", $items[$i]["Item"]["seller_id"], $i+1);
-
+	for ($i = 0; $i<count($reservation["Item"]); $i++) {
 		$tcpdf->SetFont($textfont,'',14);
-		$tcpdf->Cell($width/2, 0, $items[$i]["Item"]["seller_id"], "LTB", 0, 'R');
+		$tcpdf->Cell($width/2, 0, $reservation["Reservation"]["number"], "LTB", 0, 'R');
 		$tcpdf->SetFont($textfont,'',10);
-		$tcpdf->Cell(0, $tcpdf->getLastH(), $i+1, "TRB", 1, 'L');
-		$tcpdf->Cell(0, 0, $items[$i]["Item"]["description"], 1, 1, 'C');
+		$tcpdf->Cell(0, $tcpdf->getLastH(), $reservation["Item"][$i]["ReservedItem"]["number"], "TRB", 1, 'L');
+		$tcpdf->Cell(0, 0, $reservation["Item"][$i]["description"], 1, 1, 'C');
 
-		$tcpdf->Cell(0, 0, ($items[$i]["Item"]["size"] == null) ? "" : ("Größe: " . $items[$i]["Item"]["size"]), 1, 1, 'C');
+		$tcpdf->Cell(0, 0, ($reservation["Item"][$i]["size"] == null) ? "" : ("Größe: " . $reservation["Item"][$i]["size"]), 1, 1, 'C');
 
 		$tcpdf->SetFont($textfont,'',20);
-		$tcpdf->Cell(0, 0, $this->Number->currency($items[$i]["Item"]["price"], "EUR"), 1, 1, 'C');
+		$tcpdf->Cell(0, 0, $this->Number->currency($reservation["Item"][$i]["price"], "EUR"), 1, 1, 'C');
 		$tcpdf->SetFont($textfont,'',10);
 
-		$tcpdf->write1DBarcode($code, "C128", '', '', "", 18, 0.4, $style, 'N');
+		$tcpdf->write1DBarcode($reservation["Item"][$i]["ReservedItem"]["code"], "C128", '', '', "", 18, 0.4, $style, 'N');
 
 		$tcpdf->Ln();
 		if ($i%$rows == ($rows-1)) {

@@ -7,7 +7,14 @@ class ItemsController extends AppController {
 	public function index($sellerId) {
 		$items = $this->Item->findAllBySellerId($sellerId);
 		$this->set("items", $items);
-		$this->set("seller_id", $sellerId);
+		$seller = $this->Item->Seller->findById($sellerId);
+		$this->set("seller", $seller);
+		$event = $this->Item->Seller->Reservation->Event->getCurrent();
+		if ($event) {
+			$this->set("event", $event);
+			$reservation = $this->Item->Seller->Reservation->findBySellerIdAndEventId($sellerId, $event["Event"]["id"]);
+			$this->set("reservation", $reservation);
+		}
 	}
 
 	public function create($sellerId) {
@@ -51,12 +58,34 @@ class ItemsController extends AppController {
 		}
 	}
 
-	public function pdf($sellerId) {
-        $items = $this->Item->findAllBySellerId($sellerId);
-        $this->set("items", $items);
-        
+	public function label($reservationId) {
+        $reservation = $this->Item->Reservation->findById($reservationId);
+        $reservedItemIds = array();
+        foreach ($reservation["Item"] as $item) {
+        	array_push($reservedItemIds, $item["id"]);
+        }
+        $reservedItemNumber = $this->Item->getNextReservedItemNumber($reservationId);
+        $unreservedItemIds = $this->Item->find('list', array("fields" => array("id"), "conditions" => array("NOT" => array("Item.id" => $reservedItemIds))));
+        $itemsToReserve = array();
+        foreach ($unreservedItemIds as $itemId) {
+        	array_push($itemsToReserve, array(
+        		"ReservedItem" => array(
+		        	"item_id" => $itemId,
+        			"reservation_id" => $reservationId,
+        			"number" => $reservedItemNumber,
+        			"code" => $this->Item->getCode($reservation["Event"]["id"], $reservation["Reservation"]["number"], $reservedItemNumber)
+        		)
+        	));
+        	$reservedItemNumber++;
+		}
+		if ($itemsToReserve) {
+			$this->Item->ReservedItem->create();
+			$this->Item->ReservedItem->saveAll($itemsToReserve);
+		}
+
+        $this->set("reservation", $this->Item->Reservation->findById($reservationId));
+
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
-        $this->render(); 
 	}
 }
 

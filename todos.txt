@@ -1,8 +1,6 @@
-- etikettendrucken erst nach platzzuweisung
+- barcode checksumme
 - artikel für bearbeitung sperren, die schon gedruckt wurden
 - gedruckte artikel können gelöscht werden, bleiben dabei aber noch in tabelle und werden durchgestrichen gezeigt
-- nummer bei etikettendruck festschreiben
-- barcode checksumme
 - gedruckt häkchen checkbox
 - bearbeitungen sperren nach ablauf reservierung
 - bei ende reservierung alle noch nicht erzeugten codes erzeugen und ggf. verkäufer informieren

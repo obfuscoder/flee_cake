@@ -5,6 +5,7 @@ class Reservation extends AppModel {
 		"Seller",
 		"Event"
 	);
+	public $hasAndBelongsToMany = array("Item" => array("with" => "ReservedItem", "unique" => "keepExisting", "order" => "ReservedItem.number"));
 
 	private function getNextReservationNumber($eventId) {
 		$result = $this->find("first", array(

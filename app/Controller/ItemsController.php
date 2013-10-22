@@ -82,7 +82,12 @@ class ItemsController extends AppController {
 			$this->Item->ReservedItem->create();
 			$this->Item->ReservedItem->saveAll($itemsToReserve);
 		}
+		$this->Session->setFlash("Es wurden " . count($unreservedItemIds) . " Etikett(en) erzeugt.", "default", array('class' => 'success'));
+		return $this->redirect(array("action" => "index", $reservation["Seller"]["id"]));
+	}
 
+	public function pdf($reservationId) {
+        $reservation = $this->Item->Reservation->findById($reservationId);
         $this->set("reservation", $this->Item->Reservation->findById($reservationId));
 
         $this->layout = 'pdf'; //this will use the pdf.ctp layout

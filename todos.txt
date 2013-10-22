@@ -1,4 +1,3 @@
-- barcode checksumme
 - artikel für bearbeitung sperren, die schon gedruckt wurden
 - gedruckte artikel können gelöscht werden, bleiben dabei aber noch in tabelle und werden durchgestrichen gezeigt
 - gedruckt häkchen checkbox

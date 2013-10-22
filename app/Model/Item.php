@@ -18,8 +18,16 @@ class Item extends AppModel {
 		return ($max === null) ? 1 : $max+1;
 	}
 
-	private function getChecksum($number) {
-		return '2';
+	// http://en.wikipedia.org/wiki/Luhn_algorithm
+	public function getChecksum($number) {
+		$digits = strrev($number);
+		$checksum = 0;
+		for ($i=0; $i<strlen($digits); $i++) {
+			$digit = $digits[$i] * (($i+1)%2+1);
+			$sum = array_sum(str_split($digit));
+			$checksum += $sum;
+		}
+		return $checksum % 10;
 	}
 
 	public function getCode($eventNumber, $sellerNumber, $itemNumber) {

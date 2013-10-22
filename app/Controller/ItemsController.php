@@ -65,7 +65,7 @@ class ItemsController extends AppController {
         	array_push($reservedItemIds, $item["id"]);
         }
         $reservedItemNumber = $this->Item->getNextReservedItemNumber($reservationId);
-        $unreservedItemIds = $this->Item->find('list', array("fields" => array("id"), "conditions" => array("NOT" => array("Item.id" => $reservedItemIds))));
+        $unreservedItemIds = $this->Item->find('list', array("fields" => array("id"), "conditions" => array("Item.seller_id" => $reservation["Seller"]["id"], "NOT" => array("Item.id" => $reservedItemIds))));
         $itemsToReserve = array();
         foreach ($unreservedItemIds as $itemId) {
         	array_push($itemsToReserve, array(

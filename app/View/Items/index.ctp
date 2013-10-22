@@ -50,7 +50,7 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 <?php if (count($items)): ?>
 <p>Sobald Sie eine Reservierungsnummer erhalten haben, können Sie die Etiketten für die Artikel erzeugen und drucken. Bitte beachten Sie, dass das Erzeugen von Etiketten die bis zu diesem Zeitpunkt angelegten Artikel zur weiteren Bearbeitung sperrt.</p>
 <p class="actions"><?php
-	if ($unreservedItemCount) {
+	if ($reservation && $unreservedItemCount) {
 		echo $this->Html->link("$unreservedItemCount Etikett(en) erzeugen",
 			array("action" => "label", $reservation["Reservation"]["id"]),
 			array(), "Sobald Sie die Etiketten erzeugen, werden alle bis zu diesem Zeitpunkt eingegebenen Artikel gesperrt. " .
@@ -58,7 +58,7 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 			"Wollen Sie die Etiketten erzeugen lassen und damit die aktuellen Artikel sperren?");
 		echo "&nbsp";
 	}
-	if ($reservation["Item"]) {
+	if ($reservation && $reservation["Item"]) {
 		echo $this->Html->link("$reservedItemCount erzeugte Etiketten ausdrucken", array("action" => "pdf", $reservation["Reservation"]["id"]));
 	} ?></p>
  <p><small>Die Etiketten werden als PDF-Dokument generiert.

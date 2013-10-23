@@ -1,15 +1,13 @@
-- artikel für bearbeitung sperren, die schon gedruckt wurden
-- gedruckte artikel können gelöscht werden, bleiben dabei aber noch in tabelle und werden durchgestrichen gezeigt
-- gedruckt häkchen checkbox
-- bearbeitungen sperren nach ablauf reservierung
-- bei ende reservierung alle noch nicht erzeugten codes erzeugen und ggf. verkäufer informieren
 - registrierung rückgängig machen lassen (daten löschen)
 - reservierung durch seller rückgängig machen lassen
 - warteliste
+- gedruckte artikel können gelöscht werden, bleiben dabei aber noch in tabelle und werden durchgestrichen gezeigt
 - urls in email anpassen
+- bearbeitungen sperren nach ablauf reservierung
 - herr/frau erfassen und anrede in email anpassen
 - "preis in € auf 10 Cent genau"
 - größe alphanumerisch
+? bei ende reservierung alle noch nicht erzeugten codes erzeugen
 - Kategorie Sonstige ganz unten
 - Kategorie, größe und preis nebeneinander
 - teilnahmebedingungen auf aktuelle infos anpassen
@@ -20,7 +18,7 @@
 - teilnahmebedingungen als mailanhang bei registrierungsbestätigung
 - artikelpflege ende
 - artikelbearbeitung ab artikelpflegeende sperren und hinweisen
-- vor sperrdatum hinweisen
+- vor sperrdatum hinweisenheid
 - verkäuferliste paginierbar und sortierbar machen
 - mail nach erfolgreicher platzzuweisung mit verkäufernummer und datum bis wann artikel einzutragen sind
 - nutzerverwaltung mit zugriff nur auf eigene items

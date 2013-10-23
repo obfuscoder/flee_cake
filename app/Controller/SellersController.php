@@ -74,17 +74,26 @@ class SellersController extends AppController {
 	}
 
 	public function activate($token) {
-		$seller = $this->Seller->findByToken($token);
-		if (empty($seller)) {
-			return $this->render("activationFailed");
+		$seller = $this->getSellerOrShowFail($token);
+		if (!$seller) {
+			return;
 		}
 		$this->activateIfNecessary($seller);
 	}
 
-	public function login($token) {
+	private function getSellerOrShowFail($token) {
 		$seller = $this->Seller->findByToken($token);
 		if (empty($seller)) {
-			return $this->render("loginFailed");
+			$this->render("loginFailed");
+			return false;
+		}
+		return $seller;
+	}
+
+	public function login($token) {
+		$seller = $this->getSellerOrShowFail($token);
+		if (!$seller) {
+			return;
 		}
 		$this->activateIfNecessary($seller);
 		return $this->redirect(array("controller" => "items", "action" => "index", $seller["Seller"]['id']));
@@ -99,13 +108,13 @@ class SellersController extends AppController {
 	}
 
 	public function reservation($token, $eventId) {
-		$seller = $this->Seller->findByToken($token);
+		$seller = $this->getSellerOrShowFail($token);
+		if (!$seller) {
+			return;
+		}
 		$this->set("seller", $seller);
 		$event = $this->Seller->Reservation->Event->findById($eventId);
 		$this->set("event", $event);
-		if (empty($seller)) {
-			return $this->render("loginFailed");
-		}
 		foreach($seller["Reservation"] as $reservation) {
 			if ($reservation["event_id"] == $eventId) {
 				$this->set("reservation", $reservation);
@@ -124,6 +133,18 @@ class SellersController extends AppController {
 			return $this->render("reservationFailed");
 		}
 		$this->set("number", $reservationNumber);
+	}
+
+	public function pdf($token, $eventId) {
+		$seller = $this->getSellerOrShowFail($token);
+		if (!$seller) {
+			return;
+		}
+		$reservation = $this->Seller->Reservation->findByEventIdAndSellerId($eventId, $seller["Seller"]["id"]);
+		if (!$reservation) {
+			return $this->render("loginFailed");
+		}
+		return $this->redirect(array("controller" => "items", "action" => "pdf", $reservation["Reservation"]["id"]));
 	}
 }
 

@@ -87,4 +87,41 @@ class EventsController extends AppController {
 
 		return count($unreservedSellers);
 	}
+
+	public function close($id) {
+		$event = $this->Event->findById($id);
+		if ($event["Event"]["closing_sent"] !== null) {
+			App::uses('CakeTime', 'Utility');
+			$this->Session->setFlash("Die Mail wurde bereits " .
+				CakeTime::timeAgoInWords($event["Event"]["closing_sent"], array('format' => 'd.m.Y')) . " versendet.");
+		} else {
+			$reservations = count($event["Reservation"]);
+			$mailCount = $this->sendClosings($event);
+			$this->Session->setFlash(
+				"Es wurden $mailCount Mail(s) verschickt.",
+				"default", array('class' => 'success'));
+		}
+		//return $this->redirect(array('action' => 'view', $id));
+	}
+
+	private function sendClosings($event) {
+		$id = $event["Event"]["id"];
+		$reservations = $this->Event->Reservation->findAllByEventId($id);
+		App::uses('CakeEmail', 'Network/Email');
+		$mail = new CakeEmail();
+		foreach($reservations as $reservation) {
+			debug($mail->template("close", "default")
+				->transport("Debug")
+				->emailFormat("text")
+				->from(array("flohmarkt@flohmarkt-koenigsbach.de" => "Flohmarkt Königsbach"))
+				->to($reservation["Seller"]["email"])
+				->subject("Flohmarkt Vorbereitungen abgeschlossen - Artikel festgelegt")
+				->viewVars(compact("reservation", "event"))
+				->send());
+		}
+		$event["Event"]["closing_sent"] = date("Y-m-d H:i:s");
+		//$this->Event->save($event);
+
+		return count($reservations);
+	}
 }

@@ -24,6 +24,9 @@
 	<?php if ($event["Event"]["invitation_sent"] === null) {
 			echo $this->Html->link("Reservierungseinladungen verschicken", array("action" => "invite", $event['Event']['id']));
 		} ?>
+	<?php if ($event["Event"]["closing_sent"] === null) {
+			echo $this->Html->link("Bearbeitungsabschlussmail verschicken", array("action" => "close", $event['Event']['id']));
+		} ?>
 	<?php echo $this->Html->link("Reservierungen", array("controller" => "reservations", 'action' => 'index', $event['Event']['id'])); ?>
 	<?php echo $this->Html->link("Terminliste", array('action' => 'index')); ?>
 	<?php echo $this->Html->link("Neuer Termin", array('action' => 'add')); ?>

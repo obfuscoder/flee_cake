@@ -1,4 +1,4 @@
-Sehr geehrter Flohmarkt Interessent/sehr geehrte Interessentin,
+Sehr geehrte(r) Flohmarkt Verkäufer/in,
 
 Die Vorbereitungen für den Flohmarkt sind abgeschlossen. Die Bearbeitung Ihrer Artikel ist damit nicht mehr möglich.
 

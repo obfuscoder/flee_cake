@@ -9,7 +9,12 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 <?php endif; ?>
 <?php if ($reservation): ?>
 	<p>Sie haben die Reservierungsnummer <strong><?php echo $reservation["Reservation"]["number"] ?></strong>.
-	Alle zu verkaufenden Artikel müssen bis zum <?php echo $this->Time->format($reservation["Event"]["reservation_end"], "%A, %e. %B %Y") ?> eingetragen und die Etiketten erzeugt sein.</p>
+	<?php if ($reservation["Event"]["reservation_end"] > time()): ?>
+		Alle zu verkaufenden Artikel müssen bis zum <?php echo $this->Time->format($reservation["Event"]["reservation_end"], "%A, %e. %B %Y") ?> eingetragen und die Etiketten erzeugt sein.
+	<?php else: ?>
+		Die Frist zum Erzeugen der Etiketten für den Flohmarkt ist abgelaufen. Sie können keine weiteren Etiketten erzeugen. Sie können jedoch die bereits erzeugten Etiketten ausdrucken.
+	<?php endif ?>
+	</p>
 <?php else: ?>
 	<p>Sie haben noch keine Reservierungsnummer.</p>
 <?php endif ?>
@@ -50,7 +55,7 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 <?php if (count($items)): ?>
 <p>Sobald Sie eine Reservierungsnummer erhalten haben, können Sie die Etiketten für die Artikel erzeugen und drucken. Bitte beachten Sie, dass das Erzeugen von Etiketten die bis zu diesem Zeitpunkt angelegten Artikel zur weiteren Bearbeitung sperrt.</p>
 <p class="actions"><?php
-	if ($reservation && $unreservedItemCount) {
+	if ($reservation && $unreservedItemCount && $reservation["Event"]["reservation_end"] > time()) {
 		echo $this->Html->link("$unreservedItemCount Etikett(en) erzeugen",
 			array("action" => "label", $reservation["Reservation"]["id"]),
 			array(), "Sobald Sie die Etiketten erzeugen, werden alle bis zu diesem Zeitpunkt eingegebenen Artikel gesperrt. " .

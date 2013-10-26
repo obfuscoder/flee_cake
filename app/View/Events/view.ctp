@@ -25,7 +25,10 @@
 			echo $this->Html->link("Reservierungseinladungen verschicken", array("action" => "invite", $event['Event']['id']));
 		} ?>
 	<?php if ($event["Event"]["closing_sent"] === null) {
-			echo $this->Html->link("Bearbeitungsabschlussmail verschicken", array("action" => "close", $event['Event']['id']));
+			echo $this->Html->link("Erinnerungsmail vor Bearbeitungsschluss verschicken", array("action" => "mail_closing", $event['Event']['id']));
+		} ?>
+	<?php if ($event["Event"]["closed_sent"] === null) {
+			echo $this->Html->link("Bearbeitungsabschlussmail verschicken", array("action" => "mail_closed", $event['Event']['id']));
 		} ?>
 	<?php echo $this->Html->link("Reservierungen", array("controller" => "reservations", 'action' => 'index', $event['Event']['id'])); ?>
 	<?php echo $this->Html->link("Terminliste", array('action' => 'index')); ?>

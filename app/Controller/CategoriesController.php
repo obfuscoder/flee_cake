@@ -4,15 +4,15 @@ class CategoriesController extends AppController {
 	public $helpers = array("Html", "Form", "Session");
 	public $components = array("Session");
 
-	public function index() {
+	public function admin_index() {
 		$this->set("categories", $this->Category->find("all"));
 	}
 
-	public function view($id) {
+	public function admin_view($id) {
 		$this->set("category", $this->Category->findById($id));
 	}
 
-	public function create() {
+	public function admin_create() {
 		if ($this->request->isPost()) {
 			$this->Category->create();
 			if ($this->Category->save($this->request->data)) {
@@ -23,7 +23,7 @@ class CategoriesController extends AppController {
 		}
 	}
 
-	public function update($id) {
+	public function admin_update($id) {
 		if ($this->request->is(array("post", "put"))) {
 			$this->Category->id = $id;
 			if ($this->Category->save($this->request->data)) {
@@ -37,7 +37,7 @@ class CategoriesController extends AppController {
 		}
 	}
 
-	public function delete($id) {
+	public function admin_delete($id) {
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Category->delete($id)) {
 			$this->Session->setFlash("Die Kategorie wurde gelöscht.", "default", array('class' => 'success'));

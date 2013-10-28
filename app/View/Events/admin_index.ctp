@@ -30,4 +30,4 @@
 	?>
 	</div>
 </div>
-
+<p><?php echo $this->Html->link("Hauptseite", array("controller" => "admin", "action" => "index")); ?></p>

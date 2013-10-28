@@ -14,6 +14,5 @@
 - teilnahmebedingungen als mailanhang bei registrierungsbestätigung
 - verkäuferliste paginierbar und sortierbar machen
 - mail nach erfolgreicher platzzuweisung mit verkäufernummer und datum bis wann artikel einzutragen sind
-- nutzerverwaltung mit zugriff nur auf eigene items
 - adminbereich mit authentifizierung / passwortvergabe
 - plz und stadt in eine zeile

@@ -14,7 +14,7 @@ class SellersController extends AppController {
 		return $updated;
 	}
 
-	public function index() {
+	public function admin_index() {
 		$sellers = $this->Seller->find("all");
 		for($i=0; $i<count($sellers); $i++) {
 			$sellers[$i]["Seller"]["lastUpdated"] = $this->lastUpdated($sellers[$i]);
@@ -22,7 +22,7 @@ class SellersController extends AppController {
 		$this->set("sellers", $sellers);
 	}
 
-	public function view($id = null) {
+	public function admin_view($id = null) {
 		$seller = $this->Seller->findById($id);
 		if (!$seller) {
 			throw new NotFoundException(__("Invalid seller"));
@@ -34,7 +34,15 @@ class SellersController extends AppController {
 	public function terms() {
 	}
 
-	public function register() {
+	public function admin_new() {
+		if ($this->request->isPost()) {
+			$this->create();
+			$this->Session->setFlash("Verkäufer gespeichert", "default", array('class' => 'success'));
+			return $this->redirect(array("action" => "index"));
+		}
+	}
+
+	public function create() {
 		if ($this->request->isPost()) {
 			$this->Seller->create();
 			$this->request->data["Seller"]["token"] = md5(uniqid("Vs3_%&/90kF307iohjSD2", true));
@@ -48,18 +56,25 @@ class SellersController extends AppController {
 					->subject("Registrierungsbestätigung")
 					->viewVars($seller["Seller"])
 					->send();
-				return $this->render("registered");
+				return;
 			}
 			$this->Session->setFlash("Registrierung fehlgeschlagen!");
 		}
 	}
 
-	public function edit($id) {
+	public function register() {
+		if ($this->request->isPost()) {
+			$this->create();
+			return $this->render("registered");
+		}
+	}
+
+	public function admin_edit($id) {
 		$seller = $this->Seller->findById($id);
 		if ($this->request->isPut()) {
 			if ($this->Seller->save($this->request->data)) {
 				$this->Session->setFlash("Verkäufer aktualisiert.", "default", array('class' => 'success'));
-				return $this->redirect(array('action' => 'view', $id));
+				return $this->redirect(array('action' => 'index'));
 			}
 			$this->Session->setFlash("Verkäufer konnte nicht gespeichert werden.");
 		} else {
@@ -74,32 +89,25 @@ class SellersController extends AppController {
 	}
 
 	public function activate($token) {
-		$seller = $this->getSellerOrShowFail($token);
-		if (!$seller) {
-			return;
-		}
-		$this->activateIfNecessary($seller);
+		$seller = $this->auth($token);
 	}
 
-	private function getSellerOrShowFail($token) {
+	private function auth($token) {
 		$seller = $this->Seller->findByToken($token);
-		if (empty($seller)) {
-			$this->render("loginFailed");
-			return false;
+		if (!$seller) {
+			return $this->redirect(array("action" => "auth_failed"));
 		}
+		$this->activateIfNecessary($seller);
+		$this->Session->write("Seller", $seller);
 		return $seller;
 	}
 
 	public function login($token) {
-		$seller = $this->getSellerOrShowFail($token);
-		if (!$seller) {
-			return;
-		}
-		$this->activateIfNecessary($seller);
+		$seller = $this->auth($token);
 		return $this->redirect(array("controller" => "items", "action" => "index", $seller["Seller"]['id']));
 	}
 
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Seller->delete($id)) {
 			$this->Session->setFlash(__("The seller has been deleted."), "default", array('class' => 'success'));
@@ -108,10 +116,7 @@ class SellersController extends AppController {
 	}
 
 	public function reservation($token, $eventId) {
-		$seller = $this->getSellerOrShowFail($token);
-		if (!$seller) {
-			return;
-		}
+		$seller = $this->auth($token);
 		$this->set("seller", $seller);
 		$event = $this->Seller->Reservation->Event->findById($eventId);
 		$this->set("event", $event);
@@ -136,10 +141,7 @@ class SellersController extends AppController {
 	}
 
 	public function pdf($token, $eventId) {
-		$seller = $this->getSellerOrShowFail($token);
-		if (!$seller) {
-			return;
-		}
+		$seller = $this->auth($token);
 		$reservation = $this->Seller->Reservation->findByEventIdAndSellerId($eventId, $seller["Seller"]["id"]);
 		if (!$reservation) {
 			return $this->render("loginFailed");

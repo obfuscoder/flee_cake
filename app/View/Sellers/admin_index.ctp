@@ -5,7 +5,7 @@
 		<th>Artikel</th>
 		<th>Aktiv</th>
 		<th>Letzte Änderung</th>
-		<th class="actions"><?php echo $this->Html->link("Neue Registrierung", array("controller" => "sellers", "action" => "register")); ?></th>
+		<th class="actions"><?php echo $this->Html->link("Neu", array("controller" => "sellers", "action" => "new")); ?></th>
 	</tr>
 	<?php foreach ($sellers as $seller): ?>
 	<tr>
@@ -24,4 +24,4 @@
 	<?php endforeach; ?>
 	<?php unset($seller); ?>
 </table>
-<p><?php echo $this->Html->link("Kategorien", array("controller" => "categories", "action" => "index")); ?></p>
+<p><?php echo $this->Html->link("Hauptseite", array("controller" => "admin", "action" => "index")); ?></p>

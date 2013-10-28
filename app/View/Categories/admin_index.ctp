@@ -13,4 +13,4 @@
 	<?php endforeach; ?>
 	<?php unset($category); ?>
 </table>
-<p><?php echo $this->Html->link("Verkäufer", array("controller" => "sellers", "action" => "index")); ?></p>
+<p><?php echo $this->Html->link("Hauptseite", array("controller" => "admin", "action" => "index")); ?></p>

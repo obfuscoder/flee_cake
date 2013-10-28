@@ -5,17 +5,17 @@ class EventsController extends AppController {
 	public $helpers = array("Html", "Form", "Session", "Time");
 	public $components = array('Paginator');
 
-	public function index() {
+	public function admin_index() {
 		$this->Event->recursive = 0;
 		$this->set('events', $this->Paginator->paginate());
 	}
 
-	public function view($id = null) {
+	public function admin_view($id = null) {
 		$this->set('event', $this->Event->findById($id));
 		$this->set('reservations', $this->Event->Reservation->findAllByEventId($id));
 	}
 
-	public function add() {
+	public function admin_add() {
 		if ($this->request->isPost()) {
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
@@ -26,7 +26,7 @@ class EventsController extends AppController {
 		}
 	}
 
-	public function edit($id = null) {
+	public function admin_edit($id = null) {
 		if (!$this->Event->exists($id)) {
 			throw new NotFoundException(__('Invalid event'));
 		}
@@ -41,7 +41,7 @@ class EventsController extends AppController {
 		}
 	}
 
-	public function delete($id = null) {
+	public function admin_delete($id = null) {
 		$this->Event->id = $id;
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Event->delete($id)) {
@@ -52,7 +52,7 @@ class EventsController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	public function invite($id) {
+	public function admin_invite($id) {
 		$event = $this->Event->findById($id);
 		if ($event["Event"]["invitation_sent"] !== null) {
 			App::uses('CakeTime', 'Utility');
@@ -88,7 +88,7 @@ class EventsController extends AppController {
 		return count($unreservedSellers);
 	}
 
-	public function mail_closing($id) {
+	public function admin_mail_closing($id) {
 		$event = $this->Event->findById($id);
 		if ($event["Event"]["closing_sent"] !== null) {
 			App::uses('CakeTime', 'Utility');
@@ -124,7 +124,7 @@ class EventsController extends AppController {
 		return count($reservations);
 	}
 
-	public function mail_closed($id) {
+	public function admin_mail_closed($id) {
 		$event = $this->Event->findById($id);
 		if ($event["Event"]["closed_sent"] !== null) {
 			App::uses('CakeTime', 'Utility');

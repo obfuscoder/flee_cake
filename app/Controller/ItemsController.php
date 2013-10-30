@@ -5,6 +5,9 @@ class ItemsController extends AppController {
 	public $components = array("Session");
 
 	private function checkSeller($sellerId) {
+		if ($this->Session->read("Admin")) {
+			return true;
+		}
 		if ($sellerId !== $this->Session->read("Seller")["Seller"]["id"]) {
 			$this->Session->delete("Seller");
 			return $this->redirect (array("controller" => "pages", "action" => "session_expired"));

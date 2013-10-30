@@ -34,4 +34,14 @@ Configure::write('Config.language', 'deu');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    function beforeFilter () {
+    	if ($this->request->url == "admin") {
+    		return;
+    	}
+        if (isset($this->params["admin"]) && $this->params["admin"]) {
+            if (!$this->Session->read("Admin")) {
+            	return $this->redirect("/pages/unauthorized");
+            }
+        }
+    }
 }

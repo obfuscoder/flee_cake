@@ -96,7 +96,7 @@ class ItemsController extends AppController {
 
 	public function label($reservationId) {
         $reservation = $this->Item->Reservation->findById($reservationId);
-		checkSeller($reservation["Reservation"]["seller_id"]);
+		$this->checkSeller($reservation["Reservation"]["seller_id"]);
         $reservedItemIds = array();
         foreach ($reservation["Item"] as $item) {
         	array_push($reservedItemIds, $item["id"]);

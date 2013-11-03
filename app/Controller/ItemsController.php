@@ -8,7 +8,8 @@ class ItemsController extends AppController {
 		if ($this->Session->read("Admin")) {
 			return true;
 		}
-		if ($sellerId !== $this->Session->read("Seller")["Seller"]["id"]) {
+		$sessionSeller = $this->Session->read("Seller");
+		if ($sellerId !== $sessionSeller["Seller"]["id"]) {
 			$this->Session->delete("Seller");
 			return $this->redirect (array("controller" => "pages", "action" => "session_expired"));
 		}

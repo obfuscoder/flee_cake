@@ -4,8 +4,11 @@
 	echo $this->Form->input("p", array("label" => "Passwort"));
 	echo $this->Form->end("Digest");
 	if ($this->request->isPost()) {
+		App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
+
+        $passwordHasher = new SimplePasswordHasher();
+
 		$digest = $this->request->data["Digest"];
-		App::uses('DigestAuthenticate', 'Controller/Component/Auth');
-		echo "Digest = " . DigestAuthenticate::password($digest["u"], $digest["p"], env('SERVER_NAME'));
+		echo "Digest of " . $digest["p"] . " = " . $passwordHasher->hash($digest["p"]);
 	}
 ?>

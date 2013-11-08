@@ -5,7 +5,7 @@ class Item extends AppModel {
 	public $hasAndBelongsToMany = array("Reservation" => array("with" => "ReservedItem", "unique" => "keepExisting", "order" => "ReservedItem.number"));
 
 	public $validate = array(
-		"description" => array("rule" => array("between", "4", "20"), "message" => "Bitte geben Sie eine sinnvolle Beschreibung mit 4 bis 30 Buchstaben ein."),
+		"description" => array("rule" => array("between", "4", "30"), "message" => "Bitte geben Sie eine sinnvolle Beschreibung mit 4 bis 30 Buchstaben ein."),
 		"price" => array("rule" => "notEmpty", "message" => "Bitte geben Sie einen Preis ein.")
 	);
 

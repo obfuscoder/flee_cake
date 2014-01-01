@@ -21,16 +21,23 @@
 <h3>Aktionen</h3>
 <p class="actions">
 	<?php echo $this->Html->link("Bearbeiten", array('action' => 'edit', $event['Event']['id'])); ?>
-	<?php if ($event["Event"]["invitation_sent"] === null) {
+	<?php
+		if ($event["Event"]["invitation_sent"] === null) {
 			echo $this->Html->link("Reservierungseinladungen verschicken", array("action" => "invite", $event['Event']['id']));
 		} ?>
-	<?php if ($event["Event"]["closing_sent"] === null) {
+	<?php
+		if ($event["Event"]["closing_sent"] === null) {
 			echo $this->Html->link("Erinnerungsmail vor Bearbeitungsschluss verschicken", array("action" => "mail_closing", $event['Event']['id']));
 		} ?>
-	<?php if ($event["Event"]["closed_sent"] === null) {
+	<?php
+		if ($event["Event"]["closed_sent"] === null) {
 			echo $this->Html->link("Bearbeitungsabschlussmail verschicken", array("action" => "mail_closed", $event['Event']['id']));
 		} ?>
 	<?php echo $this->Html->link("Reservierungen", array("controller" => "reservations", 'action' => 'index', $event['Event']['id'])); ?>
 	<?php echo $this->Html->link("Terminliste", array('action' => 'index')); ?>
+	<?php
+		if (strtotime($event['Event']['reservation_end']) < time()) {
+			echo $this->Html->link("Datenexport für diese Veranstaltung", array("action" => "csv", $event['Event']['id']));
+	} ?>
 	<?php echo $this->Html->link("Neuer Termin", array('action' => 'add')); ?>
 </p>

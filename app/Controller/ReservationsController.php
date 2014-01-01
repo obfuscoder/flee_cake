@@ -4,7 +4,7 @@ class ReservationsController extends AppController {
 	public $helpers = array("Html", "Form", "Session", "Number");
 	public $components = array("Session");
 
-	public function index($eventId) {
+	public function admin_index($eventId) {
 		$reservations = $this->Reservation->findAllByEventId($eventId);
 		$this->set("reservations", $reservations);
 		$this->set("event_id", $eventId);
@@ -16,7 +16,7 @@ class ReservationsController extends AppController {
 		$this->set("sellers", $unreserved_sellers);
 	}
 
-	public function create() {
+	public function admin_create() {
 		$this->request->onlyAllow('post');
 		$reservation = $this->request->data["Reservation"];
 		if ($this->Reservation->add($reservation)) {
@@ -27,7 +27,7 @@ class ReservationsController extends AppController {
 		return $this->redirect(array("action" => "index", $reservation["event_id"]));
 	}
 
-	public function delete($id) {
+	public function admin_delete($id) {
 		$this->request->onlyAllow('post', 'delete');
 		$reservation = $this->Reservation->findById($id);
 		if ($this->Reservation->delete($id)) {

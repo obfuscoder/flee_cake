@@ -162,12 +162,14 @@ class EventsController extends AppController {
 
 	public function admin_csv($id) {
 		$event = $this->Event->findById($id);
-		if (strtotime($event['Event']['reservation_end']) >= time()) {
-			$this->Session->setFlash("Der Datenexport ist für diese Veranstaltung noch nicht möglich, da die Reserierung noch nicht abgeschlossen ist.");
-			return $this->redirect(array('action' => 'view', $id));
-		}
+		#if (strtotime($event['Event']['reservation_end']) >= time()) {
+		#	$this->Session->setFlash("Der Datenexport ist für diese Veranstaltung noch nicht möglich, da die Reserierung noch nicht abgeschlossen ist.");
+		#	return $this->redirect(array('action' => 'view', $id));
+		#}
 		$reservations = $this->Event->Reservation->findAllByEventId($id);
 		$this->set("reservations", $reservations);
+		$categories = $this->Event->Reservation->Seller->Item->Category->find("list");
+		$this->set("categories", $categories);
 		$this->response->type('csv');
 
 

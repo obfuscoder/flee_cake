@@ -5,8 +5,8 @@
 			printf("%s;%s;%s;%s;%.2f\r\n",
 				$item["ReservedItem"]["code"],
 				$categories[$item["category_id"]],
-				preg_replace("/;/", "", $item["description"]),
-				preg_replace("/;/", "", $item["size"]),
+				preg_replace("/;/", ":", $item["description"]),
+				preg_replace("/;/", ":", $item["size"]),
 				$item["price"]);
 		}
 	}

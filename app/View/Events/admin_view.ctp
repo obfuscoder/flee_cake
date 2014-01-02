@@ -37,7 +37,8 @@
 	<?php echo $this->Html->link("Terminliste", array('action' => 'index')); ?>
 	<?php
 		#if (strtotime($event['Event']['reservation_end']) < time()) {
-			echo $this->Html->link("Datenexport für diese Veranstaltung", array("action" => "csv", $event['Event']['id']));
+			echo $this->Html->link("Datenexport der Artikel", array("action" => "csv", $event['Event']['id']));
+			echo $this->Html->link("Datenexport der Verkäufer", array("action" => "sellers_csv", $event['Event']['id']));
 		#}
 	?>
 	<?php echo $this->Html->link("Neuer Termin", array('action' => 'add')); ?>

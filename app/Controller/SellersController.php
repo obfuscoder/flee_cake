@@ -90,6 +90,11 @@ class SellersController extends AppController {
 
 	public function activate($token) {
 		$seller = $this->auth($token);
+		$this->set("seller", $seller);
+		$events = $this->Seller->Reservation->Event->find("all", array("conditions" => "now() between Event.reservation_start and Event.reservation_end"));
+		if ($events) {
+			$this->set("events", $events);
+		}
 	}
 
 	private function auth($token) {

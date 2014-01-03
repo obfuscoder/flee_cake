@@ -1,6 +1,6 @@
 <h2>Aktivierung der Registrierung erfolgreich</h2>
 <p>Vielen Dank für die Bestätigung Ihrer Registrierung. Sie werden ab sofort über Neuigkeiten informiert.</p>
-<?php if ($events): ?>
+<?php if (defined($events) && $events): ?>
 	Es gibt aktuell die folgenden Veranstaltungen, für die Sie einen Verkäuferplatz reservieren können. Klicken Sie bitte auf den Reservieren-Link neben der Veranstaltung, für die Sie einen Platz verbindlich reservieren möchten:</p>
 	<ul>
 	<?php foreach ($events as $event): ?>

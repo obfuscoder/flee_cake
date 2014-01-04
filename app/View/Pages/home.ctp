@@ -9,3 +9,4 @@
 <p>Die Anzahl der Verkäufer ist begrenzt. Die Platzreservierung wird ca. <strong>zwei Wochen</strong> vor Stattfinden des Flohmarkts durchgeführt. Dazu werden alle vorregistrierte Interessenten kurz zuvor eine gesonderte Benachrichtigung mit Detailinformationen per Mail erhalten.</p>
 
 <p><a href="pages/terms">Zur Registrierung</a></p>
+<p><?php echo $this->Html->link("Bereits registriert?", "/sellers/already_registered") ?></p>

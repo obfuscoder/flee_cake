@@ -69,23 +69,10 @@ class EventsController extends AppController {
 	}
 
 	private function sendInvitations($event) {
-		$id = $event["Event"]["id"];
-		$unreservedSellers = $this->Event->Reservation->Seller->findAllUnreserved($id);
-		App::uses('CakeEmail', 'Network/Email');
-		$mail = new CakeEmail();
-		foreach($unreservedSellers as $seller) {
-			$mail->template("invite", "default")
-				->emailFormat("text")
-				->from(array("flohmarkt@flohmarkt-koenigsbach.de" => "Flohmarkt Königsbach"))
-				->to($seller["Seller"]["email"])
-				->subject("Reservierung zum Flohmarkt startet in Kürze")
-				->viewVars(compact("seller", "event"))
-				->send();
-		}
+		$invitationCount = $this->Event->Reservation->Seller->sendInvitationsToUnreserved($event);
 		$event["Event"]["invitation_sent"] = date("Y-m-d H:i:s");
 		$this->Event->save($event);
-
-		return count($unreservedSellers);
+		return $invitationCount;
 	}
 
 	public function admin_mail_closing($id) {

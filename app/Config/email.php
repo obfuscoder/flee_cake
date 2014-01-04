@@ -39,14 +39,14 @@ class EmailConfig {
 
 	public $default = array(
 		'transport' => 'Mail',
-		'from' => 'you@localhost',
+		'from' => array('info@flohmarkt-koenigsbach.de' => 'Flohmarkt Königsbach'),
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
 
 	public $smtp = array(
 		'transport' => 'Smtp',
-		'from' => array('site@localhost' => 'My Site'),
+		'from' => array('info@flohmarkt-koenigsbach.de' => 'Flohmarkt Königsbach'),
 		'host' => 'localhost',
 		'port' => 25,
 		'timeout' => 30,
@@ -59,7 +59,7 @@ class EmailConfig {
 	);
 
 	public $fast = array(
-		'from' => 'you@localhost',
+		'from' => 'info@flohmarkt-koenigsbach.de',
 		'sender' => null,
 		'to' => null,
 		'cc' => null,
@@ -88,5 +88,4 @@ class EmailConfig {
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
-
 }

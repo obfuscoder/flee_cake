@@ -125,4 +125,14 @@ class Event extends AppModel {
         	'conditions' => array('current' => 1)
     	));
 	}
+
+	public function getReservable() {
+		return $this->find("all", array("conditions" => "now() between Event.reservation_start and Event.reservation_end"));
+	}
+
+	public function getFutureWithSentInvitation() {
+		return $this->find("all", array("conditions" => array(
+			"now() < Event.reservation_start",
+			"Event.invitation_sent is not null")));
+	}
 }

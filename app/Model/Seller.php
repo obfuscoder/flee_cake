@@ -16,6 +16,26 @@ class Seller extends AppModel {
      	));
 	}
 
+	public function sendInvitation($seller, $event) {
+		App::uses('CakeEmail', 'Network/Email');
+		$mail = new CakeEmail('default');
+		$mail->template("invite", "default")
+			->emailFormat("text")
+			->to($seller["Seller"]["email"])
+			->subject("Reservierung zum Flohmarkt startet in Kürze")
+			->viewVars(compact("seller", "event"))
+			->send();
+	}
+
+	public function sendInvitationsToUnreserved($event) {
+		$id = $event["Event"]["id"];
+		$unreservedSellers = $this->findAllUnreserved($id);
+		foreach($unreservedSellers as $seller) {
+			$this->sendInvitation($seller, $event);
+		}
+		return count($unreservedSellers);
+	}
+
 	public $validate = array(
 		"first_name" => array("rule" => "notEmpty", "message" => "Bitte geben Sie einen Vornamen ein."),
 		"last_name" => array("rule" => "notEmpty", "message" => "Bitte geben Sie einen Nachnamen ein."),

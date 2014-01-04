@@ -36,9 +36,10 @@ class SellersController extends AppController {
 
 	public function admin_new() {
 		if ($this->request->isPost()) {
-			$this->create();
-			$this->Session->setFlash("Verkäufer gespeichert", "default", array('class' => 'success'));
-			return $this->redirect(array("action" => "index"));
+			if ($this->create()) {
+				$this->Session->setFlash("Verkäufer gespeichert", "default", array('class' => 'success'));
+				return $this->redirect(array("action" => "index"));
+			}
 		}
 	}
 
@@ -47,25 +48,19 @@ class SellersController extends AppController {
 			$this->Seller->create();
 			$this->request->data["Seller"]["token"] = md5(uniqid("Vs3_%&/90kF307iohjSD2", true));
 			if ($seller = $this->Seller->save($this->request->data)) {
-				App::uses('CakeEmail', 'Network/Email');
-				$mail = new CakeEmail();
-				$mail->template("register", "default")
-					->emailFormat("text")
-					->from(array("flohmarkt@obfusco.de" => "Flohmarkt Königsbach"))
-					->to($this->request->data["Seller"]["email"])
-					->subject("Registrierungsbestätigung")
-					->viewVars($seller["Seller"])
-					->send();
-				return;
+				$this->send_registration_mail($seller);
+			} else {
+				$this->Session->setFlash("Registrierung fehlgeschlagen!");
 			}
-			$this->Session->setFlash("Registrierung fehlgeschlagen!");
+			return $seller;
 		}
 	}
 
 	public function register() {
 		if ($this->request->isPost()) {
-			$this->create();
-			return $this->render("registered");
+			if ($this->create()) {
+				return $this->render("registered");
+			}
 		}
 	}
 
@@ -83,16 +78,25 @@ class SellersController extends AppController {
 	}
 
 	function activateIfNecessary($seller) {
+		if ($seller["Seller"]["active"]) {
+			return;
+		}
 		$seller["Seller"]["active"] = true;
 		unset($seller["Seller"]['modified']);
 		$this->Seller->save($seller);
+		$future_events_to_invite_to = $this->Seller->Reservation->Event->getFutureWithSentInvitation();
+		foreach ($future_events_to_invite_to as $event) {
+			$this->Seller->sendInvitation($seller, $event);
+		}
 	}
 
 	public function activate($token) {
 		$seller = $this->auth($token);
 		$this->set("seller", $seller);
-		$events = $this->Seller->Reservation->Event->find("all", array("conditions" => "now() between Event.reservation_start and Event.reservation_end"));
-		$this->set("events", $events);
+		$reservable_events = $this->Seller->Reservation->Event->getReservable();
+		$future_events = $this->Seller->Reservation->Event->find("all", array("conditions" => "now() < Event.reservation_start"));
+		$this->set("reservable_events", $reservable_events);
+		$this->set("future_events", $future_events);
 	}
 
 	private function auth($token) {
@@ -150,6 +154,29 @@ class SellersController extends AppController {
 			return $this->render("loginFailed");
 		}
 		return $this->redirect(array("controller" => "items", "action" => "pdf", $reservation["Reservation"]["id"]));
+	}
+
+	public function already_registered() {
+		if ($this->request->isPost()) {
+			$seller = $this->Seller->findByEmail($this->request->data['Seller']['email']);
+			if (!$seller) {
+				$this->Session->setFlash('Es konnte kein Nutzer mit dieser eMail-Adresse gefunden werden. Bitte überprüfen Sie Ihre Eingabe oder registrieren Sie sich neu.');
+				return;
+			}
+			$this->send_registration_mail($seller);
+			return $this->render("registration_resent");
+		}
+	}
+
+	private function send_registration_mail($seller) {
+		App::uses('CakeEmail', 'Network/Email');
+		$mail = new CakeEmail('default');
+		$mail->template("register", "default")
+			->emailFormat("text")
+			->to($this->request->data["Seller"]["email"])
+			->subject("Registrierungsbestätigung")
+			->viewVars($seller["Seller"])
+			->send();
 	}
 }
 

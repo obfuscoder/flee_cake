@@ -3,18 +3,13 @@ bei reservierung durch Admin mail an Verkäufer!!
 
 10. Gibts eine WarteListe? Was passiert hier??
 
-- reservierung durch seller rückgängig machen lassen
 - warteliste
-- gedruckte artikel können gelöscht werden, bleiben dabei aber noch in tabelle und werden durchgestrichen gezeigt
-- urls in email anpassen
 - registrierung rückgängig machen lassen (daten löschen)
 - herr/frau erfassen und anrede in email anpassen
 - Kategorie Sonstige ganz unten
 - Kategorie, größe und preis nebeneinander
 - teilnahmebedingungen auf aktuelle infos anpassen
-- acrobat reader hinweis auf teilnahmebedingungen
 - alle fehlermeldungen/validierungen prüfen, ggf. die vom browser deaktivieren, da nicht aussagekräftig
-- formular bei feedback oder problemen
 - onlinehilfe
 - teilnahmebedingungen als mailanhang bei registrierungsbestätigung
 - verkäuferliste paginierbar und sortierbar machen

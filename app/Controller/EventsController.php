@@ -95,11 +95,10 @@ class EventsController extends AppController {
 		$id = $event["Event"]["id"];
 		$reservations = $this->Event->Reservation->findAllByEventId($id);
 		App::uses('CakeEmail', 'Network/Email');
-		$mail = new CakeEmail();
+		$mail = new CakeEmail('default');
 		foreach($reservations as $reservation) {
 			$mail->template("closing", "default")
 				->emailFormat("text")
-				->from(array("flohmarkt@flohmarkt-koenigsbach.de" => "Flohmarkt Königsbach"))
 				->to($reservation["Seller"]["email"])
 				->subject("Bearbeitungsfrist der Artikel für den Flohmarkt endet bald")
 				->viewVars(compact("reservation", "event"))
@@ -131,11 +130,10 @@ class EventsController extends AppController {
 		$id = $event["Event"]["id"];
 		$reservations = $this->Event->Reservation->findAllByEventId($id);
 		App::uses('CakeEmail', 'Network/Email');
-		$mail = new CakeEmail();
+		$mail = new CakeEmail('default');
 		foreach($reservations as $reservation) {
 			$mail->template("closed", "default")
 				->emailFormat("text")
-				->from(array("flohmarkt@flohmarkt-koenigsbach.de" => "Flohmarkt Königsbach"))
 				->to($reservation["Seller"]["email"])
 				->subject("Flohmarkt Vorbereitungen abgeschlossen - Artikel festgelegt")
 				->viewVars(compact("reservation", "event"))

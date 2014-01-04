@@ -21,11 +21,23 @@ class Reservation extends AppModel {
 		$this->create();
 		$reservation["number"] = $nextReservationNumber;
 		if ($this->save($reservation)) {
+			$this->sendConfirmation();
 			return $nextReservationNumber;
 		}
 		return false;
 	}
 
+	private function sendConfirmation() {
+		$reservation = $this->findById($this->id);
+		App::uses('CakeEmail', 'Network/Email');
+		$mail = new CakeEmail('default');
+		$mail->template("reservation", "default")
+			->emailFormat("text")
+			->to($reservation["Seller"]["email"])
+			->subject("Flohmarkt Reservierung erfolgt")
+			->viewVars(compact("reservation"))
+			->send();
+	}
 }
 
 ?>

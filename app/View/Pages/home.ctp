@@ -1,5 +1,8 @@
 <h2>Flohmarkt Königsbach</h2>
-<p><img src="img/kitaregenbogen.jpg"/>
+<p>
+	<img src="img/kitaregenbogen.jpg"/>
+	<img src="img/archenoahkita.jpg"/>
+</p>
 <p>
 	Auf diesen Seiten können Sie sich für unseren kommenden (<strong><?php echo $event_date ?></strong> stattfindenden) Flohmarkt als Interessent zum Verkauf von Kommissionsware registrieren. Sie werden dann zeitnah per Mail über den weiteren Ablauf informiert.
 </p>

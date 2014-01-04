@@ -1,3 +1,100 @@
+2. Auf die Startseite muss die Emailadresse
+(info@flohmarkt-koenigsbach.de) für Fragen!
+
+3. Teils wurden die Emails mit der Anmeldung/ Registrierung
+verschlampert. Darum auf die Startseite neben "zur Registrierung" -
+"ich bin bereits registriert"
+
+--> Neue Seite.
+Sie finden den Link zu Ihren Artikeln in Ihrer Registrierungsbestätigung.
+Sie können sich die Email nochmals zusenden lassen.
+"Emaileingabe" --> wenn email nicht gefunden --> Fehler - Hinweis
+"Email nicht gefunden. bitte erst "hier" registrieren"
+
+4. Reservierter Nutzer nicht Löschbar
+
+5. Aktivieren der Registrierung:
+
+Überschrift "Aktivierung der Registrierung erfolgreich" in
+"Reservierung" ändern:
+
+"Reservierung"
+Ihre Registrierung war erfolgreich, bitte wählen Sie noch den
+gewünschten Flohmarkt um eine Reservierungsnummer zu erhalten!
+-->Reservierung als DICKEN Button markieren!!!! und farbig hervorhaben
+
+--> Reservierung noch nicht möglich: momentan:
+
+"Aktivierung der Registrierung erfolgreich
+
+Vielen Dank für die Bestätigung Ihrer Registrierung. Sie werden ab
+sofort über Neuigkeiten informiert."
+
+ändern in:
+
+"Reservierung
+Ihre Registrierung war erfolgreich. Sie werden ab sofort über
+Neuigkeiten informiert.
+Momentan ist noch keine Reservierung möglich:
+... Auflistung Flohmärkte ...
+
+Flohmarkt A: Eine Reservierung ist ab dem (Datum) um xx:xx Uhr möglich
+
+Damit alle die gleichen Chancen auf einen Platz haben erfolgt die
+Reservierung zum oben genanten Zeitpunkt. Sie werden 1-4 Tage vor
+Reservierungsstart nochmals per Mail Informiert. Artikel können Sie
+bereits eingeben."
+
+6. Wenn Reservierungsaufruf verschickt wurde (1-2 Tage vorher) und es
+meldet sich zwischen diesem Zeitraum ein Nutzer an (zwischen
+Mailversand und offiziellen Registrierungsstart) --> bitte direkt nach
+Aktivierung ReservierungsinfoMail (welche schon an alle anderen
+verschickt wurde) sofort nach Aktivierung auch diesem neuen Nutzer
+schicken!
+
+-->
+Wenn Flohmarktdatum feststeht und damit auch das Reservierungsdatum.
+Verschicke direkt nach erfolgreicher Registrierung/ Aktivierung die
+Reservierungsinfo!!! (Damit wissen die Kunden wies weiter geht!)
+
+Der Reservierungsmailbutton ist dennoch wichtig für eine 2.
+Erinnerungsmail! Diese benötigen die Kunden aber nicht, welche sich
+erst ab diesem zeitpunkt reservieren, da diese bereits eben informiert
+wurden!
+
+7.. Text Startseite:
+
+"Auf diesen Seiten können Sie sich für unseren kommenden (am Samstag,
+15. Februar 2014 stattfindenden) Flohmarkt als Interessent zum Verkauf
+von Kommissionsware registrieren. Sie werden dann zeitnah per Mail
+über den weiteren Ablauf informiert.
+
+Die Anzahl der Verkäufer ist begrenzt. Die Platzreservierung wird ca.
+zwei Wochen vor Stattfinden des Flohmarkts durchgeführt. Dazu werden
+alle vorregistrierte Interessenten kurz zuvor eine gesonderte
+Benachrichtigung mit Detailinformationen per Mail erhalten."
+
+--> Datum nach Flohmarkt --> ... für unseren kommenden Flohmarkt (am
+Samstag, 15. Februar 2014 stattfindenden) ...
+
+--> Die Platzreservierung wird ca. zwei Wochen vor Stattfinden ...
+---> Bitte genaues Datum um Uhrzeit angeben!!! bei bekanntem Datum!
+
+8. Abmeldung. Kunden müssen die Möglichkeit zur Abmeldung haben! Wenn
+sie doch nicht teilnehmen/ verkaufen wollen!!
+
+9. Wenn Kunden manuel reserviert werden (voranmeldung Kita) dann bitte
+bei reservierung durch Admin mail an Verkäufer!!
+
+10. Gibts eine WarteListe? Was passiert hier??
+
+11. Adressdatenverwendung anpassen. Wir verschicken keine Etiketten.
+Die Nutzer sollen ein Papschild in Größe 5*5 cm anbringen und die
+ArtNr drauf schreiben. Wir vergeben am Annahmetag Aufkleber welche der
+Kunde dann auf die entsprechenden Schildchen kleben kann!
+
+
+
 - reservierung durch seller rückgängig machen lassen
 - warteliste
 - gedruckte artikel können gelöscht werden, bleiben dabei aber noch in tabelle und werden durchgestrichen gezeigt

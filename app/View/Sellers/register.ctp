@@ -2,7 +2,7 @@
 <p>
 	Sie können sich hier für den kommenden und zukünftige Flohmärkte als Interessent für den Verkauf von Kommissionsware registrieren.
 	Die erfassten Daten dienen in erster Linie dazu, um Sie hinsichtlich des weiteren Ablaufs des kommenden Flohmarkts zu kontaktieren und informieren.
-	In der Regel findet dies per eMail statt. Auch die Zugangsinformationen zum geschützten Bereich erhalten Sie per Mail. Die Telefonnummer wird benötigt, damit wir Sie in dringenden Fällen (bspw. Ware verlorengegangen, anderweitig nicht erreichbar) anrufen können. Die Adressdaten dienen der Abrechnung und ggf. Zusendung von Etiketten, sollten Sie selbst nicht die Möglichkeit haben, diese auszudrucken. Ebenso werden wir zum Schutz Ihrer Daten Ihre Eingaben erfragen, sollten Sie mit uns telefonisch Kontakt aufnehmen.
+	In der Regel findet dies per eMail statt. Auch die Zugangsinformationen zum geschützten Bereich erhalten Sie per Mail. Die Telefonnummer wird benötigt, damit wir Sie in dringenden Fällen (bspw. Ware verlorengegangen, anderweitig nicht erreichbar) anrufen können. Die Adressdaten dienen der Abrechnung. Ebenso werden wir zum Schutz Ihrer Daten Ihre Eingaben erfragen, sollten Sie mit uns telefonisch Kontakt aufnehmen.
 	Alle Pflichtfelder sind <span class="required-example">entsprechend</span> gekennzeichnet.</p>
 <?php
 	echo $this->Form->create("Seller");

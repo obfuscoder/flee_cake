@@ -1,17 +1,7 @@
-8. Abmeldung. Kunden müssen die Möglichkeit zur Abmeldung haben! Wenn
-sie doch nicht teilnehmen/ verkaufen wollen!!
-
 9. Wenn Kunden manuel reserviert werden (voranmeldung Kita) dann bitte
 bei reservierung durch Admin mail an Verkäufer!!
 
 10. Gibts eine WarteListe? Was passiert hier??
-
-11. Adressdatenverwendung anpassen. Wir verschicken keine Etiketten.
-Die Nutzer sollen ein Papschild in Größe 5*5 cm anbringen und die
-ArtNr drauf schreiben. Wir vergeben am Annahmetag Aufkleber welche der
-Kunde dann auf die entsprechenden Schildchen kleben kann!
-
-
 
 - reservierung durch seller rückgängig machen lassen
 - warteliste

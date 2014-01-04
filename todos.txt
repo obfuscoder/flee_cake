@@ -1,31 +1,3 @@
--->
-Wenn Flohmarktdatum feststeht und damit auch das Reservierungsdatum.
-Verschicke direkt nach erfolgreicher Registrierung/ Aktivierung die
-Reservierungsinfo!!! (Damit wissen die Kunden wies weiter geht!)
-
-Der Reservierungsmailbutton ist dennoch wichtig für eine 2.
-Erinnerungsmail! Diese benötigen die Kunden aber nicht, welche sich
-erst ab diesem zeitpunkt reservieren, da diese bereits eben informiert
-wurden!
-
-7.. Text Startseite:
-
-"Auf diesen Seiten können Sie sich für unseren kommenden (am Samstag,
-15. Februar 2014 stattfindenden) Flohmarkt als Interessent zum Verkauf
-von Kommissionsware registrieren. Sie werden dann zeitnah per Mail
-über den weiteren Ablauf informiert.
-
-Die Anzahl der Verkäufer ist begrenzt. Die Platzreservierung wird ca.
-zwei Wochen vor Stattfinden des Flohmarkts durchgeführt. Dazu werden
-alle vorregistrierte Interessenten kurz zuvor eine gesonderte
-Benachrichtigung mit Detailinformationen per Mail erhalten."
-
---> Datum nach Flohmarkt --> ... für unseren kommenden Flohmarkt (am
-Samstag, 15. Februar 2014 stattfindenden) ...
-
---> Die Platzreservierung wird ca. zwei Wochen vor Stattfinden ...
----> Bitte genaues Datum um Uhrzeit angeben!!! bei bekanntem Datum!
-
 8. Abmeldung. Kunden müssen die Möglichkeit zur Abmeldung haben! Wenn
 sie doch nicht teilnehmen/ verkaufen wollen!!
 

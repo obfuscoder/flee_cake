@@ -76,6 +76,11 @@ class PagesController extends AppController {
 		$format = ($event["Event"]["date_confirmed"]) ? $exact_date_format : $vague_date_format;
 		$this->set("event_date", CakeTime::format($event["Event"]["date"], $format));
 
+		$vague_reservation_date = "ca. 2 Wochen vor Stattfinden des Flohmarkts";
+		$reservation_date = ($event["Event"]["date_confirmed"]) ?
+			CakeTime::format($event["Event"]["reservation_start"], $exact_date_format) : $vague_reservation_date;
+		$this->set("reservation_date", $reservation_date);
+
 		try {
 			$this->render(implode('/', $path));
 		} catch (MissingViewException $e) {

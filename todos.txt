@@ -1,5 +1,3 @@
-- bulkmails / mails per cron / mail job queue
-
 1. Preiseingabe mit Komma getrennt geht nicht --> auch keine
 Fehlermeldung. Nachkommateil wird abgeschnitten und keiner merkt es.
 
@@ -74,7 +72,7 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 - bilder auf startseite einbauen
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+- bulkmails / mails per cron / mail job queue
 
 - seller id aus session benutzen, anstelle aus url parametern
 

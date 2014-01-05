@@ -26,7 +26,7 @@
 	); ?>
 </p>
 <?php
-if (Configure::read('debug') > 0):
+if (Configure::read('debug') > 0 && (!isset($_SERVER['SERVER_NAME']) || $_SERVER['SERVER_NAME'] == 'localhost')):
 	echo $this->element('exception_stack_trace');
 endif;
 ?>

@@ -1,4 +1,4 @@
-<h2>Aktivierung der Registrierung fehlgeschlagen!</h2>
+<?php $this->set("title_for_layout", "Aktivierung der Registrierung fehlgeschlagen") ?>
 <p>Die Aktivierung der Registrierung ist fehlgeschlagen. Dies kann folgende Gründe haben:</p>
 <p>
 	<ul>

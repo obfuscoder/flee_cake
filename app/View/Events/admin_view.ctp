@@ -1,4 +1,4 @@
-<h2>Termindetails</h2>
+<?php $this->set("title_for_layout", "Termindetails") ?>
 <dl>
 	<dt>Name</dt><dd><?php echo $event['Event']['name'] ?></dd>
 	<dt>Datum</dt><dd><?php echo $event['Event']['date'] ?></dd>

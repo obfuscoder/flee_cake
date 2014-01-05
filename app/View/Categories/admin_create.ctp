@@ -1,4 +1,4 @@
-<h2>Kategorie erstellen</h2>
+<?php $this->set("title_for_layout", "Kategorie erstellen") ?>
 <?php
 	echo $this->Form->create("Category");
 	echo $this->Form->input("name", array("label" => "Name"));

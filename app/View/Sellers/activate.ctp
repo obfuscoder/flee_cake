@@ -1,4 +1,4 @@
-<h2>Reservierung</h2>
+<?php $this->set("title_for_layout", "Reservierung") ?>
 <p>Ihre Registrierung war erfolgreich. Sie werden ab sofort über Neuigkeiten informiert.</p>
 <?php if ($reservable_events): ?>
 <p>Sie können sich bereits für die folgenden Flohmärkte einen Verkäuferplatz reservieren:<p>

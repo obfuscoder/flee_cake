@@ -1,4 +1,4 @@
-<h2>Verkäufer</h2>
+<?php $this->set("title_for_layout", "Verkäufer") ?>
 <table>
 	<tr>
 		<th>Name</th>

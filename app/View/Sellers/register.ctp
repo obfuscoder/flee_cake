@@ -1,4 +1,4 @@
-<h2>Registrierung</h2>
+<?php $this->set("title_for_layout", "Registrierung") ?>
 <p>
 	Sie können sich hier für den kommenden und zukünftige Flohmärkte als Interessent für den Verkauf von Kommissionsware registrieren.
 	Die erfassten Daten dienen in erster Linie dazu, um Sie hinsichtlich des weiteren Ablaufs des kommenden Flohmarkts zu kontaktieren und informieren.

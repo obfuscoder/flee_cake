@@ -1,4 +1,4 @@
-<h2>Impressum</h2>
+<?php $this->set("title_for_layout", "Impressum") ?>
 <p>Angaben gemäß § 5 TMG:</p>
 <p><?php echo $this->Html->image("/img/imprint-address.png") ?></p>
 <h3>Kontakt:</h3>

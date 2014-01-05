@@ -1,4 +1,4 @@
-<h2>Reservierungen</h2>
+<?php $this->set("title_for_layout", "Reservierungen") ?>
 <table>
 	<tr>
 		<th>Nummer</th>

@@ -1,4 +1,4 @@
-<h2>Verkäufer bearbeiten</h2>
+<?php $this->set("title_for_layout", "Verkäufer bearbeiten") ?>
 <?php
 	echo $this->Form->create("Seller");
 	echo $this->Form->input('id');

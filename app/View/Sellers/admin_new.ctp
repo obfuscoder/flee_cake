@@ -1,4 +1,4 @@
-<h2>Neuen Nutzer anlegen</h2>
+<?php $this->set("title_for_layout", "Neuen Nutzer anlegen") ?>
 <?php
 	echo $this->Form->create("Seller");
 	echo $this->Form->input("first_name", array("label" => "Vorname"));

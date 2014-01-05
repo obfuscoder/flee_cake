@@ -1,5 +1,5 @@
+<?php $this->set("title_for_layout", "Termine") ?>
 <div>
-	<h2>Termine</h2>
 	<table>
 	<tr>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>

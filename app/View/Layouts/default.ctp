@@ -2,7 +2,7 @@
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
-	<title>
+	<title>Flohmarkt Königsbach -
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
@@ -18,6 +18,7 @@
 <body>
 	<div id="container">
 		<div id="content">
+			<h2><?php echo $title_for_layout ?></h2>
 
 			<?php echo $this->Session->flash(); ?>
 

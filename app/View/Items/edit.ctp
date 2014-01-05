@@ -1,4 +1,4 @@
-<h2><?php echo __("Create/Edit item") ?></h2>
+<?php $this->set("title_for_layout", "Artikel anlegen/bearbeiten") ?>
 <?php
 	echo $this->Form->create("Item");
 	echo $this->Form->hidden("id");

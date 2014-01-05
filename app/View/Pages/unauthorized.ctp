@@ -1,4 +1,4 @@
-<h2>Anmeldung fehlgeschlagen!</h2>
+<?php $this->set("title_for_layout", "Anmeldung fehlgeschlagen") ?>
 <p>Die Anmeldung ist fehlgeschlagen. Dies kann folgende Gründe haben:</p>
 <p>
 	<ul>

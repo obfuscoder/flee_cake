@@ -1,4 +1,4 @@
-<h2>Artikel</h2>
+<?php $this->set("title_for_layout", "Artikelübersicht") ?>
 <?php $unreservedItemCount = $reservedItemCount = 0 ?>
 <p>Hier können Sie Ihre Artikel verwalten.</p>
 <?php if ($reservation): ?>

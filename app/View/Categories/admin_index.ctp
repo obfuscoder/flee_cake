@@ -1,4 +1,4 @@
-<h2>Kategorien</h2>
+<?php $this->set("title_for_layout", "Kategorien") ?>
 <table>
 	<tr>
 		<th>Name</th>

@@ -1,4 +1,4 @@
-<h3>Reservierung nicht möglich</h3>
+<?php $this->set("title_for_layout", "Reservierung nicht möglich") ?>
 <?php if (strtotime($event["Event"]["reservation_start"]) > time()): ?>
 	<p>Die Reservierung ist nocht nicht freigeschaltet. Bitte haben Sie Verständnis dafür, dass wir allen Interessenten die gleiche Chance geben wollen, indem wir alle vorab per Mail über den Reservierungsbeginn informieren, und jeder die Zeit hat, sich auf diesen Termin vorzubereiten.</p>
 	Sie können erst ab <?php

@@ -1,4 +1,4 @@
-<h3>Termin hinzufügen</h3>
+<?php $this->set("title_for_layout", "Termin hinzufügen") ?>
 <?php
 	echo $this->Form->create('Event');
 	echo $this->Form->input('name', array("label" => "Beschreibung"));

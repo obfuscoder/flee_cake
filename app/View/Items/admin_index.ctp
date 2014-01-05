@@ -1,4 +1,4 @@
-<h2>Artikel</h2>
+<?php $this->set("title_for_layout", "Artikelübersicht") ?>
 <?php $unreservedItemCount = $reservedItemCount = 0 ?>
 <?php if (count($items) < $event["Event"]["max_items_per_seller"]): ?>
 <p>Es sind aktuell <strong><?php echo count($items) ?></strong> Artikel angelegt.

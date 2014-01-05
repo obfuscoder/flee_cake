@@ -1,5 +1,4 @@
-<h2>Datenschutzhinweis</h2>
-
+<?php $this->set("title_for_layout", "Datenschutzhinweis") ?>
 <h3>Erhebung, Verarbeitung und Nutzung personenbezogener Daten</h3>
 
 <p>Der Schutz Ihrer Daten liegt uns am Herzen. Um unsere Homepage zu besuchen, 

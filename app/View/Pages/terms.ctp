@@ -1,4 +1,4 @@
-<h2>Teilnahmebedingungen</h2>
+<?php $this->set("title_for_layout", "Teilnahmebedingungen") ?>
 <p>Vor der Registrierung müssen Sie die Teilnahmebedingungen akzeptieren. Diese können Sie
 <?php echo $this->Html->link("hier als PDF-Datei herunterladen", "/files/teilnahmebedingungen.pdf"); ?>.</p>
 <p><strong>In Kommission genommen werden</strong> gut erhaltene, gewaschene Baby- und Kinderbekleidung für die

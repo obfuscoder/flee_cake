@@ -1,4 +1,4 @@
-<h2>Termin bearbeiten</h2>
+<?php $this->set("title_for_layout", "Termin bearbeiten") ?>
 <?php
 	echo $this->Form->create('Event');
 	echo $this->Form->input('id');

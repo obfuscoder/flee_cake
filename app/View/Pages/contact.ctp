@@ -1,4 +1,4 @@
-<h2>Hilfe / Kontakt</h2>
+<?php $this->set("title_for_layout", "Hilfe / Kontakt") ?>
 <p>Sollten Sie Probleme, Fragen oder Anregungen haben, schreiben Sie bitte eine eMail an:</p>
 <p><?php echo $this->Html->image("/img/help-email.png") ?></p>
 <p>

@@ -1,4 +1,4 @@
-<h2>Flohmarkt Königsbach</h2>
+<?php $this->set("title_for_layout", "Hauptseite") ?>
 <p>
 	<img src="img/kitaregenbogen.jpg"/>
 	<img src="img/archenoahkita.jpg"/>

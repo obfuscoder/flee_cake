@@ -155,7 +155,6 @@ class I18n {
 				$language = Configure::read('Config.language');
 			}
 		}
-
 		if (($_this->_lang && $_this->_lang !== $language) || !$_this->_lang) {
 			$lang = $_this->l10n->get($language);
 			$_this->_lang = $lang;

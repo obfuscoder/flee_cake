@@ -168,7 +168,6 @@ table tr:nth-child(even) {
 	background: #f9f9f9;
 }
 td.actions {
-	text-align: center;
 	white-space: nowrap;
 }
 table td.actions a {
@@ -294,10 +293,10 @@ form div {
 form .input {
 	color: #444;
 }
-form .required {
+form .required,.required-example {
 	font-weight: bold;
 }
-form .required label:after {
+form .required label:after,.required-example:after {
 	color: #e32;
 	content: '*';
 	display:inline;
@@ -365,6 +364,7 @@ form .submit input[type=submit] {
 	color: #fff;
 	text-shadow: rgba(0, 0, 0, 0.5) 0px -1px 0px;
 	padding: 8px 10px;
+	cursor: pointer;
 }
 form .submit input[type=submit]:hover {
 	background: #5BA150;

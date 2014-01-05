@@ -19,7 +19,7 @@
 	$tcpdf->SetFont($textfont,'',10);
 	$index = 0;
 	$cols = 3;
-	$rows = 5;
+	$rows = 6;
 
 	// define barcode style
 	$style = array(
@@ -46,25 +46,26 @@
 
 	$leftColWidth = 0.23;
 
-	for ($i = 0; $i<count($items); $i++) {
-		$number = sprintf("02%03d%02d8", $items[$i]["Item"]["seller_id"], $i);
-		$tcpdf->Cell(0, 0, $items[$i]["Item"]["description"], 1, 1, 'L');
-
-		$tcpdf->Cell($width*$leftColWidth, 0, "Kat.:", "L", 0, 'L');
-		$tcpdf->Cell(0, 0, $items[$i]["Category"]["name"], "LR", 1, 'L');
-
-		$tcpdf->Cell($width*$leftColWidth, 0, "Größe:", "L", 0, 'L');
-		$tcpdf->Cell(0, 0, $items[$i]["Item"]["size"], "LR", 1, 'L');
-
+	for ($i = 0; $i<count($reservation["Item"]); $i++) {
 		$tcpdf->SetFont($textfont,'',14);
-		$tcpdf->Cell($width*$leftColWidth, 0, "Preis:", "LB", 0, 'L');
-		$tcpdf->SetFont($textfont,'B',14);
-		$tcpdf->Cell(0, 0, $this->Number->currency($items[$i]["Item"]["price"], "EUR"), "LRB", 1, 'L');
+		$tcpdf->Cell($width/2, 0, $reservation["Reservation"]["number"] . " -", "LTB", 0, 'R');
+		$tcpdf->SetFont($textfont,'',10);
+		$tcpdf->Cell(0, $tcpdf->getLastH(), $reservation["Item"][$i]["ReservedItem"]["number"], "TRB", 1, 'L');
+		$tcpdf->Cell(0, 0, $reservation["Item"][$i]["description"], 1, 1, 'C');
+
+		$tcpdf->Cell(0, 0, ($reservation["Item"][$i]["size"] == null) ? "" : ("Größe: " . $reservation["Item"][$i]["size"]), 1, 1, 'C');
+
+		$tcpdf->SetFont($textfont,'',20);
+		$tcpdf->Cell(0, 0, $this->Number->currency($reservation["Item"][$i]["price"], "EUR"), 1, 1, 'C');
 		$tcpdf->SetFont($textfont,'',10);
 
-		$tcpdf->write1DBarcode($number, "C128", '', '', "", 18, 0.4, $style, 'N');
+		$tcpdf->write1DBarcode($reservation["Item"][$i]["ReservedItem"]["code"], "C128", '', '', "", 18, 0.4, $style, 'N');
 
 		$tcpdf->Ln();
+		if ($i%$rows == ($rows-1)) {
+			$tcpdf->Ln();
+			$tcpdf->Ln();
+		}
 	}
 
 	echo $tcpdf->Output('floh.pdf', 'D');

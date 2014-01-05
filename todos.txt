@@ -1,0 +1,82 @@
+
+
+10. Gibts eine WarteListe? Was passiert hier??
+
+- warteliste
+
+- bulkmails (bcc)
+
+1. Preiseingabe mit Komma getrennt geht nicht --> auch keine
+Fehlermeldung. Nachkommateil wird abgeschnitten und keiner merkt es.
+
+2. FlohmarktInformationen allgemein auf der Hauptseite.
+--> Auflistung aller Flohmärke unter den bisherigen Text in folgender Form:
+-----------------------------------------------------------------------------------------------------
+"Kommende Flohmärkte"
+-----------------------------------------------------------------------------------------------------
+Flohmarkt A: Weekday, XX. Month von XX:XX bis XX:XX
+Kommisionsflohmarkt Festhalle Königsbach (75203)
+(Kommentarfreitext: Zum Beispiel: Schwangere haben ab 10:30 Einlass)
+
+Reservierungsstart: XX. Month ab XX:XX
+Plätze: XXX
+Warenannahme: Weekday, XX. Month von XX:XX bis XX:XX
+Warenrückgabe: Weekday, XX. Month von XX:XX bis XX:XX
+
+-----------------------------------------------------------------------------------------------------
+Flohmarkt B: Weekday, XX. Month von XX:XX bis XX:XX
+Kommisionsflohmarkt Festhalle Königsbach (75203)
+(Kommentarfreitext: Zum Beispiel: Schwangere haben ab 10:30 Einlass)
+
+Reservierungsstart: XX. Month ab XX:XX
+Plätze: XXX
+Warenannahme: Weekday, XX. Month von XX:XX bis XX:XX
+Warenrückgabe: Weekday, XX. Month von XX:XX bis XX:XX
+-----------------------------------------------------------------------------------------------------
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Noch was zur Startseite:
+
+unter den aktuellen Text :
+"Auf diesen Seiten können Sie sich für unseren kommenden (am Samstag,
+15. Februar 2014 stattfindenden) Flohmarkt als Interessent zum Verkauf
+von Kommissionsware registrieren. Sie werden dann zeitnah per Mail
+über den weiteren Ablauf informiert.
+
+Die Anzahl der Verkäufer ist begrenzt. Die Platzreservierung wird am
+Samstag, 25. Januar 2014 freigeschaltet. Dazu werden alle registrierte
+Interessenten kurz zuvor eine gesonderte Benachrichtigung mit
+Detailinformationen per Mail erhalten."
+
+... und über den Registrierungsbutton sollte gut lesbar stehen wenn
+der Flohmarkt voll ist. Z.B.:
+
+"Leider sind bereits alle Plätze belegt. Sie können sich dennoch
+anmelden. Falls Plätze frei werden, werden diese neu vergeben."
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Artikelseite:
+
+Hier fehlt noch die Uhrzeit. Wie ich gestern erfahren habe machen
+manche die Sache auf den letzten Drücker fertig!
+
+"Alle zu verkaufenden Artikel müssen bis zum Donnerstag, 13. Februar
+2014 eingetragen und die Etiketten erzeugt sein. "
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+- registrierung rückgängig machen lassen (daten löschen)
+- herr/frau erfassen und anrede in email anpassen
+- Kategorie Sonstige ganz unten
+- Kategorie, größe und preis nebeneinander
+- teilnahmebedingungen auf aktuelle infos anpassen
+- alle fehlermeldungen/validierungen prüfen, ggf. die vom browser deaktivieren, da nicht aussagekräftig
+- onlinehilfe
+- teilnahmebedingungen als mailanhang bei registrierungsbestätigung
+- verkäuferliste paginierbar und sortierbar machen
+- mail nach erfolgreicher platzzuweisung mit verkäufernummer und datum bis wann artikel einzutragen sind
+- plz und stadt in eine zeile

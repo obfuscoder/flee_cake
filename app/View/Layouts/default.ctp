@@ -39,7 +39,7 @@
 	</div>
 
 <?php
-	if(!isset($_SERVER['SERVER_NAME']) || $_SERVER['SERVER_NAME'] == 'localhost') {
+	if(Configure::read('debug') > 1) {
 		echo $this->element('sql_dump');
     }
 ?>

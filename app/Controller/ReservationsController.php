@@ -42,13 +42,21 @@ class ReservationsController extends AppController {
 			throw new NotFoundException("Die Reservierung konnte nicht gefunden werden.");
 		}
 		$seller = $this->Session->read("Seller");
+		if (!$seller) {
+			return $this->redirect (array("controller" => "pages", "action" => "session_expired"));
+		}
 		if ($seller["Seller"]["id"] != $reservation["Reservation"]["seller_id"]) {
 			throw new ForbiddenException("Diese Aktion ist nicht zulässig.");
 		}
-		if ($this->Reservation->delete($id)) {
-			$this->Session->setFlash("Reservierung wurde gelöscht", "default", array('class' => 'success'));
-			return $this->redirect(array("controller" => "items", "action" => "index", $seller["Seller"]["id"]));
-		}
+		$this->deleteAndInviteOthers($reservation);
+		$this->Session->setFlash("Reservierung wurde gelöscht", "default", array('class' => 'success'));
+		return $this->redirect(array("controller" => "items", "action" => "index", $seller["Seller"]["id"]));
+	}
+
+	private function deleteAndInviteOthers($reservation) {
+		$this->Reservation->Seller->unnotify($reservation['Seller']['id']);
+		$this->Reservation->delete($reservation['Reservation']['id']);
+		$this->Reservation->Seller->sendNotifications($reservation);
 	}
 }
 

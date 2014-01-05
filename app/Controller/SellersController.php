@@ -178,6 +178,16 @@ class SellersController extends AppController {
 			->viewVars($seller["Seller"])
 			->send();
 	}
+
+	public function notify() {
+		$this->request->onlyAllow('post');
+		$seller = $this->Session->read("Seller");
+		if (!$seller) {
+			return $this->redirect (array("controller" => "pages", "action" => "session_expired"));
+		}
+		$this->Seller->notify($seller["Seller"]["id"]);
+		$this->set("seller", $seller);
+	}
 }
 
 ?>

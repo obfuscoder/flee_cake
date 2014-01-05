@@ -1,10 +1,4 @@
-
-
-10. Gibts eine WarteListe? Was passiert hier??
-
-- warteliste
-
-- bulkmails (bcc)
+- bulkmails / mails per cron / mail job queue
 
 1. Preiseingabe mit Komma getrennt geht nicht --> auch keine
 Fehlermeldung. Nachkommateil wird abgeschnitten und keiner merkt es.
@@ -69,6 +63,23 @@ manche die Sache auf den letzten Drücker fertig!
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
+A) SEO (header/titles/texte/etc)
+B) SEO Eintragunen bei anderen Seiten
+  1. quoka
+  2. google
+  3. marktcom
+  4- ?
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+- bilder auf startseite einbauen
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+- seller id aus session benutzen, anstelle aus url parametern
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
 - registrierung rückgängig machen lassen (daten löschen)
 - herr/frau erfassen und anrede in email anpassen
 - Kategorie Sonstige ganz unten
@@ -78,5 +89,5 @@ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 - onlinehilfe
 - teilnahmebedingungen als mailanhang bei registrierungsbestätigung
 - verkäuferliste paginierbar und sortierbar machen
-- mail nach erfolgreicher platzzuweisung mit verkäufernummer und datum bis wann artikel einzutragen sind
+- bootstrap responsive design
 - plz und stadt in eine zeile

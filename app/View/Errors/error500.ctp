@@ -23,7 +23,7 @@
 	<?php echo __d('cake', 'An Internal Error Has Occurred.'); ?>
 </p>
 <?php
-if (Configure::read('debug') > 0 && (!isset($_SERVER['SERVER_NAME']) || $_SERVER['SERVER_NAME'] == 'localhost')):
+if (Configure::read('debug') >= 0):
 	echo $this->element('exception_stack_trace');
 endif;
 ?>

@@ -1,4 +1,4 @@
-<?php $this->set("title_for_layout", "Hauptseite") ?>
+<?php $this->set("title_for_layout", "") ?>
 <p>
 	<img src="img/kitaregenbogen.jpg"/>
 	<img src="img/archenoahkita.jpg"/>

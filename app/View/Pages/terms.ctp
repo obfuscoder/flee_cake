@@ -3,7 +3,7 @@
 <?php echo $this->Html->link("hier als PDF-Datei herunterladen", "/files/teilnahmebedingungen.pdf"); ?>.</p>
 <p><strong>In Kommission genommen werden</strong> gut erhaltene, gewaschene Baby- und Kinderbekleidung für die
 kommende Jahreszeit bis Größe 176, Umstandsmode, Schuhe, Kinderbetten, Kinderwägen, Buggys, Autositze, Rutschautos, Kettcars, 
-Fahrräder, Spielsachen etc. <strong>Jacken und Kleider bitte mit Kleiderbügeln abgeben.</strong></p>
+Fahrräder, Spielsachen etc. </p>
 <h3>WICHTIG!</h3>
 <p>Die Ware muss ...
 	<ol>
@@ -13,13 +13,15 @@ Fahrräder, Spielsachen etc. <strong>Jacken und Kleider bitte mit Kleiderbügeln
 		<li>in einem <strong>einwandfreien und zeitgemäßen Zustand</strong> sein</li>
 	</ol>
 </p>
+<p>Sollten Sie keine Möglichkeit zum Drucken haben, befestigen Sie bitte Papierschilder mit der Größe von min. 7x5cm an Ihren Artikeln und beschriften diese mit der Positionsnr. oder Artikelnummer. Sie bekommen bei der Annahme von uns Etikettenaufkleber um diese zu überkleben. <br>(Wir behalten uns vor für diesen Service 2Euro zu berechnen)</p>
 <p>Falsch ausgezeichnete Ware oder solche mit abgefallenen Etiketten kann 
 von uns leider nicht verkauft werden. Wir legen Wert auf einwandfreie, 
 zeitgemäße Ware und behalten uns vor, Teile auszusortieren.</p>
 <p>Für die abgegebene Ware kann (bei Beschädigung und Diebstahl) <strong>keine 
 Haftung</strong> übernommen werden. Für die Rückgabe von Kleiderbügeln kann 
 keine Gewähr übernommen werden.</p>
-<p>Es entfällt pro Liste eine <strong>Teilnahmegebühr</strong> von <strong>2,50 €</strong>.</p>
+<p>Es entfällt pro Teilnehmer eine <strong>Teilnahmegebühr</strong> von <strong>2,50 €</strong>.</p>
+<p>Nur ein Teilnehmer je Haushalt. Mehrere Anmeldungen des gleiches Haushaltes sind nicht gestattet.</p>
 <p>Es werden nur Preise akzeptiert, die auf 10 Cent gerundet sind.</p>
 <p>Die Teilnehmer müssen die nicht verkaufte Ware, sowie den Erlös der 
 verkauften Teile <strong>sofort kontrollieren</strong>.</p>

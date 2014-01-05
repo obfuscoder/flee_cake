@@ -1,6 +1,5 @@
 <?php $this->set("title_for_layout", "Teilnahmebedingungen") ?>
-<p>Vor der Registrierung müssen Sie die Teilnahmebedingungen akzeptieren. Diese können Sie
-<?php echo $this->Html->link("hier als PDF-Datei herunterladen", "/files/teilnahmebedingungen.pdf"); ?>.</p>
+<p>Vor der Registrierung müssen Sie die Teilnahmebedingungen akzeptieren.</p>
 <p><strong>In Kommission genommen werden</strong> gut erhaltene, gewaschene Baby- und Kinderbekleidung für die
 kommende Jahreszeit bis Größe 176, Umstandsmode, Schuhe, Kinderbetten, Kinderwägen, Buggys, Autositze, Rutschautos, Kettcars, 
 Fahrräder, Spielsachen etc. </p>
@@ -13,7 +12,8 @@ Fahrräder, Spielsachen etc. </p>
 		<li>in einem <strong>einwandfreien und zeitgemäßen Zustand</strong> sein</li>
 	</ol>
 </p>
-<p>Sollten Sie keine Möglichkeit zum Drucken haben, befestigen Sie bitte Papierschilder mit der Größe von min. 7x5cm an Ihren Artikeln und beschriften diese mit der Positionsnr. oder Artikelnummer. Sie bekommen bei der Annahme von uns Etikettenaufkleber um diese zu überkleben. <br>(Wir behalten uns vor für diesen Service 2Euro zu berechnen)</p>
+<p>Sollten Sie keine Möglichkeit zum Drucken haben, befestigen Sie bitte Papierschilder mit der Größe von min. 7x5cm an Ihren Artikeln und beschriften diese mit der Positionsnr. oder Artikelnummer. 
+Sie bekommen bei der Annahme von uns Etikettenaufkleber um diese zu überkleben. (Wir behalten uns vor, für diesen Service 2,00 Euro zu berechnen)</p>
 <p>Falsch ausgezeichnete Ware oder solche mit abgefallenen Etiketten kann 
 von uns leider nicht verkauft werden. Wir legen Wert auf einwandfreie, 
 zeitgemäße Ware und behalten uns vor, Teile auszusortieren.</p>

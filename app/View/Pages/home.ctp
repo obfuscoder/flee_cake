@@ -19,7 +19,9 @@
 <ul>
 <?php foreach ($events as $event): ?>
 <li>
-	<strong><?php echo $event["Event"]["name"] ?></strong>: <?php echo $event["Event"]["date_string"] ?><br/>
+	<?php echo $this->Html->image("icons/spring.jpg"); ?>
+	<h4><?php echo $event["Event"]["name"] ?></h4>
+	<p><?php echo $event["Event"]["date_string"] ?><br/>
 	<?php if ($event["Event"]["details"]): ?>((<?php echo $event["Event"]["details"] ?>)<br/><?php endif ?>
 <?php if ($event["Event"]["date_confirmed"]): ?>
 	Reservierungsstart: <?php echo $event["Event"]["reservation_start_string"] ?><br/>
@@ -27,6 +29,14 @@
 	Warenannahme: <?php echo $event["Event"]["item_handover_date_string"] ?><br/>
 	Warenrückgabe: <?php echo $event["Event"]["item_pickup_date_string"] ?>
 <?php endif ?>
+</p>
 </li>
 <?php endforeach; ?>
 </ul>
+<p>Hier noch ein paar Impressionen der Festhalle</p>
+<?php
+	echo $this->Html->image("flohmarkt.jpg", array("width" => 300, "style" => "margin: 5px"));
+	echo $this->Html->image("flohmarkt2.jpg", array("width" => 300, "style" => "margin: 5px"));
+	echo $this->Html->image("kinderbetreuung.jpg", array("width" => 300, "style" => "margin: 5px"));
+?>
+

@@ -4,7 +4,7 @@
 <?php if ($reservation): ?>
 	<p>Sie haben die Reservierungsnummer <strong><?php echo $reservation["Reservation"]["number"] ?></strong>.
 	<?php if (strtotime($reservation["Event"]["reservation_end"]) > time()): ?>
-		Alle zu verkaufenden Artikel müssen bis zum <?php echo $this->Time->format($reservation["Event"]["reservation_end"], "%A, %e. %B %Y") ?> eingetragen und die Etiketten erzeugt sein.
+		Alle zu verkaufenden Artikel müssen bis zum <?php echo $this->Time->format($reservation["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?> eingetragen und die Etiketten erzeugt sein.
 		<?php if (strtotime($reservation["Event"]["reservation_end"]) - 5*24*60*60 > time()): ?>
 			</p><p><strong>Reservierung rückgängig machen:</strong> Sollten Sie nicht mehr als Verkäufer am Flohmarkt teilnehmen können, bitte
 			<?php echo $this->Html->link("geben Sie Ihre Reservierung wieder frei",

@@ -19,16 +19,6 @@ der Flohmarkt voll ist. Z.B.:
 "Leider sind bereits alle Plätze belegt. Sie können sich dennoch
 anmelden. Falls Plätze frei werden, werden diese neu vergeben."
 
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Artikelseite:
-
-Hier fehlt noch die Uhrzeit. Wie ich gestern erfahren habe machen
-manche die Sache auf den letzten Drücker fertig!
-
-"Alle zu verkaufenden Artikel müssen bis zum Donnerstag, 13. Februar
-2014 eingetragen und die Etiketten erzeugt sein. "
-
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 A) SEO (header/titles/texte/etc)
@@ -39,8 +29,6 @@ B) SEO Eintragunen bei anderen Seiten
   4- ?
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-- bilder auf startseite einbauen
 
 - bulkmails / mails per cron / mail job queue
 

@@ -22,7 +22,7 @@
 	<?php echo $this->Html->image("icons/spring.jpg"); ?>
 	<h4><?php echo $event["Event"]["name"] ?></h4>
 	<p><?php echo $event["Event"]["date_string"] ?><br/>
-	<?php if ($event["Event"]["details"]): ?>((<?php echo $event["Event"]["details"] ?>)<br/><?php endif ?>
+	<?php if ($event["Event"]["details"]): ?>(<?php echo $event["Event"]["details"] ?>)<br/><?php endif ?>
 <?php if ($event["Event"]["date_confirmed"]): ?>
 	Reservierungsstart: <?php echo $event["Event"]["reservation_start_string"] ?><br/>
 	Plätze: <?php echo $event["Event"]["max_sellers"] ?><br/>

@@ -4,9 +4,9 @@
 	<img src="img/archenoahkita.jpg"/>
 </p>
 <p>
-	Auf diesen Seiten können Sie sich für unseren kommenden (<strong><?php echo $event_date ?></strong> stattfindenden) Flohmarkt als Interessent zum Verkauf von Kommissionsware registrieren. Sie werden dann zeitnah per Mail über den weiteren Ablauf informiert.
+	Auf diesen Seiten können Sie sich für unsere kommenden Flohmärkte als Interessent zum Verkauf von Kommissionsware registrieren. Sie werden dann zeitnah per Mail über den weiteren Ablauf informiert.
 </p>
-<p>Die Anzahl der Verkäufer ist begrenzt. Die Platzreservierung wird <strong><?php echo $reservation_date ?></strong> freigeschaltet. Dazu werden alle registrierte Interessenten kurz zuvor eine gesonderte Benachrichtigung mit Detailinformationen per Mail erhalten.</p>
+<p>Die Anzahl der Verkäufer ist  begrenzt. Die Platzreservierung findet ab einem bestimmten Datum vor Beginn des Flohmarkts statt und wird hier auf den Webseiten sowie per eMail an alle registrierten Interessenten rechtzeitig angekündigt. Nur registrierte Verkäufer können eine Platzreservierung online durchführen. Genaue Informationen darüber erhalten Sie mit der Registrierung.</p>
 
 <?php
 	echo $this->Form->create(null, array("type" => "get", "url" => "/pages/terms"));
@@ -14,3 +14,19 @@
 	echo $this->Form->end();
 ?>
 <p><?php echo $this->Html->link("Bereits registriert?", "/sellers/already_registered") ?></p>
+
+<h3>Kommende Flohmärkte</h3>
+<ul>
+<?php foreach ($events as $event): ?>
+<li>
+	<strong><?php echo $event["Event"]["name"] ?></strong>: <?php echo $event["Event"]["date_string"] ?><br/>
+	<?php if ($event["Event"]["details"]): ?>((<?php echo $event["Event"]["details"] ?>)<br/><?php endif ?>
+<?php if ($event["Event"]["date_confirmed"]): ?>
+	Reservierungsstart: <?php echo $event["Event"]["reservation_start_string"] ?><br/>
+	Plätze: <?php echo $event["Event"]["max_sellers"] ?><br/>
+	Warenannahme: <?php echo $event["Event"]["item_handover_date_string"] ?><br/>
+	Warenrückgabe: <?php echo $event["Event"]["item_pickup_date_string"] ?>
+<?php endif ?>
+</li>
+<?php endforeach; ?>
+</ul>

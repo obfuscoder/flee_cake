@@ -67,20 +67,35 @@ class PagesController extends AppController {
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 
-		$event = ClassRegistry::init('Event')->getCurrent();
-		$this->set("event", $event);
+		$events = ClassRegistry::init('Event')->find("all", array('order' => array('Event.date')));
 
-		App::uses('CakeTime', 'Utility');
-		$exact_date_format = "am %A, %e. %B %Y";
-		$vague_date_format = "voraussichtlich im %B %Y";
-		$format = ($event["Event"]["date_confirmed"]) ? $exact_date_format : $vague_date_format;
-		$this->set("event_date", CakeTime::format($event["Event"]["date"], $format));
-
-		$vague_reservation_date = "ca. 2 Wochen vor Stattfinden des Flohmarkts";
-		$reservation_date = ($event["Event"]["date_confirmed"]) ?
-			CakeTime::format($event["Event"]["reservation_start"], $exact_date_format) : $vague_reservation_date;
-		$this->set("reservation_date", $reservation_date);
-
+		if ($page == "home") {
+			App::uses('CakeTime', 'Utility');
+			$exact_date_format = "%A, %e. %B %Y";
+			$time_format = "%H:%M";
+			$vague_date_format = "vorraussichtlich im %B %Y";
+			foreach ($events as &$event) {
+				if ($event["Event"]["date_confirmed"]) {
+					$event["Event"]["date_string"] = sprintf ("am %s von %s bis %s Uhr",
+						CakeTime::format($event["Event"]["date"], $exact_date_format),
+						CakeTime::format($event["Event"]["start_time"], $time_format),
+						CakeTime::format($event["Event"]["end_time"], $time_format));
+					$event["Event"]["reservation_start_string"] = 
+						CakeTime::format($event["Event"]["reservation_start"], "am $exact_date_format um $time_format Uhr");
+					$event["Event"]["item_handover_date_string"] = sprintf ("am %s von %s bis %s Uhr",
+						CakeTime::format($event["Event"]["item_handover_date"], $exact_date_format),
+						CakeTime::format($event["Event"]["item_handover_start_time"], $time_format),
+						CakeTime::format($event["Event"]["item_handover_end_time"], $time_format));
+					$event["Event"]["item_pickup_date_string"] = sprintf ("am %s von %s bis %s Uhr",
+						CakeTime::format($event["Event"]["item_pickup_date"], $exact_date_format),
+						CakeTime::format($event["Event"]["item_pickup_start_time"], $time_format),
+						CakeTime::format($event["Event"]["item_pickup_end_time"], $time_format));
+				} else {
+					$event["Event"]["date_string"] = CakeTime::format($event["Event"]["date"], $vague_date_format);
+				}
+			}
+			$this->set("events", $events);
+		}
 		try {
 			$this->render(implode('/', $path));
 		} catch (MissingViewException $e) {

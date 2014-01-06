@@ -1,33 +1,3 @@
-1. Preiseingabe mit Komma getrennt geht nicht --> auch keine
-Fehlermeldung. Nachkommateil wird abgeschnitten und keiner merkt es.
-
-2. FlohmarktInformationen allgemein auf der Hauptseite.
---> Auflistung aller Flohmärke unter den bisherigen Text in folgender Form:
------------------------------------------------------------------------------------------------------
-"Kommende Flohmärkte"
------------------------------------------------------------------------------------------------------
-Flohmarkt A: Weekday, XX. Month von XX:XX bis XX:XX
-Kommisionsflohmarkt Festhalle Königsbach (75203)
-(Kommentarfreitext: Zum Beispiel: Schwangere haben ab 10:30 Einlass)
-
-Reservierungsstart: XX. Month ab XX:XX
-Plätze: XXX
-Warenannahme: Weekday, XX. Month von XX:XX bis XX:XX
-Warenrückgabe: Weekday, XX. Month von XX:XX bis XX:XX
-
------------------------------------------------------------------------------------------------------
-Flohmarkt B: Weekday, XX. Month von XX:XX bis XX:XX
-Kommisionsflohmarkt Festhalle Königsbach (75203)
-(Kommentarfreitext: Zum Beispiel: Schwangere haben ab 10:30 Einlass)
-
-Reservierungsstart: XX. Month ab XX:XX
-Plätze: XXX
-Warenannahme: Weekday, XX. Month von XX:XX bis XX:XX
-Warenrückgabe: Weekday, XX. Month von XX:XX bis XX:XX
------------------------------------------------------------------------------------------------------
-
-
-
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 Noch was zur Startseite:

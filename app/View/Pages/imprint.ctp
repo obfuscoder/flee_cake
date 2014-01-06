@@ -8,3 +8,17 @@
 <h3>Datenschutzerklärung:</h3>
 <p><strong>Datenschutz</strong></p> <p>Die Nutzung unserer Webseite ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche Zustimmung nicht an Dritte weitergegeben. </p> <p>Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich. </p> <p>Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung von Werbeinformationen, etwa durch Spam-Mails, vor.</p>
 <p><small><em>Quelle: http://www.e-recht24.de</em></small></p>
+<h3>Copright</h3>
+<p>Die Webapplikation ist urheberrechtlich geschützt. Urheber ist Kai Lehmann. Alle Rechte vorbehalten.</p>
+<p>Die Applikation basiert auf <a href="http://cakephp.org/">CakePHP</a>. Bestimmte Teile des Codes stehen daher nicht unter besagtem Urheberrecht. Diese Teile können so auch von den Seiten von <a href="http://cakephp.org/">CakePHP</a> entnommen werden.</p>
+<p>Es wurden außerdem Inhalte aus den folgenden Quellen verwendet:
+	<ul>
+		<li>
+			<a href="http://www.webdesignhot.com/">Spring Tree Vector Illustration</a> (<a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0</a>)
+		</li>
+		<li>
+			<a href="http://designshack.net/articles/css/5-simple-and-practical-css-list-styles-you-can-copy-and-paste/">Thumbnail List</a> (Public Domain)
+		<li>
+			<a href="http://openclipart.org/detail/5341/baby-boy-sitting-by-papapishu">Baby boy sitting</a> (Public Domain)
+		</li>
+	</ul>

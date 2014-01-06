@@ -63,9 +63,7 @@ class ItemsController extends AppController {
 		App::uses('CakeNumber', 'Utility');
 		if ($this->request->isPut() || $this->request->isPost()) {
 			$this->checkSeller($this->request->data["Item"]["seller_id"]);
-			debug($this->request->data);
 	        $this->request->data['Item']['price'] = str_replace(",", ".", $this->request->data['Item']['price']);
-			debug($this->request->data);
 			if ($this->Item->save($this->request->data)) {
 				$this->Session->setFlash(__("Item has been updated."), "default", array('class' => 'success'));
 				return $this->redirect(array("action" => "index", $this->request->data["Item"]["seller_id"]));

@@ -1,23 +1,23 @@
-ul {
+ul.thumbs {
   list-style-type: none;
   width: 800px;
 }
  
-h4 {
+ul.thumbs h4 {
 	font-weight: bold;
 }
 
-li img {
+ul.thumbs li img {
   float: left;
   margin: 0 15px 0 0;
 }
  
-li {
+ul.thumbs li {
   padding: 10px;
   overflow: auto;
 }
  
-li:hover {
+ul.thumbs li:hover {
   background: #eee;
   cursor: pointer;
 }

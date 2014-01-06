@@ -16,7 +16,7 @@
 <p><?php echo $this->Html->link("Bereits registriert?", "/sellers/already_registered") ?></p>
 
 <h3>Kommende Flohmärkte</h3>
-<ul>
+<ul class="thumbs">
 <?php foreach ($events as $event): ?>
 <li>
 	<?php echo $this->Html->image("icons/spring.jpg"); ?>

@@ -41,10 +41,13 @@ class ItemsController extends AppController {
 		$this->checkSeller($sellerId);
 		if ($this->request->isPost()) {
 			$this->Item->create();
+	        $this->request->data['Item']['price'] = str_replace(",", ".", $this->request->data['Item']['price']);
 			if ($this->Item->save($this->request->data)) {
 				$this->Session->setFlash(__("Item has been created."), "default", array('class' => 'success'));
 				return $this->redirect(array("action" => "index", $this->request->data["Item"]["seller_id"]));
 			}
+        	$this->request->data['Item']['price'] = CakeNumber::currency(
+        		$this->request->data['Item']['price'], "EUR", array("before" => false, "after" => false));
 			$this->Session->setFlash(__("Unable to create item"));
 		} else {
 			$item = $this->Item->create();

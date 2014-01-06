@@ -60,17 +60,25 @@ class ItemsController extends AppController {
 	}
 
 	public function update($id) {
+		App::uses('CakeNumber', 'Utility');
 		if ($this->request->isPut() || $this->request->isPost()) {
 			$this->checkSeller($this->request->data["Item"]["seller_id"]);
+			debug($this->request->data);
+	        $this->request->data['Item']['price'] = str_replace(",", ".", $this->request->data['Item']['price']);
+			debug($this->request->data);
 			if ($this->Item->save($this->request->data)) {
 				$this->Session->setFlash(__("Item has been updated."), "default", array('class' => 'success'));
 				return $this->redirect(array("action" => "index", $this->request->data["Item"]["seller_id"]));
 			}
+        	$this->request->data['Item']['price'] = CakeNumber::currency(
+        		$this->request->data['Item']['price'], "EUR", array("before" => false, "after" => false));
 			$this->Session->setFlash(__("Unable to update item"));
 		} else {
 			$item = $this->Item->findById($id);
 			$this->checkSeller($item["Item"]["seller_id"]);
 			$this->request->data = $item;
+        	$this->request->data['Item']['price'] = CakeNumber::currency(
+        		$this->request->data['Item']['price'], "EUR", array("before" => false, "after" => false));
 		}
 		$this->set("categories", $this->Item->Category->find("list", array("order" => "name")));
 		$this->render("edit");

@@ -11,7 +11,7 @@ class ReservationsController extends AppController {
 		$sellers = $this->Reservation->Seller->findAllUnreserved($eventId);
 		$unreserved_sellers = array();
 		foreach ($sellers as $seller) {
-			$unreserved_sellers[$seller["Seller"]["id"]] = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"];
+			$unreserved_sellers[$seller["Seller"]["id"]] = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] . " (" . $seller["Seller"]["email"] . ")";
 		}
 		$this->set("sellers", $unreserved_sellers);
 	}

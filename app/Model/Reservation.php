@@ -38,6 +38,10 @@ class Reservation extends AppModel {
 			->viewVars(compact("reservation"))
 			->send();
 	}
+
+	public function count($eventId) {
+		return $this->find("count", array('conditions' => array('Reservation.event_id' => $eventId)));
+	}
 }
 
 ?>

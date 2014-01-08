@@ -77,6 +77,7 @@ class Seller extends AppModel {
 			->subject("Verkäuferplatz beim Flohmarkt freigeworden")
 			->viewVars(compact("seller", "event"))
 			->send();
+		$this->unnotify($seller["Seller"]["id"]);
 	}
 
 	public function notify($id) {

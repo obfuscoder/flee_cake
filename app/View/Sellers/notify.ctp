@@ -1,3 +1,3 @@
 <?php $this->set("title_for_layout", "Sie werden informiert") ?>
-<p>Wir werden Sie per eMail informieren, sobald ein Verkäuferplatz frei wird. Diese Information werden alle wartenden Interessenten gleichzeitig erhalten. Auch wie bei der Vergabe der Verkäuferplätze werden die freigewordenen Plätze an diejenigen Interessenten vergeben, die diese als erstes reservieren.</p>
+<p>Wir werden Sie per eMail einmalig informieren, sobald ein Verkäuferplatz frei wird. Diese Information werden alle wartenden Interessenten erhalten. Auch wie bei der Vergabe der Verkäuferplätze werden die freigewordenen Plätze an diejenigen Interessenten vergeben, die diese als erstes reservieren. Haben Sie daher Verständnis, dass der Platz unter Umständen nicht mehr zur Verfügung steht, sobald Sie dem Link zur Reservierung in der Mail folgen.</p>
 <?php echo $this->Html->link("Zur Eingabe der Artikel", array("controller" => "items", $seller["Seller"]["id"])) ?>

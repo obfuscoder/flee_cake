@@ -30,10 +30,12 @@ class ReservationsController extends AppController {
 	public function admin_delete($id) {
 		$this->request->onlyAllow('post', 'delete');
 		$reservation = $this->Reservation->findById($id);
-		if ($this->Reservation->delete($id)) {
-			$this->Session->setFlash("Reservierung gelöscht", "default", array('class' => 'success'));
-			return $this->redirect(array("controller" => "reservations", "action" => "index", $reservation["Reservation"]["event_id"]));
+		if(!$reservation) {
+			throw new NotFoundException("Die Reservierung konnte nicht gefunden werden");
 		}
+		$this->deleteAndInviteOthers($reservation);
+		$this->Session->setFlash("Reservierung gelöscht", "default", array('class' => 'success'));
+		return $this->redirect(array("controller" => "reservations", "action" => "index", $reservation["Reservation"]["event_id"]));
 	}
 
 	public function delete($id) {
@@ -56,7 +58,13 @@ class ReservationsController extends AppController {
 	private function deleteAndInviteOthers($reservation) {
 		$this->Reservation->Seller->unnotify($reservation['Seller']['id']);
 		$this->Reservation->delete($reservation['Reservation']['id']);
-		$this->Reservation->Seller->sendNotifications($reservation);
+		if (strtotime($reservation["Event"]["reservation_start"]) < time() &&
+			strtotime($reservation["Event"]["reservation_end"]) > time()) {
+			$reservation_count = $this->Reservation->count($reservation["Event"]["id"]);
+			if ($reservation_count < $reservation["Event"]["max_sellers"]) {
+				$this->Reservation->Seller->sendNotifications($reservation);
+			}
+		}
 	}
 }
 

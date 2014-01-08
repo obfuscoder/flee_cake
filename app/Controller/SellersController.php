@@ -136,7 +136,7 @@ class SellersController extends AppController {
 		if (strtotime($event["Event"]["reservation_start"]) > time() || strtotime($event["Event"]["reservation_end"]) < time()) {
 			return $this->render("reservationNotAllowed");
 		}
-		$reservation_count = $this->Seller->Reservation->find("count", array('conditions' => array('Reservation.event_id' => $eventId)));
+		$reservation_count = $this->Seller->Reservation->count($eventId);
 		if ($reservation_count >= $event["Event"]["max_sellers"]) {
 			return $this->render("reservationFull");
 		}

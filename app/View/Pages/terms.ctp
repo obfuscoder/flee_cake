@@ -12,8 +12,6 @@ Fahrräder, Spielsachen etc. </p>
 		<li>in einem <strong>einwandfreien und zeitgemäßen Zustand</strong> sein</li>
 	</ol>
 </p>
-<p>Sollten Sie keine Möglichkeit zum Drucken haben, befestigen Sie bitte Papierschilder mit der Größe von min. 7x5cm an Ihren Artikeln und beschriften diese mit der Positionsnr. oder Artikelnummer. 
-Sie bekommen bei der Annahme von uns Etikettenaufkleber um diese zu überkleben. (Wir behalten uns vor, für diesen Service 2,00 Euro zu berechnen)</p>
 <p>Falsch ausgezeichnete Ware oder solche mit abgefallenen Etiketten kann 
 von uns leider nicht verkauft werden. Wir legen Wert auf einwandfreie, 
 zeitgemäße Ware und behalten uns vor, Teile auszusortieren.</p>
@@ -27,6 +25,16 @@ keine Gewähr übernommen werden.</p>
 verkauften Teile <strong>sofort kontrollieren</strong>.</p>
 <p>Sollte Ihre nicht verkaufte Ware bis 18.30 Uhr am Verkaufstag <strong>nicht abgeholt</strong> 
 sein, betrachten wir die Ware als <strong>Spende</strong>.</p>
+
+<h3>Drucken der Etiketten</h3>
+<p>Wir arbeiten beim Verkauf mit Scannern und akzeptieren daher nur Waren mit unseren Etiketten, welche Sie nach Artikeleingabe erzeugen und drucken.</p>
+<p>Sollten Sie keine Möglichkeit zum Drucken haben, befestigen Sie bitte Papierschilder mit der Größe von min. 7x5cm an Ihren Artikeln und beschriften diese mit der Positionsnr. oder Artikelnummer. 
+Sie bekommen bei der Annahme von uns Etikettenaufkleber um diese zu überkleben. (Wir behalten uns vor, für diesen Service 2,00 Euro zu berechnen)</p>
+<p>Handschriftliche Änderungen auf den Etiketten werden nicht akzeptiert. Das System kennt nur die Werte, welche online eingegeben wurden.</p>
+<p>Bitte verwenden Sie für den Druck <u>kein rotes</u> oder sehr dunkles Papier</p>
+<p>Die Etiketten dürfen laminiert oder geklebt werden (sofern dies nicht die Ware beschädigt)</p>
+
+<h3>Verkaufserlös</h3>
 <p>Als Unkostenbeitrag behalten wir 20% des Erlöses ein, der nach Abzug 
 der Kosten den Kindergärten Regenbogen und Arche Noah zu gleichen Teilen gespendet wird.</p>
 <?php

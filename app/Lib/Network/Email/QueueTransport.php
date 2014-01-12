@@ -6,10 +6,11 @@ App::uses('Mail', 'Model');
 class QueueTransport extends AbstractTransport {
 
     public function send(CakeEmail $mail) {
-    	$to = array_keys($mail->to())[0];
+    	$to = implode(array_keys($mail->to()));
     	$subject = $mail->subject();
     	$body = implode("\n", $mail->message());
-    	(new Mail())->enqueue($to, $subject, $body);
+    	$m = new Mail();
+    	$m->enqueue($to, $subject, $body);
     }
 }
 

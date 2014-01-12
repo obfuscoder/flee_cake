@@ -45,7 +45,7 @@ class EmailConfig {
 	);
 
 	public $queue = array(
-		'transport' => 'queue',
+		'transport' => 'Queue',
 		'from' => array('info@flohmarkt-koenigsbach.de' => 'Flohmarkt Königsbach'),
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',

@@ -19,12 +19,12 @@ class AdminController extends AppController {
 		$this->Session->write("Admin", true);
 
 		$mail = new Mail();
-		$sent_mails = $mail->find("count", array("conditions" => array("sent is not null")));
+		$sent_mails = $mail->find("count", array("conditions" => array("sent !=" => null)));
 		$unsent_mails = $mail->find("count", array("conditions" => array("sent" => null)));
 		$last_sent_mail = $mail->find("first", array("conditions" => array("sent is not null"), "order" => array("sent" => "desc")));
 		$this->set("sent_mails", $sent_mails);
 		$this->set("unsent_mails", $unsent_mails);
-		$this->set("last_sent_mail", $last_sent_mail["Mail"]["sent"]);
+		$this->set("last_sent_mail", $last_sent_mail ? $last_sent_mail["Mail"]["sent"] : "");
 
 		$seller = new Seller();
 		$seller_count = $seller->find("count");

@@ -31,7 +31,7 @@ class Seller extends AppModel {
 
 	public function sendInvitation($seller, $event) {
 		App::uses('CakeEmail', 'Network/Email');
-		$mail = new CakeEmail('default');
+		$mail = new CakeEmail('queue');
 		$mail->template("invite", "default")
 			->emailFormat("text")
 			->to($seller["Seller"]["email"])
@@ -70,7 +70,7 @@ class Seller extends AppModel {
 
 	private function sendNotification($seller, $event) {
 		App::uses('CakeEmail', 'Network/Email');
-		$mail = new CakeEmail('default');
+		$mail = new CakeEmail('queue');
 		$mail->template("notification", "default")
 			->emailFormat("text")
 			->to($seller["Seller"]["email"])

@@ -95,7 +95,7 @@ class EventsController extends AppController {
 		$id = $event["Event"]["id"];
 		$reservations = $this->Event->Reservation->findAllByEventId($id);
 		App::uses('CakeEmail', 'Network/Email');
-		$mail = new CakeEmail('default');
+		$mail = new CakeEmail('queue');
 		foreach($reservations as $reservation) {
 			$mail->template("closing", "default")
 				->emailFormat("text")
@@ -130,7 +130,7 @@ class EventsController extends AppController {
 		$id = $event["Event"]["id"];
 		$reservations = $this->Event->Reservation->findAllByEventId($id);
 		App::uses('CakeEmail', 'Network/Email');
-		$mail = new CakeEmail('default');
+		$mail = new CakeEmail('queue');
 		foreach($reservations as $reservation) {
 			$mail->template("closed", "default")
 				->emailFormat("text")

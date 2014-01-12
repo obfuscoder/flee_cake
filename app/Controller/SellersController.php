@@ -170,7 +170,7 @@ class SellersController extends AppController {
 
 	private function send_registration_mail($seller) {
 		App::uses('CakeEmail', 'Network/Email');
-		$mail = new CakeEmail('default');
+		$mail = new CakeEmail('queue');
 		$mail->template("register", "default")
 			->emailFormat("text")
 			->to($this->request->data["Seller"]["email"])

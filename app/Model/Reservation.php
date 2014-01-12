@@ -30,7 +30,7 @@ class Reservation extends AppModel {
 	private function sendConfirmation() {
 		$reservation = $this->findById($this->id);
 		App::uses('CakeEmail', 'Network/Email');
-		$mail = new CakeEmail('default');
+		$mail = new CakeEmail('queue');
 		$mail->template("reservation", "default")
 			->emailFormat("text")
 			->to($reservation["Seller"]["email"])

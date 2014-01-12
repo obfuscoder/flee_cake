@@ -44,6 +44,13 @@ class EmailConfig {
 		//'headerCharset' => 'utf-8',
 	);
 
+	public $queue = array(
+		'transport' => 'queue',
+		'from' => array('info@flohmarkt-koenigsbach.de' => 'Flohmarkt Königsbach'),
+		//'charset' => 'utf-8',
+		//'headerCharset' => 'utf-8',
+	);
+
 	public $smtp = array(
 		'transport' => 'Smtp',
 		'from' => array('info@flohmarkt-koenigsbach.de' => 'Flohmarkt Königsbach'),

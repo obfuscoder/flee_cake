@@ -8,6 +8,7 @@
 	<dt>Endzeit</dt><dd><?php echo $event['Event']['end_time'] ?></dd>
 	<dt>Reservierungsstart</dt><dd><?php echo $event['Event']['reservation_start'] ?></dd>
 	<dt>Reservierungsende</dt><dd><?php echo $event['Event']['reservation_end'] ?></dd>
+	<dt>Reservierungen</dt><dd><?php echo count($reservations) ?></dd>
 </dl>
 <h3>Reservierungen</h3>
 <p><ul>

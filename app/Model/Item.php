@@ -42,6 +42,33 @@ class Item extends AppModel {
 		$result = $this->query("select count(*) as count from items as Item where seller_id in (select seller_id from reservations)");
 		return $result[0][0]["count"];
 	}
+
+	public function label($reservation) {
+		$reservationId = $reservation["Reservation"]["id"];
+        $reservedItemIds = array();
+        foreach ($reservation["Item"] as $item) {
+        	array_push($reservedItemIds, $item["id"]);
+        }
+        $reservedItemNumber = $this->getNextReservedItemNumber($reservation["Reservation"]["id"]);
+        $unreservedItemIds = $this->find('list', array("fields" => array("id"), "conditions" => array("Item.seller_id" => $reservation["Seller"]["id"], "NOT" => array("Item.id" => $reservedItemIds))));
+        $itemsToReserve = array();
+        foreach ($unreservedItemIds as $itemId) {
+        	array_push($itemsToReserve, array(
+        		"ReservedItem" => array(
+		        	"item_id" => $itemId,
+        			"reservation_id" => $reservationId,
+        			"number" => $reservedItemNumber,
+        			"code" => $this->getCode($reservation["Event"]["id"], $reservation["Reservation"]["number"], $reservedItemNumber)
+        		)
+        	));
+        	$reservedItemNumber++;
+		}
+		if ($itemsToReserve) {
+			$this->ReservedItem->create();
+			$this->ReservedItem->saveAll($itemsToReserve);
+		}
+		return count($itemsToReserve);
+	}
 }
 
 ?>

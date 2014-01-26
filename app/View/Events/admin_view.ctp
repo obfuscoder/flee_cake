@@ -28,15 +28,15 @@
 </p>
 <p class="actions">
 	<?php
-		if ($event["Event"]["invitation_sent"] === null && strtotime($event["Reservation"]["reservation_start"]) > time()) {
+		if ($event["Event"]["invitation_sent"] === null && strtotime($event["Event"]["reservation_start"]) > time()) {
 			echo $this->Html->link("Reservierungseinladungen verschicken", array("action" => "invite", $event['Event']['id']));
 		} ?>
 	<?php
-		if ($event["Event"]["closing_sent"] === null && strtotime($event["Reservation"]["reservation_start"]) < time() && strtotime($event["Reservation"]["reservation_end"]) > time()) {
+		if ($event["Event"]["closing_sent"] === null && strtotime($event["Event"]["reservation_start"]) < time() && strtotime($event["Event"]["reservation_end"]) > time()) {
 			echo $this->Html->link("Erinnerungsmail vor Bearbeitungsschluss verschicken", array("action" => "mail_closing", $event['Event']['id']));
 		} ?>
 	<?php
-		if ($event["Event"]["closed_sent"] === null && strtotime($event["Reservation"]["reservation_end"]) <= time()) {
+		if ($event["Event"]["closed_sent"] === null && strtotime($event["Event"]["reservation_end"]) <= time()) {
 			echo $this->Html->link("Bearbeitungsabschlussmail verschicken", array("action" => "mail_closed", $event['Event']['id']));
 		} ?>
 	<?php

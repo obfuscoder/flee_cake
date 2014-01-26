@@ -106,29 +106,8 @@ class ItemsController extends AppController {
 	public function label($reservationId) {
         $reservation = $this->Item->Reservation->findById($reservationId);
 		$this->checkSeller($reservation["Reservation"]["seller_id"]);
-        $reservedItemIds = array();
-        foreach ($reservation["Item"] as $item) {
-        	array_push($reservedItemIds, $item["id"]);
-        }
-        $reservedItemNumber = $this->Item->getNextReservedItemNumber($reservationId);
-        $unreservedItemIds = $this->Item->find('list', array("fields" => array("id"), "conditions" => array("Item.seller_id" => $reservation["Seller"]["id"], "NOT" => array("Item.id" => $reservedItemIds))));
-        $itemsToReserve = array();
-        foreach ($unreservedItemIds as $itemId) {
-        	array_push($itemsToReserve, array(
-        		"ReservedItem" => array(
-		        	"item_id" => $itemId,
-        			"reservation_id" => $reservationId,
-        			"number" => $reservedItemNumber,
-        			"code" => $this->Item->getCode($reservation["Event"]["id"], $reservation["Reservation"]["number"], $reservedItemNumber)
-        		)
-        	));
-        	$reservedItemNumber++;
-		}
-		if ($itemsToReserve) {
-			$this->Item->ReservedItem->create();
-			$this->Item->ReservedItem->saveAll($itemsToReserve);
-		}
-		$this->Session->setFlash("Es wurden " . count($unreservedItemIds) . " Etikett(en) erzeugt.", "default", array('class' => 'success'));
+		$createdLabelCount = $this->Item->label($reservation);
+		$this->Session->setFlash("Es wurden " . $createdLabelCount . " Etikett(en) erzeugt.", "default", array('class' => 'success'));
 		return $this->redirect(array("action" => "index", $reservation["Seller"]["id"]));
 	}
 

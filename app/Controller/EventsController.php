@@ -132,6 +132,7 @@ class EventsController extends AppController {
 		App::uses('CakeEmail', 'Network/Email');
 		$mail = new CakeEmail('queue');
 		foreach($reservations as $reservation) {
+			$this->Event->Reservation->Seller->Item->label($reservation);
 			$mail->template("closed", "default")
 				->emailFormat("text")
 				->to($reservation["Seller"]["email"])

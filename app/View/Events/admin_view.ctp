@@ -22,25 +22,27 @@
 <h3>Aktionen</h3>
 <p class="actions">
 	<?php echo $this->Html->link("Bearbeiten", array('action' => 'edit', $event['Event']['id'])); ?>
+	<?php echo $this->Html->link("Reservierungen", array("controller" => "reservations", 'action' => 'index', $event['Event']['id'])); ?>
+	<?php echo $this->Html->link("Terminliste", array('action' => 'index')); ?>
+	<?php echo $this->Html->link("Neuer Termin", array('action' => 'add')); ?>
+</p>
+<p class="actions">
 	<?php
-		if ($event["Event"]["invitation_sent"] === null) {
+		if ($event["Event"]["invitation_sent"] === null && strtotime($event["Reservation"]["reservation_start"]) > time()) {
 			echo $this->Html->link("Reservierungseinladungen verschicken", array("action" => "invite", $event['Event']['id']));
 		} ?>
 	<?php
-		if ($event["Event"]["closing_sent"] === null) {
+		if ($event["Event"]["closing_sent"] === null && strtotime($event["Reservation"]["reservation_start"]) < time() && strtotime($event["Reservation"]["reservation_end"]) > time()) {
 			echo $this->Html->link("Erinnerungsmail vor Bearbeitungsschluss verschicken", array("action" => "mail_closing", $event['Event']['id']));
 		} ?>
 	<?php
-		if ($event["Event"]["closed_sent"] === null) {
+		if ($event["Event"]["closed_sent"] === null && strtotime($event["Reservation"]["reservation_end"]) <= time()) {
 			echo $this->Html->link("Bearbeitungsabschlussmail verschicken", array("action" => "mail_closed", $event['Event']['id']));
 		} ?>
-	<?php echo $this->Html->link("Reservierungen", array("controller" => "reservations", 'action' => 'index', $event['Event']['id'])); ?>
-	<?php echo $this->Html->link("Terminliste", array('action' => 'index')); ?>
 	<?php
 		#if (strtotime($event['Event']['reservation_end']) < time()) {
 			echo $this->Html->link("Datenexport der Artikel", array("action" => "csv", $event['Event']['id']));
 			echo $this->Html->link("Datenexport der Verkäufer", array("action" => "sellers_csv", $event['Event']['id']));
 		#}
 	?>
-	<?php echo $this->Html->link("Neuer Termin", array('action' => 'add')); ?>
 </p>

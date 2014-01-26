@@ -1,6 +1,6 @@
 Sehr geehrte(r) Flohmarkt Verkäufer/in,
 
-Die Vorbereitungen für den Flohmarkt sind abgeschlossen. Die Bearbeitung Ihrer Artikel ist damit nicht mehr möglich.
+Die Vorbereitungen für den Flohmarkt sind abgeschlossen. Die Bearbeitung Ihrer Artikel ist damit nicht mehr möglich. Für alle noch in Bearbeitung befindlichen Artikel wurden ebenfalls Etiketten erzeugt.
 
 Flohmarkt: <?php echo $event["Event"]["name"]; ?>
 

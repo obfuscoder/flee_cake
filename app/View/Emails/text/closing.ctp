@@ -2,7 +2,7 @@ Sehr geehrte(r) Flohmarkt Verkäufer/in,
 
 Die Vorbereitungen für den Flohmarkt sind bald abgeschlossen.
 Denken Sie bitte daran, Ihre Artikel bis zum <?php echo $this->Time->format($event["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?>
-komplett einzugeben und die Etiketten dafür zu erzeugen. Danach werden die Etiketten nicht mehr änderbar sein.
+komplett einzugeben und die Etiketten dafür zu erzeugen. Danach werden die Etiketten nicht mehr änderbar sein. Sollten Sie bis dahin zwar Ihre Artikel eingegeben, aber dafür noch keine Etiketten erzeugt haben, wird dies automatisch durchgeführt.
 
 Flohmarkt: <?php echo $event["Event"]["name"]; ?>
 

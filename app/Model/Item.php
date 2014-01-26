@@ -37,6 +37,11 @@ class Item extends AppModel {
 		$number = sprintf("%02d%03d%02d", $eventNumber, $sellerNumber, $itemNumber);
 		return $number . $this->getChecksum($number);
 	}
+
+	public function getItemCountForReservations() {
+		$result = $this->query("select count(*) as count from items as Item where seller_id in (select seller_id from reservations)");
+		return $result[0][0]["count"];
+	}
 }
 
 ?>

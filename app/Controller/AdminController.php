@@ -28,13 +28,34 @@ class AdminController extends AppController {
 
 		$seller = new Seller();
 		$seller_count = $seller->find("count");
-		$active_seller_count = $seller->find("count", array("conditions" => array("active" => true)));
 		$this->set("seller_count", $seller_count);
+
+		$active_seller_count = $seller->find("count", array("conditions" => array("active" => true)));
 		$this->set("active_seller_count", $active_seller_count);
+
+		$waiting_seller_count = $seller->find("count", array("conditions" => array("notify" => true)));
+		$this->set("waiting_seller_count", $waiting_seller_count);
 
 		$item = new Item();
 		$item_count = $item->find("count");
 		$this->set("item_count", $item_count);
+
+		$reservation = new Reservation();
+		$reserved_item_count = $reservation->ReservedItem->find("count");
+		$this->set("reserved_item_count", $reserved_item_count);
+
+		$item_count_for_reservations = $item->getItemCountForReservations();
+		$this->set("item_count_for_reservations", $item_count_for_reservations);
+	}
+
+	public function admin_dump() {
+		$date = strftime("%Y%m%d%H%M%S");
+		header("Content-Disposition: attachment; filename=\"database_dump_$date.sql.gz\"");
+		$this->response->type('gz');
+        $this->layout = 'plain';
+        $db = new DATABASE_CONFIG();
+		$db_config = $db->default;
+		passthru("mysqldump --user=" . $db_config["login"] . " --password=" . $db_config["password"] . " --host=" . $db_config["host"] . " " . $db_config["database"] . " | gzip");
 	}
 }
 

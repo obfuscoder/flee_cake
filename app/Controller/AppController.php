@@ -35,7 +35,7 @@ Configure::write('Config.language', 'deu');
  */
 class AppController extends Controller {
     function beforeFilter () {
-    	if ($this->request->url == "admin") {
+    	if ($this->request->url == "admin" || $this->request->url == "admin/dump") {
     		return;
     	}
         if (isset($this->params["admin"]) && $this->params["admin"]) {

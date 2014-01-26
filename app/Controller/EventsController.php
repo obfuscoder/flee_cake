@@ -167,7 +167,5 @@ class EventsController extends AppController {
 		#}
 		$reservations = $this->Event->Reservation->findAllByEventId($id);
 		$this->set("reservations", $reservations);
-		$this->response->type('csv');
-        $this->layout = 'csv';
 	}
 }

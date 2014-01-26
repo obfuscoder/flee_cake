@@ -4,18 +4,22 @@
 	<?php echo $this->Html->link("Verkäufer", array("controller" => "sellers", "action" => "index")); ?>
 	<?php echo $this->Html->link("Kategorien", array("controller" => "categories", "action" => "index")); ?>
 	<?php echo $this->Html->link("Mails triggern", "/mails/worker"); ?>
+	<?php echo $this->Html->link("DB Dump", array("action" => "dump")); ?>
 </p>
 <h3>Verkäufer</h3>
 <p>
 <ul>
 	<li>gesamt: <?php echo $seller_count ?></li>
 	<li>aktiviert: <?php echo $active_seller_count ?></li>
+	<li>wartend: <?php echo $waiting_seller_count ?></li>
 </ul>
 </p>
 <h3>Artikel</h3>
 <p>
 <ul>
 	<li>gesamt: <?php echo $item_count ?></li>
+	<li>von Reservierungen: <?php echo $item_count_for_reservations ?></li>
+	<li>Etiketten: <?php echo $reserved_item_count ?></li>
 </ul>
 </p>
 <h3>Mailqueue</h3>

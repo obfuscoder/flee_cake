@@ -46,6 +46,37 @@ class AdminController extends AppController {
 
 		$item_count_for_reservations = $item->getItemCountForReservations();
 		$this->set("item_count_for_reservations", $item_count_for_reservations);
+
+		$items_per_category = $item->find("all", array("fields" => array("Category.name", "count(*) as count"), "group" => "Category.id"));
+		$this->set("items_per_category", $items_per_category);
+
+		$items_per_seller = $item->ReservedItem->find("all", array("fields" => array("Reservation.number", "count(*) as count"),
+			"joins" => array(
+				array(
+					'table' => 'reservations',
+        			'alias' => 'Reservation',
+        			'type' => 'INNER',
+        			'conditions' => array('ReservedItem.reservation_id = Reservation.id')
+    			)
+			), "conditions" => array("NOT" => array("ReservedItem.sold" => null)), "group" => "Reservation.number", "order" => "count desc", "limit" => 10));
+		$this->set("items_per_seller", $items_per_seller);
+
+		$totals_per_seller = $item->ReservedItem->find("all", array("fields" => array("Reservation.number", "sum(Item.price) as total"),
+			"joins" => array(
+				array(
+					'table' => 'reservations',
+        			'alias' => 'Reservation',
+        			'type' => 'INNER',
+        			'conditions' => array('ReservedItem.reservation_id = Reservation.id')
+    			),
+				array(
+					'table' => 'items',
+        			'alias' => 'Item',
+        			'type' => 'INNER',
+        			'conditions' => array('ReservedItem.item_id = Item.id')
+    			)
+			), "conditions" => array("NOT" => array("ReservedItem.sold" => null)), "group" => "Reservation.number", "order" => "total desc", "limit" => 10));
+		$this->set("totals_per_seller", $totals_per_seller);
 	}
 
 	public function admin_dump() {

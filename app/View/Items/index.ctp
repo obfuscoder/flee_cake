@@ -18,6 +18,7 @@
 	</p>
 <?php else: ?>
 	<p>Sie haben noch keine Reservierungsnummer.</p>
+	<p>Ein <b>Verkauf ist nur mit Reservierungsnummer möglich</b>.</p>
 <?php endif ?>
 <?php if (count($items) < $event["Event"]["max_items_per_seller"]): ?>
 <p>Sie haben aktuell <strong><?php echo count($items) ?></strong> Artikel angelegt.

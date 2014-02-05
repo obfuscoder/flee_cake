@@ -9,7 +9,8 @@ class Item extends AppModel {
 		"price" => array(
 			"notempty" => array("rule" => "notEmpty", "message" => "Bitte geben Sie einen Preis ein."),
 			"number" => array("rule" => "/^\d{1,3}(?:.\d(?:0)?)?$/", "message" => "Der Preis muss zwischen 0 und 1000 € liegen und auf 10 Cent genau sein.")
-		)
+		),
+		"category_id" => array("rule" => "notempty", "message" => "Bitte wählen Sie eine Kategorie."),
 	);
 
 	public function getNextReservedItemNumber($reservationId) {

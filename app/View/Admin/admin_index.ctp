@@ -130,3 +130,34 @@ var totalsChart = new CanvasJS.Chart("totalsChart",
 
 totalsChart.render();
 </script>
+<div id="itemChart" style="height: 400px; width: 500px"></div>
+<script type="text/javascript">
+var itemChart = new CanvasJS.Chart("itemChart",
+{
+  theme: "theme2",
+  title:{
+    text: "Angelegte Artikel pro Tag"
+  },
+  axisX: {
+    valueFormatString: "DD.MMM",
+    interval:4,
+    intervalType: "day"
+    
+  },
+  axisY:{
+    includeZero: false
+    
+  },
+  data: [
+  {        
+    type: "column",
+    dataPoints: [
+    <?php foreach($items_per_day as $day) : ?>
+    { x: new Date("<?php echo $this->Time->format($day[0]["date"], "%Y-%m-%d") ?>"), y: <?php echo $day[0]["count"] ?> },
+    <?php endforeach; ?>
+    ]
+  }
+  ]
+});
+itemChart.render();
+</script>

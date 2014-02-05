@@ -19,5 +19,10 @@ Sie können über den folgenden Link die Bearbeitung Ihrer Artikel, sowie das Er
 <?php echo $this->Html->url("/sellers/login/".$reservation["Seller"]["token"], true) ?>
 
 
+VOM MARKT ABMELDEN: Sollten Sie nicht mehr teilnehmen können. Bitte melden Sie sich ab und überlassen anderen Ihren Platz!
+Abmelden können Sie sich ebenfalls unter:
+
+<?php echo $this->Html->url("/sellers/login/".$reservation["Seller"]["token"], true) ?>
+
 Viele Grüße,
 Ihr Flohmarkt-Team

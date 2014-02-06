@@ -20,11 +20,11 @@
 	<p>Sie haben noch keine Reservierungsnummer. <strong>Ein Verkauf ist nur mit Reservierungsnummer möglich</strong>.</p>
 	<p>
 	<?php if ($event["Event"]["max_sellers"] <= count($event["Reservation"])): ?>
-		&lt;&lt;Leider sind alle Plätze bereits vergeben.&gt;&gt;
+		Leider sind alle Plätze bereits vergeben.
 		<?php if ($seller["Seller"]["notify"]): ?>
-			&lt;&lt;Sie stehen auf der Warteliste und bekommen eine Email sobald ein Platz frei wird.&gt;&gt;
+			Sie stehen auf der Warteliste und bekommen eine Email sobald ein Platz frei wird.
         <?php else: ?>
-			&lt;&lt;<?php echo $this->Form->postLink("Hier", array("controller" => "sellers", "action" => "notify")) ?> können Sie sich auf die Warteliste setzen lassen. Sie erhalten eine Mail sobald ein Platz frei wird.&gt;&gt;
+			<?php echo $this->Form->postLink("Hier", array("controller" => "sellers", "action" => "notify")) ?> können Sie sich auf die Warteliste setzen lassen. Sie erhalten eine Mail sobald ein Platz frei wird.
 		<?php endif; ?>
 	<?php else: ?>
 		<?php if (strtotime($event["Event"]["reservation_start"]) > time()): ?>

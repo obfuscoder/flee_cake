@@ -3,9 +3,9 @@
 <p>Hier können Sie Ihre Artikel verwalten.</p>
 <?php if ($reservation): ?>
 	<p>Sie haben die Reservierungsnummer <strong><?php echo $reservation["Reservation"]["number"] ?></strong>.
-	<?php if (strtotime($reservation["Event"]["reservation_end"]) > time()): ?>
-		Alle zu verkaufenden Artikel müssen bis zum <?php echo $this->Time->format($reservation["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?> eingetragen und die Etiketten erzeugt sein.
-		<?php if (strtotime($reservation["Event"]["reservation_end"]) - 5*24*60*60 > time()): ?>
+	<?php if (strtotime($event["Event"]["reservation_end"]) > time()): ?>
+		Alle zu verkaufenden Artikel müssen bis zum <?php echo $this->Time->format($event["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?> eingetragen und die Etiketten erzeugt sein.
+		<?php if (strtotime($event["Event"]["reservation_end"]) > time()): ?>
 			</p><p><strong>Reservierung rückgängig machen:</strong> Sollten Sie nicht mehr als Verkäufer am Flohmarkt teilnehmen können, bitte
 			<?php echo $this->Html->link("geben Sie Ihre Reservierung wieder frei",
 					array("controller" => "reservations", "action" => "delete", $reservation["Reservation"]['id']),
@@ -18,6 +18,23 @@
 	</p>
 <?php else: ?>
 	<p>Sie haben noch keine Reservierungsnummer. <strong>Ein Verkauf ist nur mit Reservierungsnummer möglich</strong>.</p>
+	<p>
+	<?php if ($event["Event"]["max_sellers"] <= count($event["Reservation"])): ?>
+		&lt;&lt;Anzeige, dass alle Verkäuferplätze bereits belegt Sie.&gt;&gt;
+		<?php if ($seller["Seller"]["notify"]): ?>
+			&lt;&lt;Sie stehen auf der Warteliste&gt;&gt;
+        <?php else: ?>
+			&lt;&lt;<?php echo $this->Form->postLink("Hier", array("controller" => "sellers", "action" => "notify")) ?> können Sie sich auf die Warteliste setzen lassen.&gt;&gt;
+		<?php endif; ?>
+	<?php else: ?>
+		<?php if (strtotime($event["Event"]["reservation_start"]) > time()): ?>
+			Sie können sich ab <?php echo $this->Time->format($event["Event"]["reservation_start"], "%A, %e. %B %Y um %H:%M Uhr") ?> einen Verkäuferplatz reservieren.
+		<?php endif; ?>
+		<?php if (strtotime($event["Event"]["reservation_start"]) < time() && strtotime($event["Event"]["reservation_end"]) > time()): ?>
+			Sie können sich <?php echo $this->Html->link("hier", array("controller" => "sellers", "action" => "reservation", $seller["Seller"]['token'], $event["Event"]["id"])) ?> einen Verkäuferplatz reservieren.
+		<?php endif; ?>
+	<?php endif; ?>
+	</p>
 <?php endif ?>
 <?php if (count($items) < $event["Event"]["max_items_per_seller"]): ?>
 <p>Sie haben aktuell <strong><?php echo count($items) ?></strong> Artikel angelegt.
@@ -62,7 +79,7 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 <?php if (count($items)): ?>
 <p>Sobald Sie eine Reservierungsnummer erhalten haben, können Sie die Etiketten für die Artikel erzeugen und drucken. Bitte beachten Sie, dass das Erzeugen von Etiketten die bis zu diesem Zeitpunkt angelegten Artikel zur weiteren Bearbeitung sperrt.</p>
 <p class="actions"><?php
-	if ($reservation && $unreservedItemCount && strtotime($reservation["Event"]["reservation_end"]) > time()) {
+	if ($reservation && $unreservedItemCount && strtotime($event["Event"]["reservation_end"]) > time()) {
 		echo $this->Html->link("$unreservedItemCount Etikett(en) erzeugen",
 			array("action" => "label", $reservation["Reservation"]["id"]),
 			array(), "Sobald Sie die Etiketten erzeugen, werden alle bis zu diesem Zeitpunkt eingegebenen Artikel gesperrt. " .

@@ -1,8 +1,7 @@
 Sehr geehrte(r) Flohmarkt Verkäufer/in,
 
 Die Vorbereitungen für den Flohmarkt sind bald abgeschlossen.
-Denken Sie bitte daran, Ihre Artikel bis zum <?php echo $this->Time->format($event["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?>
-komplett einzugeben und die Etiketten dafür zu erzeugen. Danach werden die Etiketten nicht mehr änderbar sein. Sollten Sie bis dahin zwar Ihre Artikel eingegeben, aber dafür noch keine Etiketten erzeugt haben, wird dies automatisch durchgeführt.
+Denken Sie bitte daran, Ihre Artikel bis zum <?php echo $this->Time->format($event["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?> komplett einzugeben und die Etiketten dafür zu erzeugen. Sollten Sie bis dahin zwar Ihre Artikel eingegeben, aber dafür noch keine Etiketten erzeugt haben, wird dies automatisch durchgeführt. Danach sind keine weiteren Etiketten mehr erzeugbar.
 
 Flohmarkt: <?php echo $event["Event"]["name"]; ?>
 
@@ -19,10 +18,9 @@ Sie können über den folgenden Link die Bearbeitung Ihrer Artikel, sowie das Er
 <?php echo $this->Html->url("/sellers/login/".$reservation["Seller"]["token"], true) ?>
 
 
-VOM MARKT ABMELDEN: Sollten Sie nicht mehr teilnehmen können, melden Sie sich bitte ab und überlassen anderen Ihren Platz!
-Abmelden können Sie sich ebenfalls unter:
+Sollten Sie nicht mehr am Flohmarkt teilnehmen können, melden Sie sich bitte gleich ab und überlassen anderen Ihren Platz!
 
-<?php echo $this->Html->url("/sellers/login/".$reservation["Seller"]["token"], true) ?>
+Abmelden können Sie sich ebenfalls unter dem oben angegebenen Link.
 
 Viele Grüße,
 Ihr Flohmarkt-Team

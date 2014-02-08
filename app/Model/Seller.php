@@ -21,11 +21,11 @@ class Seller extends AppModel {
 
 	public function findAllUnreserved($eventId) {
 		return $this->find('all', array(
-			"recursive" => 0,
     		"conditions" => array(
     			"Seller.active" => true,
     			"Seller.id not in (select seller_id from reservations where reservations.event_id = $eventId)"
-			)
+			),
+			"order" => array("Seller.first_name", "Seller.last_name")
      	));
 	}
 

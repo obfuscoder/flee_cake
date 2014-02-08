@@ -15,6 +15,10 @@ class MailsController extends AppController {
 		$this->response->type('plain');
         $this->layout = 'plain';
 	}
+
+	public function admin_send() {
+		
+	}
 }
 
 ?>

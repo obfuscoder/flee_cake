@@ -9,11 +9,7 @@ class ReservationsController extends AppController {
 		$this->set("reservations", $reservations);
 		$this->set("event_id", $eventId);
 		$sellers = $this->Reservation->Seller->findAllUnreserved($eventId);
-		$unreserved_sellers = array();
-		foreach ($sellers as $seller) {
-			$unreserved_sellers[$seller["Seller"]["id"]] = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] . " (" . $seller["Seller"]["email"] . ")";
-		}
-		$this->set("sellers", $unreserved_sellers);
+		$this->set("sellers", $sellers);
 	}
 
 	public function admin_create() {

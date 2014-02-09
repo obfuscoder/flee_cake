@@ -169,4 +169,61 @@ class EventsController extends AppController {
 		$reservations = $this->Event->Reservation->findAllByEventId($id);
 		$this->set("reservations", $reservations);
 	}
+
+	public function view($id = null) {
+		$this->set('event', $this->Event->findById($id));
+
+		$item = new Item();
+
+		$items_per_category = $item->ReservedItem->find("all", array("fields" => array("Category.name", "count(*) as count"),
+			"joins" => array(
+				array(
+					'table' => 'reservations',
+        			'alias' => 'Reservation',
+        			'type' => 'INNER',
+        			'conditions' => array('ReservedItem.reservation_id = Reservation.id', 'Reservation.event_id' => $id)
+    			),
+				array(
+					'table' => 'items',
+        			'alias' => 'Item',
+        			'type' => 'INNER',
+        			'conditions' => array('ReservedItem.item_id = Item.id')
+    			),
+				array(
+					'table' => 'categories',
+        			'alias' => 'Category',
+        			'type' => 'INNER',
+        			'conditions' => array('Category.id = Item.category_id')
+    			),
+			), "group" => "Category.id"));
+		$this->set("items_per_category", $items_per_category);
+
+		$items_per_seller = $item->ReservedItem->find("all", array("fields" => array("Reservation.number", "count(*) as count"),
+			"joins" => array(
+				array(
+					'table' => 'reservations',
+        			'alias' => 'Reservation',
+        			'type' => 'INNER',
+        			'conditions' => array('ReservedItem.reservation_id = Reservation.id', "Reservation.event_id = $id")
+    			)
+			), "conditions" => array("NOT" => array("ReservedItem.sold" => null)), "group" => "Reservation.number", "order" => "count desc", "limit" => 10));
+		$this->set("items_per_seller", $items_per_seller);
+
+		$sum_per_seller = $item->ReservedItem->find("all", array("fields" => array("Reservation.number", "sum(Item.price) as sum"),
+			"joins" => array(
+				array(
+					'table' => 'reservations',
+        			'alias' => 'Reservation',
+        			'type' => 'INNER',
+        			'conditions' => array('ReservedItem.reservation_id = Reservation.id', "Reservation.event_id = $id")
+    			),
+				array(
+					'table' => 'items',
+        			'alias' => 'Item',
+        			'type' => 'INNER',
+        			'conditions' => array('ReservedItem.item_id = Item.id')
+    			)
+			), "conditions" => array("NOT" => array("ReservedItem.sold" => null)), "group" => "Reservation.number", "order" => "sum desc", "limit" => 10));
+		$this->set("sum_per_seller", $sum_per_seller);
+	}
 }

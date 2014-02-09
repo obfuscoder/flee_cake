@@ -21,3 +21,11 @@ ul.thumbs li:hover {
   background: #eee;
   cursor: pointer;
 }
+
+table tr.sold {
+	background: #e0ffe0;
+}
+
+table tr.sold:nth-child(even) {
+	background: #d8f9d8;
+}

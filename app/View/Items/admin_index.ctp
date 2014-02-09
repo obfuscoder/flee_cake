@@ -24,6 +24,7 @@ Es können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - cou
 		<th>Kategorie</th>
 		<th>Größe</th>
 		<th>Preis</th>
+		<th>verkauft am</th>
 		<th>Aktionen</th>
 	</tr>
 	<?php for ($i=0; $i<count($items); $i++): ?>
@@ -34,6 +35,7 @@ Es können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - cou
 		<td><?php echo $item["Category"]["name"]; ?></td>
 		<td><?php echo $item["Item"]["size"]; ?></td>
 		<td><?php echo $this->Number->currency($item["Item"]["price"], "EUR"); ?></td>
+		<td><?php echo $item["Reservation"][0]["ReservedItem"]["sold"] ?></td>
 		<td class="actions">
 			<?php
 				if (!$item["Reservation"]) {

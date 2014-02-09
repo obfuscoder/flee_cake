@@ -49,16 +49,18 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 		<th>Kategorie</th>
 		<th>Größe</th>
 		<th>Preis</th>
+		<th>verkauft</th>
 		<th>Aktionen</th>
 	</tr>
 	<?php for ($i=0; $i<count($items); $i++): ?>
-	<tr>
-		<?php $item = $items[$i] ?>
+	<?php $item = $items[$i] ?>
+	<tr<?php if($item["Reservation"][0]["ReservedItem"]["sold"] != null) echo ' class="sold"' ?>>
 		<td><?php echo $i+1 ?></td>
 		<td><?php echo $item["Item"]["description"]; ?></td>
 		<td><?php echo $item["Category"]["name"]; ?></td>
 		<td><?php echo $item["Item"]["size"]; ?></td>
 		<td><?php echo $this->Number->currency($item["Item"]["price"], "EUR"); ?></td>
+		<td><?php echo $item["Reservation"][0]["ReservedItem"]["sold"] != null ? "ja":"nein" ?></td>
 		<td class="actions">
 			<?php
 				if (!$item["Reservation"]) {

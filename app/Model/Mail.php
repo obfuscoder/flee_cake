@@ -3,6 +3,11 @@
 App::uses('CakeEmail', 'Network/Email');
 
 class Mail extends AppModel {
+	public $validate = array(
+		"subject" => "notEmpty",
+		"body" => "notEmpty"
+	);
+
 	public function enqueue($to, $subject, $body) {
 		$this->create();
 		$this->save(array("Mail" => array("to" => $to, "subject" => $subject, "body" => $body)));

@@ -37,6 +37,7 @@
 		<?php echo $this->Html->link("Hilfe/Kontakt", "/pages/contact"); ?>
 		<?php echo $this->Html->link("Impressum", "/pages/imprint"); ?>
 		<?php echo $this->Html->link("Datenschutz", "/pages/privacy"); ?>
+		<?php echo $this->Html->link("Teilnahmebedingungen", "/pages/terms"); ?>
 	</div>
 
 <?php

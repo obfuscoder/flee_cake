@@ -39,7 +39,9 @@ Sie bekommen bei der Annahme von uns Etikettenaufkleber um diese zu überkleben.
 <p>Als Unkostenbeitrag behalten wir 20% des Erlöses ein, der nach Abzug 
 der Kosten den Kindergärten Regenbogen und Arche Noah zu gleichen Teilen gespendet wird.</p>
 <?php
-	echo $this->Form->create(null, array("type" => "get", "url" => "/sellers/register"));
-	echo $this->Form->submit("Teilnahmebedingungen akzeptieren");
-	echo $this->Form->end();
+	if (isset($this->request->query['accept'])) {
+		echo $this->Form->create(null, array("type" => "get", "url" => "/sellers/register"));
+		echo $this->Form->submit("Teilnahmebedingungen akzeptieren");
+		echo $this->Form->end();
+	}
 ?>

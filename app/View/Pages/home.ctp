@@ -10,6 +10,7 @@
 
 <?php
 	echo $this->Form->create(null, array("type" => "get", "url" => "/pages/terms"));
+	echo $this->Form->hidden("accept");
 	echo $this->Form->submit("Zur Registrierung");
 	echo $this->Form->end();
 ?>

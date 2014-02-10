@@ -19,6 +19,7 @@ zeitgemäße Ware und behalten uns vor, Teile auszusortieren.</p>
 Haftung</strong> übernommen werden. Für die Rückgabe von Kleiderbügeln kann 
 keine Gewähr übernommen werden.</p>
 <p>Es entfällt pro Teilnehmer eine <strong>Teilnahmegebühr</strong> von <strong>2,50 €</strong>.</p>
+<p><strong>Wir runden alle Verkäuferrechnungen ab</strong> auf volle 10Cent. D.h. 10,88Euro entspricht 10,80Euro</p>
 <p>Nur ein Teilnehmer je Haushalt. Mehrere Anmeldungen des gleiches Haushaltes sind nicht gestattet.</p>
 <p>Es werden nur Preise akzeptiert, die auf 10 Cent gerundet sind.</p>
 <p>Die Teilnehmer müssen die nicht verkaufte Ware, sowie den Erlös der 

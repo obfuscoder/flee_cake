@@ -25,12 +25,13 @@
 </table>
 <?php
 	if (count($sellers) > 0) {
-		foreach($sellers as $k=>&$seller) {
-			$seller = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] . " (" . $seller["Seller"]["email"] . ") - " . count($seller['Item']);
+		$sellers_list = array();
+		foreach($sellers as $seller) {
+			$sellers_list[$seller["Seller"]["id"]] = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] . " (" . $seller["Seller"]["email"] . ") - " . count($seller['Item']);
 		}
 		echo $this->Form->create('Reservation', array("action" => "create"));
 		echo $this->Form->hidden('event_id', array("value" => $event_id));
-		echo $this->Form->select("seller_id", $sellers, array("empty" => false, "label" => "Verkäufer reservieren"));
+		echo $this->Form->select("seller_id", $sellers_list, array("empty" => false, "label" => "Verkäufer reservieren"));
 		echo $this->Form->end("Reservieren");
 	}
 ?>

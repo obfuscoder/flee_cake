@@ -224,6 +224,19 @@ class SellersController extends AppController {
 		);
 		$this->set("customers_per_region", $customers_per_region);
 	}
+
+	public function review($token) {
+		$seller = $this->auth($token);
+		if ($this->Seller->Review->findBySellerId($seller["Seller"]["id"])) {
+			return $this->render("review_done");
+		}
+		if ($this->request->isPost()) {
+			$this->request->data["Review"]["seller_id"] = $seller["Seller"]["id"];
+			$this->Seller->Review->create();
+			$this->Seller->Review->save($this->request->data);
+			return $this->render("review_done");
+		}
+	}
 }
 
 ?>

@@ -3,7 +3,8 @@
 class Seller extends AppModel {
 	public $hasMany = array(
 		"Item",
-		"Reservation"
+		"Reservation",
+		"Review"
 	);
 
 	public $belongsTo = array("ZipCode" => array("foreignKey" => "zip_code"));

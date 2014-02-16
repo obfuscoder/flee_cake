@@ -2,7 +2,7 @@
 
 class ItemsController extends AppController {
 	public $helpers = array("Html", "Form", "Session", "Number");
-	public $components = array("Session", "RequestHandler");
+	public $components = array("Session");
 
 	private function checkSeller($sellerId) {
 		if ($this->Session->read("Admin")) {
@@ -122,19 +122,6 @@ class ItemsController extends AppController {
         $this->set("reservation", $this->Item->Reservation->findById($reservationId));
 
         $this->layout = 'pdf'; //this will use the pdf.ctp layout
-	}
-
-	public function sold() {
-		$parser = function ($data) {
-			debug($data);
-    		$rows = str_getcsv($data, "\n");
-    		foreach ($rows as &$row) {
-        		$row = str_getcsv($row, ',');
-    		}
-    		return $rows;
-		};
-		$this->RequestHandler->addInputType('csv', array($parser));
-		print_r($this->request->data);
 	}
 }
 

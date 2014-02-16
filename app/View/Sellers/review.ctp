@@ -5,7 +5,7 @@
 <?php echo $this->Form->create('Review');
 	$options = array(1 => "", 2 => "", 3 => "", 4 => "", 5 => "", 6 => "");
 	$attributes = array(
-				'value' => false,
+				'value' => null,
 			    'label' => false,
 			    'between' => '</td><td>',
 			    'separator' => '</td><td>',
@@ -73,7 +73,7 @@
 			<td><?php echo $this->Form->radio('organization', $options, $attributes); ?><td>
 		</tr>
 		<tr>
-			<th colspan="7">Bitte geben Sie noch eine Gesamtnote über die gesamte Flohmarktveranstaltung</th>
+			<th colspan="7">Bitte geben Sie noch eine Gesamtnote</th>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
@@ -82,6 +82,6 @@
 	</tbody>
 </table>
 <table><tr><th colspan="5">Wie sind Sie auf uns aufmerksam geworden?</th></tr><tr><td><?php echo $this->Form->radio('source', array("newspaper" => "Zeitungsanzeige", "poster" => "Plakat", "internet" => "Internet", "friends" => "Bekannte/Familie", "other" => "Sonstiges"), $attributes); ?></td></tr></table>
-<table><tr><th colspan="2">Würden Sie unser Abrechnungssystem weiterempfehlen?</th></tr><tr><td><?php echo $this->Form->radio('recommend', array('yes' => "ja", 'no' => "nein"), $attributes); ?></td></tr></table>
+<table><tr><th colspan="2">Würden Sie unser Abrechnungssystem weiterempfehlen?</th></tr><tr><td><?php echo $this->Form->radio('recommend', array(true => "ja", false => "nein"), $attributes); ?></td></tr></table>
 <table><tr><th>Welche Dinge haben Ihnen nicht gefallen bzw. was sollten wir Ihrer Meinung nach verbessern?</th></tr><tr><td><?php echo $this->Form->input('to_improve', array('type' => 'textarea', 'label' => false)); ?></td></tr></table>
 <?php echo $this->Form->submit("Bewertung abschließen"); ?>

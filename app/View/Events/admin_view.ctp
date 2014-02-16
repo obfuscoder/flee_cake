@@ -40,9 +40,7 @@
 			echo $this->Html->link("Bearbeitungsabschlussmail verschicken", array("action" => "mail_closed", $event['Event']['id']));
 		} ?>
 	<?php
-		#if (strtotime($event['Event']['reservation_end']) < time()) {
-			echo $this->Html->link("Datenexport der Artikel", array("action" => "csv", $event['Event']['id']));
-			echo $this->Html->link("Datenexport der Verkäufer", array("action" => "sellers_csv", $event['Event']['id']));
-		#}
-	?>
+		if ($event["Event"]["review_sent"] === null && strtotime($event["Event"]["date"]) <= time()) {
+			echo $this->Html->link("Abschlussmail verschicken", array("action" => "mail_review", $event['Event']['id']));
+		} ?>
 </p>

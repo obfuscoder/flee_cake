@@ -81,6 +81,10 @@ class AdminController extends AppController {
 		$items_per_day = $item->find("all", array("fields" => array("date(Item.created) as date", "count(*) as count"),
 			"group" => "date(Item.created)", 'recursive' => 0));
 		$this->set("items_per_day", $items_per_day);
+
+		$review = new Review();
+		$review_count = $review->find("count");
+		$this->set("review_count", $review_count);
 	}
 
 	public function admin_dump() {

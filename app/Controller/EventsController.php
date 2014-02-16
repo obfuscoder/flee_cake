@@ -117,7 +117,6 @@ class EventsController extends AppController {
 			$this->Session->setFlash("Die Mail wurde bereits " .
 				CakeTime::timeAgoInWords($event["Event"]["closed_sent"], array('format' => 'd.m.Y')) . " versendet.");
 		} else {
-			$reservations = count($event["Reservation"]);
 			$mailCount = $this->sendClosedMails($event);
 			$this->Session->setFlash(
 				"Es wurden $mailCount Mail(s) verschickt.",
@@ -146,28 +145,39 @@ class EventsController extends AppController {
 		return count($reservations);
 	}
 
-	public function admin_csv($id) {
+	public function admin_mail_review($id) {
 		$event = $this->Event->findById($id);
-		#if (strtotime($event['Event']['reservation_end']) >= time()) {
-		#	$this->Session->setFlash("Der Datenexport ist für diese Veranstaltung noch nicht möglich, da die Reserierung noch nicht abgeschlossen ist.");
-		#	return $this->redirect(array('action' => 'view', $id));
-		#}
-		$reservations = $this->Event->Reservation->findAllByEventId($id);
-		$this->set("reservations", $reservations);
-		$categories = $this->Event->Reservation->Seller->Item->Category->find("list");
-		$this->set("categories", $categories);
-		$this->response->type('csv');
-        $this->layout = 'csv';
+		if ($event["Event"]["review_sent"] !== null) {
+			App::uses('CakeTime', 'Utility');
+			$this->Session->setFlash("Die Mail wurde bereits " .
+				CakeTime::timeAgoInWords($event["Event"]["review_sent"], array('format' => 'd.m.Y')) . " versendet.");
+		} else {
+			$mailCount = $this->sendReviewMails($event);
+			$this->Session->setFlash(
+				"Es wurden $mailCount Mail(s) verschickt.",
+				"default", array('class' => 'success'));
+		}
+		return $this->redirect(array('action' => 'view', $id));
 	}
 
-	public function admin_sellers_csv($id) {
-		$event = $this->Event->findById($id);
-		#if (strtotime($event['Event']['reservation_end']) >= time()) {
-		#	$this->Session->setFlash("Der Datenexport ist für diese Veranstaltung noch nicht möglich, da die Reserierung noch nicht abgeschlossen ist.");
-		#	return $this->redirect(array('action' => 'view', $id));
-		#}
+	private function sendReviewMails($event) {
+		$id = $event["Event"]["id"];
 		$reservations = $this->Event->Reservation->findAllByEventId($id);
-		$this->set("reservations", $reservations);
+		App::uses('CakeEmail', 'Network/Email');
+		$mail = new CakeEmail('queue');
+		foreach($reservations as $reservation) {
+			$this->Event->Reservation->Seller->Item->label($reservation);
+			$mail->template("review", "default")
+				->emailFormat("text")
+				->to($reservation["Seller"]["email"])
+				->subject("Flohmarktergebnisse verfügbar - Bitte bewerten Sie uns")
+				->viewVars(compact("reservation", "event"))
+				->send();
+		}
+		$event["Event"]["review_sent"] = date("Y-m-d H:i:s");
+		$this->Event->save($event);
+
+		return count($reservations);
 	}
 
 	public function view($id = null) {
@@ -234,5 +244,10 @@ class EventsController extends AppController {
 			"group" => "ZipCode.city", "order" => "count desc")
 		);
 		$this->set("customers_per_city", $customers_per_city);
+
+		$sellers_per_city = $item->Seller->find("all", array("fields" => array("ZipCode.city", "count(*) as count"),
+			"group" => "ZipCode.city", "order" => "count desc")
+		);
+		$this->set("sellers_per_city", $sellers_per_city);
 	}
 }

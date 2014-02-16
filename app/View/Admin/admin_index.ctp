@@ -23,6 +23,12 @@
 	<li>Etiketten: <?php echo $reserved_item_count ?></li>
 </ul>
 </p>
+<h3>Bewertungen</h3>
+<p>
+<ul>
+  <li>gesamt: <?php echo $review_count ?></li>
+</ul>
+</p>
 <h3>Mailqueue</h3>
 <p>
 <ul>

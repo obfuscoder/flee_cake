@@ -32,6 +32,37 @@ var categoryChart = new CanvasJS.Chart("categoryChart",
 categoryChart.render();
 </script>
 <p>Von den <strong><?php echo $item_count ?></strong> angebotenen Artikeln wurden <strong><?php echo $sold_item_count ?></strong> Artikel verkauft. Damit wurden <strong><?php echo number_format($sold_item_count/$item_count*100) ?>%</strong> aller Artikel verkauft.</p>
+<p>Die Verkäufer kamen aus den folgenden Ortschaften:</p>
+<div id="sellerZipChart" style="height: 400px; width: 600px"></div>
+<script type="text/javascript">
+var sellerZipChart = new CanvasJS.Chart("sellerZipChart",
+{
+  creditText: "",
+  title:{
+    text: "Anzahl Verkäufer pro Region",
+    fontSize: 30
+  },
+  legend:{
+    verticalAlign: "bottom",
+    horizontalAlign: "center"
+  },
+  data: [
+  {        
+   indexLabelFontSize: 14,
+   indexLabelFontFamily: "Verdana",       
+   indexLabelPlacement: "outside",
+   type: "pie",       
+   dataPoints: [
+   <?php foreach($sellers_per_city as $city): ?>
+   {  y: <?php echo $city[0]["count"] ?>, name: "<?php echo $city["ZipCode"]["city"] ?>", indexLabel: "<?php echo $city["ZipCode"]["city"] ?>" },
+   <?php endforeach ?>
+   ]
+ }
+ ]
+});
+sellerZipChart.render();
+</script>
+<p>Hier die Top10 der Verkäufer:</p>
 <div id="sellerChart" style="height: 400px; width: 600px"></div>
 <script type="text/javascript">
 var sellerChart = new CanvasJS.Chart("sellerChart",
@@ -110,6 +141,7 @@ var moneyChart = new CanvasJS.Chart("moneyChart",
 
 moneyChart.render();
 </script>
+<p>Wir haben beim Verkauf die Postleitzahlen der Käufer erfragt. Hier eine Aufstellung der Käufer:</p>
 <div id="customerChart" style="height: 400px; width: 600px"></div>
 <script type="text/javascript">
 var customerChart = new CanvasJS.Chart("customerChart",

@@ -67,7 +67,7 @@ class PagesController extends AppController {
 		}
 		$this->set(compact('page', 'subpage', 'title_for_layout'));
 
-		$events = ClassRegistry::init('Event')->find("all", array('order' => array('Event.date')));
+		$events = ClassRegistry::init('Event')->find("all", array('order' => array('Event.date'), 'conditions' => array('Event.date >= now()')));
 
 		if ($page == "home") {
 			App::uses('CakeTime', 'Utility');

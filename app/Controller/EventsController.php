@@ -175,6 +175,9 @@ class EventsController extends AppController {
 
 		$item = new Item();
 
+		$this->set("item_count", $item->ReservedItem->find("count"));
+		$this->set("sold_item_count", $item->ReservedItem->find("count", array("conditions" => array("not" => array("ReservedItem.sold" => null)))));
+
 		$items_per_category = $item->ReservedItem->find("all", array("fields" => array("Category.name", "count(*) as count"),
 			"joins" => array(
 				array(
@@ -195,7 +198,7 @@ class EventsController extends AppController {
         			'type' => 'INNER',
         			'conditions' => array('Category.id = Item.category_id')
     			),
-			), "group" => "Category.id"));
+			), "group" => "Category.id", "order" => "count desc"));
 		$this->set("items_per_category", $items_per_category);
 
 		$items_per_seller = $item->ReservedItem->find("all", array("fields" => array("Reservation.number", "count(*) as count"),
@@ -225,5 +228,11 @@ class EventsController extends AppController {
     			)
 			), "conditions" => array("NOT" => array("ReservedItem.sold" => null)), "group" => "Reservation.number", "order" => "sum desc", "limit" => 10));
 		$this->set("sum_per_seller", $sum_per_seller);
+
+		$customer = ClassRegistry::init('Customer');
+		$customers_per_city = $customer->find("all", array("fields" => array("ZipCode.city", "count(*) as count"),
+			"group" => "ZipCode.city", "order" => "count desc")
+		);
+		$this->set("customers_per_city", $customers_per_city);
 	}
 }

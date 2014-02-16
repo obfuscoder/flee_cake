@@ -17,6 +17,7 @@
 <p><?php echo $this->Html->link("Bereits registriert?", "/sellers/already_registered") ?></p>
 
 <h3>Kommende Flohmärkte</h3>
+<?php if ($events): ?>
 <ul class="thumbs">
 <?php foreach ($events as $event): ?>
 <li>
@@ -34,10 +35,12 @@
 </li>
 <?php endforeach; ?>
 </ul>
-<p>Hier noch ein paar Impressionen der Festhalle</p>
+<?php else: ?>
+	<p>Aktuell sind keine Flohmärkte geplant.</p>
+<?php endif ?>
+<p><small>Hier noch ein paar Impressionen der Festhalle</small></p>
 <?php
 	echo $this->Html->image("flohmarkt.jpg", array("width" => 300, "style" => "margin: 5px"));
 	echo $this->Html->image("flohmarkt2.jpg", array("width" => 300, "style" => "margin: 5px"));
 	echo $this->Html->image("kinderbetreuung.jpg", array("width" => 300, "style" => "margin: 5px"));
 ?>
-

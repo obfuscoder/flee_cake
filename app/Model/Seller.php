@@ -6,6 +6,8 @@ class Seller extends AppModel {
 		"Reservation"
 	);
 
+	public $belongsTo = array("ZipCode" => array("foreignKey" => "zip_code"));
+
 	public $validate = array(
 		"first_name" => array("rule" => "notEmpty", "message" => "Bitte geben Sie einen Vornamen ein."),
 		"last_name" => array("rule" => "notEmpty", "message" => "Bitte geben Sie einen Nachnamen ein."),

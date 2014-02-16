@@ -1,5 +1,7 @@
-<?php $this->set("title_for_layout", "Statistiken für " . $event['Event']['name']) ?>
+<?php $this->set("title_for_layout", "Ergebnisse " . $event['Event']['name']) ?>
 <?php echo $this->Html->script('canvasjs.min.js') ?>
+<h3><?php echo CakeTime::format($event["Event"]["date"], "%A, %e. %B %Y") ?></h3>
+<p>Insgesamt wurden <strong><?php echo $item_count ?></strong> Artikel auf dem Flohmarkt angeboten. Hier eine Aufstellung der Artikel-Kategorien.</p>
 <div id="categoryChart" style="height: 400px; width: 600px"></div>
 <script type="text/javascript">
 var categoryChart = new CanvasJS.Chart("categoryChart",
@@ -29,7 +31,7 @@ var categoryChart = new CanvasJS.Chart("categoryChart",
 });
 categoryChart.render();
 </script>
-
+<p>Von den <strong><?php echo $item_count ?></strong> angebotenen Artikeln wurden <strong><?php echo $sold_item_count ?></strong> Artikel verkauft. Damit wurden <strong><?php echo number_format($sold_item_count/$item_count*100) ?>%</strong> aller Artikel verkauft.</p>
 <div id="sellerChart" style="height: 400px; width: 600px"></div>
 <script type="text/javascript">
 var sellerChart = new CanvasJS.Chart("sellerChart",
@@ -107,4 +109,33 @@ var moneyChart = new CanvasJS.Chart("moneyChart",
 });
 
 moneyChart.render();
+</script>
+<div id="customerChart" style="height: 400px; width: 600px"></div>
+<script type="text/javascript">
+var customerChart = new CanvasJS.Chart("customerChart",
+{
+  creditText: "",
+  title:{
+    text: "Anzahl Kunden pro Region",
+    fontSize: 30
+  },
+  legend:{
+    verticalAlign: "bottom",
+    horizontalAlign: "center"
+  },
+  data: [
+  {        
+   indexLabelFontSize: 14,
+   indexLabelFontFamily: "Verdana",       
+   indexLabelPlacement: "outside",
+   type: "pie",       
+   dataPoints: [
+   <?php foreach($customers_per_city as $city): ?>
+   {  y: <?php echo $city[0]["count"] ?>, name: "<?php echo $city["ZipCode"]["city"] ?>", indexLabel: "<?php echo $city["ZipCode"]["city"] ?>" },
+   <?php endforeach ?>
+   ]
+ }
+ ]
+});
+customerChart.render();
 </script>

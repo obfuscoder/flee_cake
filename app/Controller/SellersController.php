@@ -188,6 +188,42 @@ class SellersController extends AppController {
 		$this->Seller->notify($seller["Seller"]["id"]);
 		$this->set("seller", $seller);
 	}
+
+	public function stats($token) {
+		$seller = $this->auth($token);
+		$sellerId = $seller["Seller"]["id"];
+		$customers_per_region = $this->Seller->Reservation->ReservedItem->find("all", array("fields" => array("ZipCode.city", "count(*) as count"),
+			"joins" => array(
+				array(
+					'table' => 'reservations',
+        			'alias' => 'Reservation',
+        			'type' => 'INNER',
+        			'conditions' => array("ReservedItem.reservation_id = Reservation.id", "Reservation.seller_id = $sellerId")
+    			),
+				array(
+					'table' => 'purchases',
+        			'alias' => 'Purchase',
+        			'type' => 'INNER',
+        			'conditions' => array('Purchase.reserved_item_id = ReservedItem.id')
+    			),
+				array(
+					'table' => 'customers',
+        			'alias' => 'Customer',
+        			'type' => 'INNER',
+        			'conditions' => array("Purchase.customer_id = Customer.id")
+    			),
+				array(
+					'table' => 'zip_codes',
+        			'alias' => 'ZipCode',
+        			'type' => 'INNER',
+        			'conditions' => array('Customer.zip_code = ZipCode.id')
+    			),
+			),
+			"conditions" => array("NOT" => array("ReservedItem.sold" => null)),
+			"group" => "ZipCode.city", "order" => "count desc")
+		);
+		$this->set("customers_per_region", $customers_per_region);
+	}
 }
 
 ?>

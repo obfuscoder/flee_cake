@@ -1,7 +1,6 @@
 <?php
 
 class SellersController extends AppController {
-	public $helpers = array("Html", "Form", "Session", "Time");
 	public $components = array("Session");
 
 	function lastUpdated($seller) {
@@ -37,7 +36,7 @@ class SellersController extends AppController {
 	public function admin_new() {
 		if ($this->request->isPost()) {
 			if ($this->create()) {
-				$this->Session->setFlash("Verkäufer gespeichert", "default", array('class' => 'success'));
+				$this->Session->setFlash("Verkäufer gespeichert", "default", array('class' => 'bg-success'));
 				return $this->redirect(array("action" => "index"));
 			}
 		}
@@ -50,7 +49,7 @@ class SellersController extends AppController {
 			if ($seller = $this->Seller->save($this->request->data)) {
 				$this->send_registration_mail($seller);
 			} else {
-				$this->Session->setFlash("Registrierung fehlgeschlagen!");
+				$this->Session->setFlash("Registrierung fehlgeschlagen!", "default", array('class' => 'bg-danger'));
 			}
 			return $seller;
 		}
@@ -68,10 +67,10 @@ class SellersController extends AppController {
 		$seller = $this->Seller->findById($id);
 		if ($this->request->isPut()) {
 			if ($this->Seller->save($this->request->data)) {
-				$this->Session->setFlash("Verkäufer aktualisiert.", "default", array('class' => 'success'));
+				$this->Session->setFlash("Verkäufer aktualisiert.", "default", array('class' => 'bg-success'));
 				return $this->redirect(array('action' => 'index'));
 			}
-			$this->Session->setFlash("Verkäufer konnte nicht gespeichert werden.");
+			$this->Session->setFlash("Verkäufer konnte nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
 		} else {
 			$this->request->data = $seller;
 		}
@@ -117,7 +116,7 @@ class SellersController extends AppController {
 	public function admin_delete($id = null) {
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Seller->delete($id)) {
-			$this->Session->setFlash(__("The seller has been deleted."), "default", array('class' => 'success'));
+			$this->Session->setFlash(__("The seller has been deleted."), "default", array('class' => 'bg-success'));
 			return $this->redirect(array("action" => "index"));
 		}
 	}
@@ -160,7 +159,8 @@ class SellersController extends AppController {
 		if ($this->request->isPost()) {
 			$seller = $this->Seller->findByEmail($this->request->data['Seller']['email']);
 			if (!$seller) {
-				$this->Session->setFlash('Es konnte kein Nutzer mit dieser eMail-Adresse gefunden werden. Bitte überprüfen Sie Ihre Eingabe oder registrieren Sie sich neu.');
+				$this->Session->setFlash('Es konnte kein Nutzer mit dieser eMail-Adresse gefunden werden. Bitte überprüfen Sie Ihre Eingabe oder registrieren Sie sich neu.',
+					"default", array('class' => 'bg-danger'));
 				return;
 			}
 			$this->send_registration_mail($seller);

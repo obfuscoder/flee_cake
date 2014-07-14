@@ -1,7 +1,6 @@
 <?php
 
 class ItemsController extends AppController {
-	public $helpers = array("Html", "Form", "Session", "Number");
 	public $components = array("Session");
 
 	private function checkSeller($sellerId) {
@@ -43,12 +42,12 @@ class ItemsController extends AppController {
 			$this->Item->create();
 	        $this->request->data['Item']['price'] = str_replace(",", ".", $this->request->data['Item']['price']);
 			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__("Item has been created."), "default", array('class' => 'success'));
+				$this->Session->setFlash(__("Item has been created."), "default", array('class' => 'bg-success'));
 				return $this->redirect(array("action" => "index", $this->request->data["Item"]["seller_id"]));
 			}
         	$this->request->data['Item']['price'] = CakeNumber::currency(
         		$this->request->data['Item']['price'], "EUR", array("before" => false, "after" => false));
-			$this->Session->setFlash(__("Unable to create item"));
+			$this->Session->setFlash(__("Unable to create item"), "default", array('class' => 'bg-danger'));
 		} else {
 			$item = $this->Item->create();
 			$item["Item"]["seller_id"] = $sellerId;
@@ -68,12 +67,12 @@ class ItemsController extends AppController {
 			$this->checkSeller($this->request->data["Item"]["seller_id"]);
 	        $this->request->data['Item']['price'] = str_replace(",", ".", $this->request->data['Item']['price']);
 			if ($this->Item->save($this->request->data)) {
-				$this->Session->setFlash(__("Item has been updated."), "default", array('class' => 'success'));
+				$this->Session->setFlash(__("Item has been updated."), "default", array('class' => 'bg-success'));
 				return $this->redirect(array("action" => "index", $this->request->data["Item"]["seller_id"]));
 			}
         	$this->request->data['Item']['price'] = CakeNumber::currency(
         		$this->request->data['Item']['price'], "EUR", array("before" => false, "after" => false));
-			$this->Session->setFlash(__("Unable to update item"));
+			$this->Session->setFlash(__("Unable to update item"), "default", array('class' => 'bg-danger'));
 		} else {
 			$item = $this->Item->findById($id);
 			$this->checkSeller($item["Item"]["seller_id"]);
@@ -94,7 +93,7 @@ class ItemsController extends AppController {
 		$item = $this->Item->findById($id);
 		$this->checkSeller($item["Item"]["seller_id"]);
 		if ($this->Item->delete($id)) {
-			$this->Session->setFlash(__("The item has been deleted."), "default", array('class' => 'success'));
+			$this->Session->setFlash(__("The item has been deleted."), "default", array('class' => 'bg-success'));
 			return $this->redirect(array("action" => "index", $item["Item"]["seller_id"]));
 		}
 	}
@@ -107,7 +106,7 @@ class ItemsController extends AppController {
         $reservation = $this->Item->Reservation->findById($reservationId);
 		$this->checkSeller($reservation["Reservation"]["seller_id"]);
 		$createdLabelCount = $this->Item->label($reservation);
-		$this->Session->setFlash("Es wurden " . $createdLabelCount . " Etikett(en) erzeugt.", "default", array('class' => 'success'));
+		$this->Session->setFlash("Es wurden " . $createdLabelCount . " Etikett(en) erzeugt.", "default", array('class' => 'bg-success'));
 		return $this->redirect(array("action" => "index", $reservation["Seller"]["id"]));
 	}
 

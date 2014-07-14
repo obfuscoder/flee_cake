@@ -138,7 +138,7 @@ var totalsChart = new CanvasJS.Chart("totalsChart",
 
 totalsChart.render();
 </script>
-<div id="itemChart" style="height: 400px; width: 500px"></div>
+<div id="itemChart" style="height: 400px; width: 800px"></div>
 <script type="text/javascript">
 var itemChart = new CanvasJS.Chart("itemChart",
 {

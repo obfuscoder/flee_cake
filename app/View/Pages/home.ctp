@@ -1,7 +1,9 @@
 <?php $this->set("title_for_layout", "") ?>
 <p>
-	<img src="img/kitaregenbogen.jpg"/>
-	<img src="img/archenoahkita.jpg"/>
+	<?php
+		echo $this->Html->image("/img/kitaregenbogen.jpg");
+		echo $this->Html->image("/img/archenoahkita.jpg");
+	?>
 </p>
 <p>
 	Auf diesen Seiten können Sie sich für unsere kommenden Flohmärkte als Interessent zum Verkauf von Kommissionsware registrieren. Sie werden dann zeitnah per Mail über den weiteren Ablauf informiert.
@@ -11,8 +13,7 @@
 <?php
 	echo $this->Form->create(null, array("type" => "get", "url" => "/pages/terms"));
 	echo $this->Form->hidden("accept");
-	echo $this->Form->submit("Zur Registrierung");
-	echo $this->Form->end();
+	echo $this->Form->end("Zur Registrierung");
 ?>
 <p><?php echo $this->Html->link("Bereits registriert?", "/sellers/already_registered") ?></p>
 

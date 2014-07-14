@@ -41,7 +41,6 @@ der Kosten den Kindergärten Regenbogen und Arche Noah zu gleichen Teilen gespen
 <?php
 	if (isset($this->request->query['accept'])) {
 		echo $this->Form->create(null, array("type" => "get", "url" => "/sellers/register"));
-		echo $this->Form->submit("Teilnahmebedingungen akzeptieren");
-		echo $this->Form->end();
+		echo $this->Form->end("Teilnahmebedingungen akzeptieren");
 	}
 ?>

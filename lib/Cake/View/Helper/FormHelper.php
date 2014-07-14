@@ -998,7 +998,7 @@ class FormHelper extends AppHelper {
 		if ($type !== 'hidden' && $error !== false) {
 			$errMsg = $this->error($fieldName, $error);
 			if ($errMsg) {
-				$divOptions = $this->addClass($divOptions, 'error');
+				$divOptions = $this->addClass($divOptions, 'has-error');
 				if ($errorMessage) {
 					$out['error'] = $errMsg;
 				}
@@ -1504,7 +1504,6 @@ class FormHelper extends AppHelper {
 		if (isset($value) && is_bool($value)) {
 			$value = $value ? 1 : 0;
 		}
-
 		foreach ($options as $optValue => $optTitle) {
 			$optionsHere = array('value' => $optValue);
 

@@ -25,7 +25,7 @@ class MailsController extends AppController {
 			foreach($this->request->data["Mail"]["to"] as $to) {
 				$this->Mail->enqueue($to, $this->request->data["Mail"]["subject"], $this->request->data["Mail"]["body"]);
 			}
-			$this->Session->setFlash(count($this->request->data["Mail"]["to"]) . " Mails wurden versendet.", "default", array('class' => 'success'));
+			$this->Session->setFlash(count($this->request->data["Mail"]["to"]) . " Mails wurden versendet.", "default", array('class' => 'bg-success'));
 		}
 		if (!$this->Session->read("Admin")) {
 			return $this->redirect (array("controller" => "pages", "action" => "unauthorized"));

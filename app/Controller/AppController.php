@@ -34,6 +34,8 @@ Configure::write('Config.language', 'deu');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
+    public $helpers = array("Form" => array("className" => "MyForm"), "Time");
+    
     function beforeFilter () {
     	if ($this->request->url == "admin" || $this->request->url == "admin/dump") {
     		return;

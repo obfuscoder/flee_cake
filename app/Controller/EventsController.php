@@ -19,10 +19,10 @@ class EventsController extends AppController {
 		if ($this->request->isPost()) {
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
-				$this->Session->setFlash("Das Ereignis wurde erfolgreich hinzugefügt.", "default", array('class' => 'success'));
+				$this->Session->setFlash("Das Ereignis wurde erfolgreich hinzugefügt.", "default", array('class' => 'bg-success'));
 				return $this->redirect(array('action' => 'index'));
 			}
-			$this->Session->setFlash("Das Ereignis konnte nicht gespeichert werden.");
+			$this->Session->setFlash("Das Ereignis konnte nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
 		}
 	}
 
@@ -32,10 +32,10 @@ class EventsController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Event->save($this->request->data)) {
-				$this->Session->setFlash("Das Ereignis wurde erfolgreich aktualisiert.", "default", array('class' => 'success'));
+				$this->Session->setFlash("Das Ereignis wurde erfolgreich aktualisiert.", "default", array('class' => 'bg-success'));
 				return $this->redirect(array('action' => 'index'));
 			}
-			$this->Session->setFlash("Das Ereignis konnte nicht gespeichert werden.");
+			$this->Session->setFlash("Das Ereignis konnte nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
 		} else {
 			$this->request->data = $this->Event->findById($id);
 		}
@@ -45,9 +45,9 @@ class EventsController extends AppController {
 		$this->Event->id = $id;
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Event->delete($id)) {
-			$this->Session->setFlash("Ereignis gelöscht.", "default", array('class' => 'success'));
+			$this->Session->setFlash("Ereignis gelöscht.", "default", array('class' => 'bg-success'));
 		} else {
-			$this->Session->setFlash("Ereignis konnte nicht gelöscht werden.");
+			$this->Session->setFlash("Ereignis konnte nicht gelöscht werden.", "default", array('class' => 'bg-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
@@ -57,13 +57,13 @@ class EventsController extends AppController {
 		if ($event["Event"]["invitation_sent"] !== null) {
 			App::uses('CakeTime', 'Utility');
 			$this->Session->setFlash("Die Einladung für diesen Termin wurde bereits " .
-				CakeTime::timeAgoInWords($event["Event"]["invitation_sent"], array('format' => 'd.m.Y')) . " versendet.");
+				CakeTime::timeAgoInWords($event["Event"]["invitation_sent"], array('format' => 'd.m.Y')) . " versendet.", "default", array('class' => 'bg-danger'));
 		} else {
 			$reservations = count($event["Reservation"]);
 			$invitationCount = $this->sendInvitations($event);
 			$this->Session->setFlash(
 				"Es wurden $invitationCount Einladung(en) verschickt. Es gibt bereits $reservations Reservierung(en).",
-				"default", array('class' => 'success'));
+				"default", array('class' => 'bg-success'));
 		}
 		return $this->redirect(array('action' => 'view', $id));
 	}
@@ -80,13 +80,13 @@ class EventsController extends AppController {
 		if ($event["Event"]["closing_sent"] !== null) {
 			App::uses('CakeTime', 'Utility');
 			$this->Session->setFlash("Die Mail wurde bereits " .
-				CakeTime::timeAgoInWords($event["Event"]["closing_sent"], array('format' => 'd.m.Y')) . " versendet.");
+				CakeTime::timeAgoInWords($event["Event"]["closing_sent"], array('format' => 'd.m.Y')) . " versendet.", "default", array('class' => 'bg-danger'));
 		} else {
 			$reservations = count($event["Reservation"]);
 			$mailCount = $this->sendClosingMails($event);
 			$this->Session->setFlash(
 				"Es wurden $mailCount Mail(s) verschickt.",
-				"default", array('class' => 'success'));
+				"default", array('class' => 'bg-success'));
 		}
 		return $this->redirect(array('action' => 'view', $id));
 	}
@@ -115,12 +115,12 @@ class EventsController extends AppController {
 		if ($event["Event"]["closed_sent"] !== null) {
 			App::uses('CakeTime', 'Utility');
 			$this->Session->setFlash("Die Mail wurde bereits " .
-				CakeTime::timeAgoInWords($event["Event"]["closed_sent"], array('format' => 'd.m.Y')) . " versendet.");
+				CakeTime::timeAgoInWords($event["Event"]["closed_sent"], array('format' => 'd.m.Y')) . " versendet.", "default", array('class' => 'bg-danger'));
 		} else {
 			$mailCount = $this->sendClosedMails($event);
 			$this->Session->setFlash(
 				"Es wurden $mailCount Mail(s) verschickt.",
-				"default", array('class' => 'success'));
+				"default", array('class' => 'bg-success'));
 		}
 		return $this->redirect(array('action' => 'view', $id));
 	}
@@ -150,12 +150,12 @@ class EventsController extends AppController {
 		if ($event["Event"]["review_sent"] !== null) {
 			App::uses('CakeTime', 'Utility');
 			$this->Session->setFlash("Die Mail wurde bereits " .
-				CakeTime::timeAgoInWords($event["Event"]["review_sent"], array('format' => 'd.m.Y')) . " versendet.");
+				CakeTime::timeAgoInWords($event["Event"]["review_sent"], array('format' => 'd.m.Y')) . " versendet.", "default", array('class' => 'bg-danger'));
 		} else {
 			$mailCount = $this->sendReviewMails($event);
 			$this->Session->setFlash(
 				"Es wurden $mailCount Mail(s) verschickt.",
-				"default", array('class' => 'success'));
+				"default", array('class' => 'bg-success'));
 		}
 		return $this->redirect(array('action' => 'view', $id));
 	}

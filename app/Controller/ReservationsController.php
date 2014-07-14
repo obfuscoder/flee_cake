@@ -16,9 +16,9 @@ class ReservationsController extends AppController {
 		$this->request->onlyAllow('post');
 		$reservation = $this->request->data["Reservation"];
 		if ($this->Reservation->add($reservation)) {
-			$this->Session->setFlash("Reservierung durchgeführt", "default", array('class' => 'success'));
+			$this->Session->setFlash("Reservierung durchgeführt", "default", array('class' => 'bg-success'));
 		} else {
-			$this->Session->setFlash("Reservierung fehlgeschlagen");
+			$this->Session->setFlash("Reservierung fehlgeschlagen", "default", array('class' => 'bg-danger'));
 		}
 		return $this->redirect(array("action" => "index", $reservation["event_id"]));
 	}
@@ -30,7 +30,7 @@ class ReservationsController extends AppController {
 			throw new NotFoundException("Die Reservierung konnte nicht gefunden werden");
 		}
 		$this->deleteAndInviteOthers($reservation);
-		$this->Session->setFlash("Reservierung gelöscht", "default", array('class' => 'success'));
+		$this->Session->setFlash("Reservierung gelöscht", "default", array('class' => 'bg-success'));
 		return $this->redirect(array("controller" => "reservations", "action" => "index", $reservation["Reservation"]["event_id"]));
 	}
 
@@ -47,7 +47,7 @@ class ReservationsController extends AppController {
 			throw new ForbiddenException("Diese Aktion ist nicht zulässig.");
 		}
 		$this->deleteAndInviteOthers($reservation);
-		$this->Session->setFlash("Reservierung wurde gelöscht", "default", array('class' => 'success'));
+		$this->Session->setFlash("Reservierung wurde gelöscht", "default", array('class' => 'bg-success'));
 		return $this->redirect(array("controller" => "items", "action" => "index", $seller["Seller"]["id"]));
 	}
 

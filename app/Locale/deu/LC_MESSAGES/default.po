@@ -121,11 +121,11 @@ msgstr "PDF herunterladen"
 +msgstr "Verkäufer"
 
 #: View/Sellers/index.ctp:4
-msgid "First name"
+msgid "First Name"
 msgstr "Vorname"
 
 #: View/Sellers/index.ctp:5
-msgid "Last name"
+msgid "Last Name"
 msgstr "Nachname"
 
 #: View/Sellers/index.ctp:6
@@ -160,29 +160,25 @@ msgstr "Sind Sie sicher"
 msgid "first name"
 msgstr "Vorname"
 
-#: View/Sellers/register.ctp:5
-msgid "last name"
-msgstr "Nachname"
-
 #: View/Sellers/register.ctp:6
-msgid "street"
+msgid "Street"
 msgstr "Straße"
 
 #: View/Sellers/register.ctp:7
-msgid "zip code"
+msgid "Zip Code"
 msgstr "PLZ"
 
 #: View/Sellers/register.ctp:8
-msgid "city"
-msgstr "Stadt"
+msgid "City"
+msgstr "Ort"
 
 #: View/Sellers/register.ctp:9
-msgid "phone number"
-msgstr "Tel.:"
+msgid "Phone"
+msgstr "Telefonnummer"
 
 #: View/Sellers/register.ctp:10
-msgid "email"
-msgstr "Email"
+msgid "Email"
+msgstr "eMail-Adresse"
 
 #: Model/Seller.php:validation for field zipcode
 msgid "postal code may only consist of 5 digits"

@@ -8,7 +8,8 @@ class Item extends AppModel {
 		"description" => array("rule" => array("between", "4", "30"), "message" => "Bitte geben Sie eine sinnvolle Beschreibung mit 4 bis 30 Buchstaben ein."),
 		"price" => array(
 			"notempty" => array("rule" => "notEmpty", "message" => "Bitte geben Sie einen Preis ein."),
-			"number" => array("rule" => "/^\d{1,3}(?:.\d(?:0)?)?$/", "message" => "Der Preis muss zwischen 0 und 1000 € liegen und auf 10 Cent genau sein.")
+			"number" => array("rule" => "/^\d{1,3}(?:.\d(?:0)?)?$/", "message" => "Der Preis muss zwischen 0 und 1000 € liegen und auf 10 Cent genau sein."),
+			"minmax" => array("rule" => array("range", 0.1, 999.9), "message" => "Der Preis muss zwischen 0 und 1000 € liegen und auf 10 Cent genau sein.")
 		),
 		"category_id" => array("rule" => "notempty", "message" => "Bitte wählen Sie eine Kategorie."),
 	);

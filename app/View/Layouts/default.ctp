@@ -38,7 +38,7 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><?php echo $this->Html->link("Hauptseite", "/pages/home"); ?></li>
+            <li><?php echo $this->Html->link("Hauptseite", "/pages/home"); ?></li>
             <li><?php echo $this->Html->link("Teilnahmebedingungen", "/pages/terms"); ?></li>
             <li><?php echo $this->Html->link("Hilfe/Kontakt", "/pages/contact"); ?></li>
             <li><?php echo $this->Html->link("Impressum", "/pages/imprint"); ?></li>

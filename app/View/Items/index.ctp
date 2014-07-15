@@ -40,7 +40,7 @@
 <p>Sie haben aktuell <strong><?php echo count($items) ?></strong> Artikel angelegt.
 Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - count($items) ?></strong> weitere Artikel anlegen.</p>
 <p class="actions">
-	<?php echo $this->Html->link("Artikel hinzufügen", array("controller" => "items", "action" => "create", $seller["Seller"]["id"]), array("class" => "btn btn-primary")); ?></p>
+	<?php echo $this->Html->link("<span class='glyphicon glyphicon-file'></span> Artikel hinzufügen", array("controller" => "items", "action" => "create", $seller["Seller"]["id"]), array("escape" => false, "class" => "btn btn-primary")); ?></p>
 <?php endif; ?>
 <table class="table table-condensed table-hover table-striped">
 	<tr>
@@ -65,9 +65,9 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 			<?php
 				if (!$item["Reservation"]) {
 					$unreservedItemCount++; ?>
-					<?php echo $this->Html->link("Bearbeiten", array("controller" => "items", "action" => "update", $item["Item"]['id']), array("class" => "btn btn-primary btn-xs")); ?>
-					<?php echo $this->Form->postLink("Löschen", array("controller" => "items", "action" => "delete", $item["Item"]['id']),
-							array("confirm" => "Sind Sie sicher, dass Sie diesen Artikel löschen wollen?", "class" => "btn btn-warning btn-xs")); ?>
+					<?php echo $this->Html->link("<span class='glyphicon glyphicon-pencil'></span> Bearbeiten", array("controller" => "items", "action" => "update", $item["Item"]['id']), array("escape" => false, "class" => "btn btn-primary btn-xs")); ?>
+					<?php echo $this->Form->postLink("<span class='glyphicon glyphicon-trash'></span> Löschen", array("controller" => "items", "action" => "delete", $item["Item"]['id']),
+							array("confirm" => "Sind Sie sicher, dass Sie diesen Artikel löschen wollen?", "escape" => false, "class" => "btn btn-warning btn-xs")); ?>
 				<?php } else {
 					$reservedItemCount++; ?>
 					Etikett mit Nummer <strong><?php echo $reservation['Reservation']['number'] . "-" . $item['Reservation'][0]['ReservedItem']['number'] ?></strong> erzeugt <?php

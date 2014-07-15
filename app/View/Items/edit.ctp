@@ -7,6 +7,7 @@
 	echo $this->Form->input("category_id", array("options" => $categories, "empty" => "[Bitte wählen]"));
 	echo $this->Form->input("size");
 	echo $this->Form->input("price", array("label" => "Preis (in € mit 10 Cent Genauigkeit)", "type" => "text"));
-	echo $this->Form->end(__("Save"));
-	echo $this->Html->link("Zurück", array('action' => 'index', $this->request->data["Item"]["seller_id"]), array("class" => "btn btn-default"));
+	echo $this->Form->submitButton("Speichern");
+	echo $this->Html->cancelLink("Zurück", array('action' => 'index', $this->request->data["Item"]["seller_id"]));
+	echo ($this->Form->end());
 ?>

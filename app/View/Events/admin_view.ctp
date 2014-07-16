@@ -21,26 +21,26 @@
 </ul></p>
 <h3>Aktionen</h3>
 <p class="actions">
-	<?php echo $this->Html->link("Bearbeiten", array('action' => 'edit', $event['Event']['id'])); ?>
-	<?php echo $this->Html->link("Reservierungen", array("controller" => "reservations", 'action' => 'index', $event['Event']['id'])); ?>
-	<?php echo $this->Html->link("Terminliste", array('action' => 'index')); ?>
-	<?php echo $this->Html->link("Neuer Termin", array('action' => 'add')); ?>
+	<?php echo $this->Html->buttonLink("Bearbeiten", array('action' => 'edit', $event['Event']['id'])); ?>
+	<?php echo $this->Html->buttonLink("Reservierungen", array("controller" => "reservations", 'action' => 'index', $event['Event']['id'])); ?>
+	<?php echo $this->Html->buttonLink("Terminliste", array('action' => 'index')); ?>
+	<?php echo $this->Html->buttonLink("Neuer Termin", array('action' => 'add')); ?>
 </p>
 <p class="actions">
 	<?php
 		if ($event["Event"]["invitation_sent"] === null && strtotime($event["Event"]["reservation_start"]) > time()) {
-			echo $this->Html->link("Reservierungseinladungen verschicken", array("action" => "invite", $event['Event']['id']));
+			echo $this->Html->buttonLink("Reservierungseinladungen verschicken", array("action" => "invite", $event['Event']['id']));
 		} ?>
 	<?php
 		if ($event["Event"]["closing_sent"] === null && strtotime($event["Event"]["reservation_start"]) < time() && strtotime($event["Event"]["reservation_end"]) > time()) {
-			echo $this->Html->link("Erinnerungsmail vor Bearbeitungsschluss verschicken", array("action" => "mail_closing", $event['Event']['id']));
+			echo $this->Html->buttonLink("Erinnerungsmail vor Bearbeitungsschluss verschicken", array("action" => "mail_closing", $event['Event']['id']));
 		} ?>
 	<?php
 		if ($event["Event"]["closed_sent"] === null && strtotime($event["Event"]["reservation_end"]) <= time()) {
-			echo $this->Html->link("Bearbeitungsabschlussmail verschicken", array("action" => "mail_closed", $event['Event']['id']));
+			echo $this->Html->buttonLink("Bearbeitungsabschlussmail verschicken", array("action" => "mail_closed", $event['Event']['id']));
 		} ?>
 	<?php
 		if ($event["Event"]["review_sent"] === null && strtotime($event["Event"]["date"]) <= time()) {
-			echo $this->Html->link("Abschlussmail verschicken", array("action" => "mail_review", $event['Event']['id']));
+			echo $this->Html->buttonLink("Abschlussmail verschicken", array("action" => "mail_review", $event['Event']['id']));
 		} ?>
 </p>

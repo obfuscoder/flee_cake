@@ -2,7 +2,6 @@
 App::uses('AppController', 'Controller');
 
 class EventsController extends AppController {
-	public $helpers = array("Html", "Form", "Session", "Time");
 	public $components = array('Paginator');
 
 	public function admin_index() {
@@ -19,10 +18,10 @@ class EventsController extends AppController {
 		if ($this->request->isPost()) {
 			$this->Event->create();
 			if ($this->Event->save($this->request->data)) {
-				$this->Session->setFlash("Das Ereignis wurde erfolgreich hinzugefügt.", "default", array('class' => 'bg-success'));
+				$this->Session->setFlash("Der Termin wurde erfolgreich hinzugefügt.", "default", array('class' => 'bg-success'));
 				return $this->redirect(array('action' => 'index'));
 			}
-			$this->Session->setFlash("Das Ereignis konnte nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
+			$this->Session->setFlash("Der Termin konnte nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
 		}
 	}
 
@@ -32,10 +31,10 @@ class EventsController extends AppController {
 		}
 		if ($this->request->is(array('post', 'put'))) {
 			if ($this->Event->save($this->request->data)) {
-				$this->Session->setFlash("Das Ereignis wurde erfolgreich aktualisiert.", "default", array('class' => 'bg-success'));
+				$this->Session->setFlash("Der Termin wurde erfolgreich aktualisiert.", "default", array('class' => 'bg-success'));
 				return $this->redirect(array('action' => 'index'));
 			}
-			$this->Session->setFlash("Das Ereignis konnte nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
+			$this->Session->setFlash("Der Termin konnte nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
 		} else {
 			$this->request->data = $this->Event->findById($id);
 		}
@@ -45,9 +44,9 @@ class EventsController extends AppController {
 		$this->Event->id = $id;
 		$this->request->onlyAllow('post', 'delete');
 		if ($this->Event->delete($id)) {
-			$this->Session->setFlash("Ereignis gelöscht.", "default", array('class' => 'bg-success'));
+			$this->Session->setFlash("Termin gelöscht.", "default", array('class' => 'bg-success'));
 		} else {
-			$this->Session->setFlash("Ereignis konnte nicht gelöscht werden.", "default", array('class' => 'bg-danger'));
+			$this->Session->setFlash("Termin konnte nicht gelöscht werden.", "default", array('class' => 'bg-danger'));
 		}
 		return $this->redirect(array('action' => 'index'));
 	}

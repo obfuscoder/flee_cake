@@ -12,4 +12,10 @@ class MyHtmlHelper extends HtmlHelper {
 		return parent::link($title, $url, $options);
 	}
 
+	public function buttonLink($title = null, $url = null, $options = array()) {
+		$buttonClass = "btn btn-primary";
+		$options["class"] = $buttonClass;
+		return parent::link($title, $url, $options);
+	}
+
 }

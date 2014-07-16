@@ -3,8 +3,12 @@
 	echo $this->Form->create('Event');
 	echo $this->Form->input('id');
 	echo $this->Form->input('name', array("label" => "Name"));
-	echo $this->Form->input('details', array("label" => "Details", "type" => "textarea"));
-	echo $this->Form->input('date', array("label" => "Datum", "dateFormat" => "DMY", "minYear" => date("Y"), "maxYear" => date("Y") + 3));
+	echo $this->Form->input('details', array("label" => "Details", "type" => "textarea")); ?>
+	<div class="form-group">
+		<label for="EventDate" class="control-label">Datum</label>
+		<?php echo $this->Form->date('date', array("class" => "form-control", "min" => date("Y-m-d"), "max" => date("Y-m-d", time() + 3600 * 24 * 365 * 3))); ?>
+	</div>
+<?php
 	echo $this->Form->input('date_confirmed', array("label" => "exakte Daten bekannt"));
 	echo $this->Form->input('max_sellers', array("label" => "Maximale Anzahl Verkäufer"));
 	echo $this->Form->input('max_items_per_seller', array("label" => "Maximale Anzahl Artikel pro Verkäufer"));
@@ -20,7 +24,3 @@
 	echo $this->Form->input('item_pickup_end_time', array("label" => "Ende", "timeFormat" => "24", "interval" => 15));
 	echo $this->Form->end("Speichern");
 ?>
-<h3>Aktionen</h3>
-<p class="actions">
-	<?php echo $this->Html->link("Terminliste", array('action' => 'index')); ?>
-</p>

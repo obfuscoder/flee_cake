@@ -1,13 +1,4 @@
 <?php $this->set("title_for_layout", "Adminbereich") ?>
-<p class="actions">
-	<?php echo $this->Html->link("Termine", array("controller" => "events", "action" => "index")); ?>
-	<?php echo $this->Html->link("Verkäufer", array("controller" => "sellers", "action" => "index")); ?>
-	<?php echo $this->Html->link("Kategorien", array("controller" => "categories", "action" => "index")); ?>
-  <?php echo $this->Html->link("Bewertungen", array("controller" => "reviews", "action" => "index")); ?>
-  <?php echo $this->Html->link("Mails schreiben", array("controller" => "mails", "action" => "send")); ?>
-	<?php echo $this->Html->link("Mails triggern", "/mails/worker"); ?>
-	<?php echo $this->Html->link("DB Dump", array("action" => "dump")); ?>
-</p>
 <h3>Verkäufer</h3>
 <p>
 <ul>

@@ -184,3 +184,6 @@ msgstr "eMail-Adresse"
 msgid "postal code may only consist of 5 digits"
 msgstr "Postleitzahl darf nur aus 5 Ziffern bestehen."
 
+msgid "Date Confirmed"
+msgstr "exakte Daten bekannt"
+

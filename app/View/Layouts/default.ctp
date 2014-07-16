@@ -34,15 +34,29 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+          	<?php if($this->Session->read("Admin")): ?>
+          <?php echo $this->Html->link("Adminbereich", "/admin", array("class" => "navbar-brand")); ?>
+          	<?php else: ?>
           <a class="navbar-brand" href="#">Flohmarkt Königsbach</a>
+        	<?php endif ?>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+          	<?php if($this->Session->read("Admin")): ?>
+			<li><?php echo $this->Html->link("Termine", array("controller" => "events", "action" => "index")); ?></li>
+			<li><?php echo $this->Html->link("Verkäufer", array("controller" => "sellers", "action" => "index")); ?></li>
+			<li><?php echo $this->Html->link("Kategorien", array("controller" => "categories", "action" => "index")); ?></li>
+			<li><?php echo $this->Html->link("Bewertungen", array("controller" => "reviews", "action" => "index")); ?></li>
+			<li><?php echo $this->Html->link("Mails schreiben", array("controller" => "mails", "action" => "send")); ?></li>
+			<li><?php echo $this->Html->link("Mails triggern", "/mails/worker"); ?></li>
+			<li><?php echo $this->Html->link("DB Dump", array("controller" => "mails", "action" => "dump")); ?></li>
+          	<?php else: ?>
             <li><?php echo $this->Html->link("Hauptseite", "/pages/home"); ?></li>
             <li><?php echo $this->Html->link("Teilnahmebedingungen", "/pages/terms"); ?></li>
             <li><?php echo $this->Html->link("Hilfe/Kontakt", "/pages/contact"); ?></li>
             <li><?php echo $this->Html->link("Impressum", "/pages/imprint"); ?></li>
             <li><?php echo $this->Html->link("Datenschutz", "/pages/privacy"); ?></li>
+        	<?php endif ?>
           </ul>
         </div>
       </div>

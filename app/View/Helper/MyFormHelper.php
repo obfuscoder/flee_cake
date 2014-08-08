@@ -42,6 +42,27 @@ class MyFormHelper extends FormHelper {
 		return parent::create($model, $options);
 	}
 
+    public function date($fieldName, $options = array()) {
+        $options["class"] = "form-control";
+        $input = parent::date($fieldName, $options);
+        $label = $this->label($fieldName, null, array("class" => "control-label"));
+        return $this->Html->div("form-group", $label . $input);
+    }
+
+    public function time($fieldName, $options = array()) {
+        $options["class"] = "form-control";
+        $input = parent::time($fieldName, $options);
+        $label = $this->label($fieldName, null, array("class" => "control-label"));
+        return $this->Html->div("form-group", $label . $input);
+    }
+
+    public function date_time($fieldName, $options = array()) {
+        $options["class"] = "form-control";
+        $input = $this->__call("datetime-local", array($fieldName, $options));
+        $label = $this->label($fieldName, null, array("class" => "control-label"));
+        return $this->Html->div("form-group", $label . $input);
+    }
+
 	public function input($fieldName, $options = array()) {
 		return parent::input($fieldName, $options);
 	}

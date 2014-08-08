@@ -12,7 +12,3 @@
 	echo $this->Form->input('reservation_end', array("label" => "Reservierungsende", "dateFormat" => "DMY", "minYear" => date("Y"), "maxYear" => date("Y") + 3, "timeFormat" => "24", "interval" => 15));
 ?>
 <?php echo $this->Form->end("Speichern"); ?>
-<h3>Aktionen</h3>
-<p class="actions">
-	<?php echo $this->Html->link("Terminliste", array('action' => 'index')); ?>
-</p>

@@ -1,26 +1,13 @@
 <?php
 App::uses('AppModel', 'Model');
-/**
- * Event Model
- *
- */
+
 class Event extends AppModel {
 	public $hasMany = array(
 		"Reservation"
 	);
 
-	/**
-	 * Display field
-	 *
-	 * @var string
-	 */
 	public $displayField = 'name';
 
-	/**
-	 * Validation rules
-	 *
-	 * @var array
-	 */
 	public $validate = array(
 		'name' => array(
 			'notempty' => array(

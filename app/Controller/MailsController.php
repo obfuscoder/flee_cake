@@ -5,7 +5,6 @@ App::uses('Seller', 'Model');
 
 class MailsController extends AppController {
 	public $components = array("Session");
-	public $helpers = array("Html", "Form", "Session", "Js");
 
 	public function worker() {
 		$unsentMails = $this->Mail->findAllBySent(null);

@@ -1,11 +1,11 @@
 <?php $this->set("title_for_layout", "Verkäufer") ?>
-<table>
+<table class="table table-condensed table-hover table-striped">
 	<tr>
 		<th>Name</th>
 		<th>Artikel</th>
 		<th>Aktiv</th>
 		<th>Letzte Änderung</th>
-		<th class="actions"><?php echo $this->Html->link("Neu", array("controller" => "sellers", "action" => "new")); ?></th>
+		<th class="actions"><?php echo $this->Html->link("Neuer Verkäufer", array("controller" => "sellers", "action" => "new"), array("class" => "btn btn-primary btn-xs")); ?></th>
 	</tr>
 	<?php foreach ($sellers as $seller): ?>
 	<tr>
@@ -14,14 +14,13 @@
 		<td><?php echo $seller["Seller"]["active"] ? "ja":"nein" ?></td>
 		<td><?php echo $this->Time->timeAgoInWords($seller["Seller"]["lastUpdated"], array('format' => 'd.m.Y')) ?></td>
 		<td class="actions">
-			<?php echo $this->Html->link("Details", array("controller" => "sellers", "action" => "view", $seller["Seller"]['id'])); ?>
-			<?php echo $this->Html->link("Bearbeiten", array("controller" => "sellers", "action" => "edit", $seller["Seller"]['id'])); ?>
-			<?php echo $this->Html->link("Artikel", array("controller" => "items", "action" => "index", $seller["Seller"]['id'])); ?>
+			<?php echo $this->Html->link("Details", array("controller" => "sellers", "action" => "view", $seller["Seller"]['id']), array("class" => "btn btn-primary btn-xs")); ?>
+			<?php echo $this->Html->link("Bearbeiten", array("controller" => "sellers", "action" => "edit", $seller["Seller"]['id']), array("class" => "btn btn-primary btn-xs")); ?>
+			<?php echo $this->Html->link("Artikel", array("controller" => "items", "action" => "index", $seller["Seller"]['id']), array("class" => "btn btn-primary btn-xs")); ?>
 			<?php echo $this->Form->postLink("Löschen", array("controller" => "sellers", "action" => "delete",
-					$seller["Seller"]['id']), array("confirm" => "Verkäufer wirklich löschen?")); ?>
+					$seller["Seller"]['id']), array("confirm" => "Verkäufer wirklich löschen?", "class" => "btn btn-warning btn-xs")); ?>
 		</td>
 	</tr>
 	<?php endforeach; ?>
 	<?php unset($seller); ?>
 </table>
-<p><?php echo $this->Html->link("Hauptseite", array("controller" => "admin", "action" => "index")); ?></p>

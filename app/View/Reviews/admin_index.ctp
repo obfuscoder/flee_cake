@@ -14,4 +14,4 @@ Anzahl: <?php echo $review_count ?>
 	<li><?php echo $comment ?></li>
 	<?php endforeach ?>
 </ul></p>
-<p><?php echo $this->Html->link("Hauptseite", array("controller" => "admin", "action" => "index")); ?></p>
+

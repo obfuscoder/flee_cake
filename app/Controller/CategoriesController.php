@@ -1,7 +1,6 @@
 <?php
 
 class CategoriesController extends AppController {
-	public $helpers = array("Html", "Form", "Session");
 	public $components = array("Session");
 
 	public function admin_index() {
@@ -21,6 +20,7 @@ class CategoriesController extends AppController {
 			}
 			$this->Session->setFlash(__("Creating category failed!"));
 		}
+		$this->render("admin_edit");
 	}
 
 	public function admin_update($id) {
@@ -35,6 +35,7 @@ class CategoriesController extends AppController {
 		if (!$this->request->data) {
 			$this->request->data = $this->Category->findById($id);
 		}
+		$this->render("admin_edit");
 	}
 
 	public function admin_delete($id) {

@@ -23,6 +23,7 @@ class EventsController extends AppController {
 			}
 			$this->Session->setFlash("Der Termin konnte nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
 		}
+		$this->render("admin_edit");
 	}
 
 	public function admin_edit($id = null) {

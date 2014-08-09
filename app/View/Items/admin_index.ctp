@@ -2,14 +2,14 @@
 <?php $unreservedItemCount = $reservedItemCount = 0 ?>
 <p>Es sind aktuell <strong><?php echo count($items) ?></strong> Artikel angelegt.</p>
 <p class="actions">
-	<?php echo $this->Html->link("Artikel hinzufügen", array("controller" => "items", "action" => "create", $seller["Seller"]["id"])); ?></p>
+	<?php echo $this->Html->buttonLink("Artikel hinzufügen", array("controller" => "items", "action" => "create", $seller["Seller"]["id"])); ?></p>
 <?php if ($reservation): ?>
 	<p>Die Reservierungsnummer ist <strong><?php echo $reservation["Reservation"]["number"] ?></strong>.
 	</p>
 <?php else: ?>
 	<p>Es gibt noch keine Reservierungsnummer.</p>
 <?php endif ?>
-<table>
+<table class="table table-condensed table-hover table-striped">
 	<tr>
 		<th>Position</th>
 		<th>Beschreibung</th>
@@ -31,10 +31,11 @@
 		<td class="actions">
 			<?php
 				if (!$item["Reservation"]) {
-					$unreservedItemCount++;
-					echo $this->Html->link("Bearbeiten", array("controller" => "items", "action" => "update", $item["Item"]['id']));
-					echo $this->Form->postLink("Löschen", array("controller" => "items", "action" => "delete", $item["Item"]['id']),
-							array("confirm" => "Sind Sie sicher, dass Sie diesen Artikel löschen wollen?"));
+					$unreservedItemCount++; ?>
+					<?php echo $this->Html->link("Bearbeiten", array("controller" => "items", "action" => "update", $item["Item"]['id']), array("class" => "btn btn-primary btn-xs")); ?>
+					<?php echo $this->Form->postLink("Löschen", array("controller" => "items", "action" => "delete", $item["Item"]['id'] ),
+							array("confirm" => "Sind Sie sicher, dass Sie diesen Artikel löschen wollen?", "class" => "btn btn-warning btn-xs")); ?>
+<?php							
 				} else {
 					$reservedItemCount++; ?>
 					Etikett mit Nummer <strong><?php echo $reservation['Reservation']['number'] . "-" . $item['Reservation'][0]['ReservedItem']['number'] ?></strong> erzeugt.<?php
@@ -49,7 +50,7 @@
 <p>Sobald eine Reservierungsnummer vergeben wurde, können die Etiketten für die Artikel erzeugt und gedruckt werden.</p>
 <p class="actions"><?php
 	if ($reservation && $unreservedItemCount) {
-		echo $this->Html->link("$unreservedItemCount Etikett(en) erzeugen",
+		echo $this->Html->buttonLink("$unreservedItemCount Etikett(en) erzeugen",
 			array("action" => "label", $reservation["Reservation"]["id"]),
 			array(), "Sobald Sie die Etiketten erzeugen, werden alle bis zu diesem Zeitpunkt eingegebenen Artikel gesperrt. " .
 			"Sie können diese Artikel nicht mehr bearbeiten. Sie können jedoch danach noch weitere Artikel hinzufügen. " .
@@ -57,7 +58,7 @@
 		echo "&nbsp";
 	}
 	if ($reservation && $reservation["Item"]) {
-		echo $this->Html->link("$reservedItemCount erzeugte Etiketten ausdrucken", array("action" => "pdf", $reservation["Reservation"]["id"]));
+		echo $this->Html->buttonLink("$reservedItemCount erzeugte Etiketten ausdrucken", array("action" => "pdf", $reservation["Reservation"]["id"]));
 	} ?></p>
 <?php endif; ?>
-<p><?php echo $this->Html->link("Hauptseite", array("controller" => "admin", "action" => "index")); ?></p>
+

@@ -42,4 +42,3 @@ $(document).ready(function() {
 
 	echo $this->Form->end("Senden");
 ?>
-<p><?php echo $this->Html->link("Hauptseite", array("controller" => "admin", "action" => "index")); ?></p>

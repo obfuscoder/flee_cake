@@ -5,7 +5,7 @@
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('date'); ?></th>
 			<th><?php echo $this->Paginator->sort('reservation_start'); ?></th>
-			<th class="actions"><?php echo $this->Html->link("Neuer Termin", array('action' => 'add')); ?></th>
+			<th class="actions"><?php echo $this->Html->link("Neuer Termin", array('action' => 'add'), array("class" => "btn btn-primary btn-xs")); ?></th>
 	</tr>
 	<?php foreach ($events as $event): ?>
 	<tr>

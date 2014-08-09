@@ -2488,14 +2488,14 @@ class FormHelper extends AppHelper {
 			case '24':
 				$attrs['Hour']['value'] = $hour;
 				$attrs['Minute']['value'] = $min;
-				$opt .= $this->hour($fieldName, true, $attrs['Hour']) . ':' .
+				$opt .= $this->hour($fieldName, true, $attrs['Hour']) . $separator .
 				$this->minute($fieldName, $attrs['Minute']);
 				break;
 			case '12':
 				$attrs['Hour']['value'] = $hour;
 				$attrs['Minute']['value'] = $min;
 				$attrs['Meridian']['value'] = $meridian;
-				$opt .= $this->hour($fieldName, false, $attrs['Hour']) . ':' .
+				$opt .= $this->hour($fieldName, false, $attrs['Hour']) . $separator .
 				$this->minute($fieldName, $attrs['Minute']) . ' ' .
 				$this->meridian($fieldName, $attrs['Meridian']);
 				break;

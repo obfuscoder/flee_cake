@@ -49,7 +49,7 @@
 			<li><?php echo $this->Html->link("Bewertungen", array("controller" => "reviews", "action" => "index")); ?></li>
 			<li><?php echo $this->Html->link("Mails schreiben", array("controller" => "mails", "action" => "send")); ?></li>
 			<li><?php echo $this->Html->link("Mails triggern", "/mails/worker"); ?></li>
-			<li><?php echo $this->Html->link("DB Dump", array("controller" => "mails", "action" => "dump")); ?></li>
+			<li><?php echo $this->Html->link("DB Dump", array("controller" => "admin", "action" => "dump")); ?></li>
           	<?php else: ?>
             <li><?php echo $this->Html->link("Hauptseite", "/pages/home"); ?></li>
             <li><?php echo $this->Html->link("Teilnahmebedingungen", "/pages/terms"); ?></li>

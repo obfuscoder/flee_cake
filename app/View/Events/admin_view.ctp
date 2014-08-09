@@ -8,6 +8,12 @@
 	<dt>Endzeit</dt><dd><?php echo $event['Event']['end_time'] ?></dd>
 	<dt>Reservierungsstart</dt><dd><?php echo $event['Event']['reservation_start'] ?></dd>
 	<dt>Reservierungsende</dt><dd><?php echo $event['Event']['reservation_end'] ?></dd>
+	<dt>Übergabedatum</dt><dd><?php echo $event['Event']['item_handover_date'] ?></dd>
+	<dt>von</dt><dd><?php echo $event['Event']['item_handover_start_time'] ?></dd>
+	<dt>bis</dt><dd><?php echo $event['Event']['item_handover_end_time'] ?></dd>
+	<dt>Abholdatum</dt><dd><?php echo $event['Event']['item_pickup_date'] ?></dd>
+	<dt>von</dt><dd><?php echo $event['Event']['item_pickup_start_time'] ?></dd>
+	<dt>bis</dt><dd><?php echo $event['Event']['item_pickup_end_time'] ?></dd>
 	<dt>Reservierungen</dt><dd><?php echo count($reservations) ?></dd>
 </dl>
 <h3>Reservierungen</h3>
@@ -23,8 +29,6 @@
 <p class="actions">
 	<?php echo $this->Html->buttonLink("Bearbeiten", array('action' => 'edit', $event['Event']['id'])); ?>
 	<?php echo $this->Html->buttonLink("Reservierungen", array("controller" => "reservations", 'action' => 'index', $event['Event']['id'])); ?>
-	<?php echo $this->Html->buttonLink("Terminliste", array('action' => 'index')); ?>
-	<?php echo $this->Html->buttonLink("Neuer Termin", array('action' => 'add')); ?>
 </p>
 <p class="actions">
 	<?php

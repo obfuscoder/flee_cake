@@ -1,5 +1,5 @@
 <?php $this->set("title_for_layout", "Reservierungen") ?>
-<table>
+<table class="table table-condensed table-hover table-striped">
 	<tr>
 		<th>Nummer</th>
 		<th>Name</th>
@@ -17,7 +17,7 @@
 		<td><?php echo count($reservation["Item"]) ?></td>
 		<td class="actions">
 			<?php echo $this->Form->postLink("Löschen", array("action" => "delete", $reservation["Reservation"]['id']),
-					array("confirm" => "Sind Sie sicher, dass Sie diese Reservierung löschen wollen?")); ?>
+					array("confirm" => "Sind Sie sicher, dass Sie diese Reservierung löschen wollen?", "class" => "btn btn-warning btn-xs")); ?>
 		</td>
 	</tr>
 	<?php endforeach; ?>
@@ -25,14 +25,9 @@
 </table>
 <?php
 	if (count($sellers) > 0) {
-		$sellers_list = array();
-		foreach($sellers as $seller) {
-			$sellers_list[$seller["Seller"]["id"]] = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] . " (" . $seller["Seller"]["email"] . ") - " . count($seller['Item']);
-		}
-		echo $this->Form->create('Reservation', array("action" => "create"));
+		echo $this->Form->create('Reservation', array("class" => "form-inline", "action" => "create"));
 		echo $this->Form->hidden('event_id', array("value" => $event_id));
-		echo $this->Form->select("seller_id", $sellers_list, array("empty" => false, "label" => "Verkäufer reservieren"));
+		echo $this->Form->input("seller_id", array("label" => false));
 		echo $this->Form->end("Reservieren");
 	}
 ?>
-<p><?php echo $this->Html->link("Hauptseite", array("controller" => "admin", "action" => "index")); ?></p>

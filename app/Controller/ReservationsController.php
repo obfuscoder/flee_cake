@@ -1,14 +1,17 @@
 <?php
 
 class ReservationsController extends AppController {
-	public $helpers = array("Html", "Form", "Session", "Number");
 	public $components = array("Session");
 
 	public function admin_index($eventId) {
 		$reservations = $this->Reservation->findAllByEventId($eventId);
 		$this->set("reservations", $reservations);
 		$this->set("event_id", $eventId);
-		$sellers = $this->Reservation->Seller->findAllUnreserved($eventId);
+		$sellers = array();
+		foreach ($this->Reservation->Seller->findAllUnreserved($eventId) as $seller) {
+			$sellers[$seller["Seller"]["id"]] = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] . " (" .
+				$seller["Seller"]["email"] . ") - " . count($seller["Item"]) . " Artikel";
+		}
 		$this->set("sellers", $sellers);
 	}
 

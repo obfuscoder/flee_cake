@@ -11,7 +11,7 @@
 			    'separator' => '</td><td>',
 			    'legend' => false,
 			); ?>
-<table>
+<table class="table table-condensed table-hover table-striped">
 	<thead>
 		<tr>
 			<th>Wie zufrieden waren Sie mit ...</th>
@@ -24,56 +24,35 @@
 		</tr>
 	</thead>
 	<tbody>
+		<?php
+		$questions = array(
+			"registration" => "der Anmeldung / Registrierung",
+			"items" => "der Verwaltung der Artikel",
+			"print" => "dem Erzeugen und Ausdrucken der Etiketten",
+			"reservation" => "dem Verfahren zur Vergabe der Verkäuferplätze",
+			"mailing" => "den Informationen per Mail",
+			"content" => "den Inhalten und Erklärungen auf der Webseite",
+			"design" => "dem Aussehen der Webseite",
+			"support" => "unserer Unterstützung bei Problemen",
+			"handover" => "der Abwicklung bei Annahme und Rückgabe der Artikel",
+			"payoff" => "der Abrechnung",
+			"sale" => "dem Verkauf selbst",
+			"organization" => "mit der Organisation"
+			);
+			foreach($questions as $type => $question): ?>
+			<tr>
+				<td>... <?php echo $question ?>?</td>
+				<td><?php echo $this->Form->radio($type, $options, $attributes); ?></td>
+			</tr>
+		<?php endforeach; ?>
 		<tr>
-			<td>... der Anmeldung / Registrierung?</td>
-			<td><?php echo $this->Form->radio('registration', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... der Verwaltung der Artikel?</td>
-			<td><?php echo $this->Form->radio('items', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... dem Erzeugen und Ausdrucken der Etiketten?</td>
-			<td><?php echo $this->Form->radio('print', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... dem Verfahren zur Vergabe der Verkäuferplätze?</td>
-			<td><?php echo $this->Form->radio('reservation', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... den Informationen per Mail?</td>
-			<td><?php echo $this->Form->radio('mailing', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... den Inhalten und Erklärungen auf der Webseite?</td>
-			<td><?php echo $this->Form->radio('content', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... dem Aussehen der Webseite?</td>
-			<td><?php echo $this->Form->radio('design', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... unserer Unterstützung bei Problemen?</td>
-			<td><?php echo $this->Form->radio('support', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... der Abwicklung bei Annahme und Rückgabe der Artikel?</td>
-			<td><?php echo $this->Form->radio('handover', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... der Abrechnung?</td>
-			<td><?php echo $this->Form->radio('payoff', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... dem Verkauf selbst?</td>
-			<td><?php echo $this->Form->radio('sale', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<td>... mit der Organisation?</td>
-			<td><?php echo $this->Form->radio('organization', $options, $attributes); ?><td>
-		</tr>
-		<tr>
-			<th colspan="7">Bitte geben Sie noch eine Gesamtnote</th>
+			<th>Bitte geben Sie noch eine Gesamtnote</th>
+			<th>1</th>
+			<th>2</th>
+			<th>3</th>
+			<th>4</th>
+			<th>5</th>
+			<th>6</th>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>
@@ -81,7 +60,22 @@
 		</tr>
 	</tbody>
 </table>
-<table><tr><th colspan="5">Wie sind Sie auf uns aufmerksam geworden?</th></tr><tr><td><?php echo $this->Form->radio('source', array("newspaper" => "Zeitungsanzeige", "poster" => "Plakat", "internet" => "Internet", "friends" => "Bekannte/Familie", "other" => "Sonstiges"), $attributes); ?></td></tr></table>
-<table><tr><th colspan="2">Würden Sie unser Abrechnungssystem weiterempfehlen?</th></tr><tr><td><?php echo $this->Form->radio('recommend', array(true => "ja", false => "nein"), $attributes); ?></td></tr></table>
-<table><tr><th>Welche Dinge haben Ihnen nicht gefallen bzw. was sollten wir Ihrer Meinung nach verbessern?</th></tr><tr><td><?php echo $this->Form->input('to_improve', array('type' => 'textarea', 'label' => false)); ?></td></tr></table>
+<table class="table table-condensed table-hover table-striped">
+	<tr><th colspan="5">Wie sind Sie auf uns aufmerksam geworden?</th></tr>
+	<tr><td><?php echo $this->Form->radio('source', array(
+		"newspaper" => "Zeitungsanzeige",
+		"poster" => "Plakat",
+		"internet" => "Internet",
+		"friends" => "Bekannte/Familie",
+		"other" => "Sonstiges"
+		), $attributes); ?></td></tr>
+</table>
+<table class="table table-condensed table-hover table-striped">
+	<tr><th colspan="2">Würden Sie unser Abrechnungssystem weiterempfehlen?</th></tr>
+	<tr><td><?php echo $this->Form->radio('recommend', array(true => "ja", false => "nein"), $attributes); ?></td></tr>
+</table>
+<table class="table table-condensed table-hover table-striped">
+	<tr><th>Welche Dinge haben Ihnen nicht gefallen bzw. was sollten wir Ihrer Meinung nach verbessern?</th></tr>
+	<tr><td><?php echo $this->Form->input('to_improve', array('type' => 'textarea', 'label' => false)); ?></td></tr>
+</table>
 <?php echo $this->Form->submit("Bewertung abschließen"); ?>

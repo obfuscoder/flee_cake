@@ -18,4 +18,10 @@ class MyHtmlHelper extends HtmlHelper {
 		return parent::link($title, $url, $options);
 	}
 
+	public function iconLink($icon, $title = null, $url = null, $options = array()) {
+		$text = "<span class='glyphicon glyphicon-" . $icon . "'></span> " . $title;
+		$options["escape"] = false;
+		return $this->buttonLink($text, $url, $options);
+	}
+
 }

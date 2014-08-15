@@ -118,6 +118,7 @@ class ItemsController extends AppController {
 	public function pdf($reservationId) {
         $reservation = $this->Item->Reservation->findById($reservationId);
 		$this->checkSeller($reservation["Reservation"]["seller_id"]);
+		$this->set("categories", $this->Item->Category->find('list'));
         $this->set("reservation", $this->Item->Reservation->findById($reservationId));
 
         $this->layout = 'pdf'; //this will use the pdf.ctp layout

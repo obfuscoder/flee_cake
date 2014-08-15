@@ -40,7 +40,7 @@
 <p>Sie haben aktuell <strong><?php echo count($items) ?></strong> Artikel angelegt.
 Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - count($items) ?></strong> weitere Artikel anlegen.</p>
 <p class="actions">
-	<?php echo $this->Html->link("<span class='glyphicon glyphicon-file'></span> Artikel hinzufügen", array("controller" => "items", "action" => "create", $seller["Seller"]["id"]), array("escape" => false, "class" => "btn btn-primary")); ?></p>
+	<?php echo $this->Html->iconLink("file", "Artikel hinzufügen", array("controller" => "items", "action" => "create", $seller["Seller"]["id"])); ?></p>
 <?php endif; ?>
 <table class="table table-condensed table-hover table-striped">
 	<tr>
@@ -82,7 +82,7 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 <p>Sobald Sie eine Reservierungsnummer erhalten haben, können Sie die Etiketten für die Artikel erzeugen und drucken. Bitte beachten Sie, dass das Erzeugen von Etiketten die bis zu diesem Zeitpunkt angelegten Artikel zur weiteren Bearbeitung sperrt.</p>
 <p class="actions"><?php
 	if ($reservation && $unreservedItemCount && strtotime($event["Event"]["reservation_end"]) > time()) {
-		echo $this->Html->link("$unreservedItemCount Etikett(en) erzeugen",
+		echo $this->Html->iconLink("barcode", "$unreservedItemCount Etikett(en) erzeugen",
 			array("action" => "label", $reservation["Reservation"]["id"]),
 			array(), "Sobald Sie die Etiketten erzeugen, werden alle bis zu diesem Zeitpunkt eingegebenen Artikel gesperrt. " .
 			"Sie können diese Artikel nicht mehr bearbeiten. Sie können jedoch danach noch weitere Artikel hinzufügen. " .
@@ -90,7 +90,7 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 		echo "&nbsp";
 	}
 	if ($reservation && $reservation["Item"]) {
-		echo $this->Html->link("$reservedItemCount erzeugte Etiketten ausdrucken", array("action" => "pdf", $reservation["Reservation"]["id"]));
+		echo $this->Html->iconLink("print", "$reservedItemCount erzeugte Etiketten ausdrucken", array("action" => "pdf", $reservation["Reservation"]["id"]));
 	} ?></p>
  <p><small>Die Etiketten werden als PDF-Dokument generiert.
  	Zum Anzeigen und Ausdrucken von PDF-Dateien benötigen Sie ein entsprechendes Programm.

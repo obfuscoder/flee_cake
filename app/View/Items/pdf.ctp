@@ -47,10 +47,13 @@
 	$leftColWidth = 0.23;
 
 	for ($i = 0; $i<count($reservation["Item"]); $i++) {
+		$category = $categories[$reservation["Item"][$i]["category_id"]];
 		$tcpdf->SetFont($textfont,'',14);
-		$tcpdf->Cell($width/2, 0, $reservation["Reservation"]["number"] . " -", "LTB", 0, 'R');
+		$tcpdf->Cell($width/3, 0, "888-88",
+//			$reservation["Reservation"]["number"] . " - " . $reservation["Item"][$i]["ReservedItem"]["number"],
+			"LTB", 0, 'C');
 		$tcpdf->SetFont($textfont,'',10);
-		$tcpdf->Cell(0, $tcpdf->getLastH(), $reservation["Item"][$i]["ReservedItem"]["number"], "TRB", 1, 'L');
+		$tcpdf->Cell(0, $tcpdf->getLastH(), $category, 1, 1, 'C');
 		$tcpdf->Cell(0, 0, $reservation["Item"][$i]["description"], 1, 1, 'C');
 
 		$tcpdf->Cell(0, 0, ($reservation["Item"][$i]["size"] == null) ? "" : ("Größe: " . $reservation["Item"][$i]["size"]), 1, 1, 'C');

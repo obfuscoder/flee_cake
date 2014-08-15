@@ -52,9 +52,9 @@
 	if ($reservation && $unreservedItemCount) {
 		echo $this->Html->buttonLink("$unreservedItemCount Etikett(en) erzeugen",
 			array("action" => "label", $reservation["Reservation"]["id"]),
-			array(), "Sobald Sie die Etiketten erzeugen, werden alle bis zu diesem Zeitpunkt eingegebenen Artikel gesperrt. " .
+			array("confirm" => "Sobald Sie die Etiketten erzeugen, werden alle bis zu diesem Zeitpunkt eingegebenen Artikel gesperrt. " .
 			"Sie können diese Artikel nicht mehr bearbeiten. Sie können jedoch danach noch weitere Artikel hinzufügen. " .
-			"Wollen Sie die Etiketten erzeugen lassen und damit die aktuellen Artikel sperren?");
+			"Wollen Sie die Etiketten erzeugen lassen und damit die aktuellen Artikel sperren?"));
 		echo "&nbsp";
 	}
 	if ($reservation && $reservation["Item"]) {

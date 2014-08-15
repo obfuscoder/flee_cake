@@ -49,8 +49,8 @@
 	for ($i = 0; $i<count($reservation["Item"]); $i++) {
 		$category = $categories[$reservation["Item"][$i]["category_id"]];
 		$tcpdf->SetFont($textfont,'',14);
-		$tcpdf->Cell($width/3, 0, "888-88",
-//			$reservation["Reservation"]["number"] . " - " . $reservation["Item"][$i]["ReservedItem"]["number"],
+		$tcpdf->Cell($width/3, 0,
+			$reservation["Reservation"]["number"] . "-" . $reservation["Item"][$i]["ReservedItem"]["number"],
 			"LTB", 0, 'C');
 		$tcpdf->SetFont($textfont,'',10);
 		$tcpdf->Cell(0, $tcpdf->getLastH(), $category, 1, 1, 'C');

@@ -84,9 +84,9 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 	if ($reservation && $unreservedItemCount && strtotime($event["Event"]["reservation_end"]) > time()) {
 		echo $this->Html->iconLink("barcode", "$unreservedItemCount Etikett(en) erzeugen",
 			array("action" => "label", $reservation["Reservation"]["id"]),
-			array(), "Sobald Sie die Etiketten erzeugen, werden alle bis zu diesem Zeitpunkt eingegebenen Artikel gesperrt. " .
+			array("confirm" => "Sobald Sie die Etiketten erzeugen, werden alle bis zu diesem Zeitpunkt eingegebenen Artikel gesperrt. " .
 			"Sie können diese Artikel nicht mehr bearbeiten. Sie können jedoch danach noch weitere Artikel hinzufügen. " .
-			"Wollen Sie die Etiketten erzeugen lassen und damit die aktuellen Artikel sperren?");
+			"Wollen Sie die Etiketten erzeugen lassen und damit die aktuellen Artikel sperren?"));
 		echo "&nbsp";
 	}
 	if ($reservation && $reservation["Item"]) {

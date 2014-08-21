@@ -1,26 +1,3 @@
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-Noch was zur Startseite:
-
-unter den aktuellen Text :
-"Auf diesen Seiten können Sie sich für unseren kommenden (am Samstag,
-15. Februar 2014 stattfindenden) Flohmarkt als Interessent zum Verkauf
-von Kommissionsware registrieren. Sie werden dann zeitnah per Mail
-über den weiteren Ablauf informiert.
-
-Die Anzahl der Verkäufer ist begrenzt. Die Platzreservierung wird am
-Samstag, 25. Januar 2014 freigeschaltet. Dazu werden alle registrierte
-Interessenten kurz zuvor eine gesonderte Benachrichtigung mit
-Detailinformationen per Mail erhalten."
-
-... und über den Registrierungsbutton sollte gut lesbar stehen wenn
-der Flohmarkt voll ist. Z.B.:
-
-"Leider sind bereits alle Plätze belegt. Sie können sich dennoch
-anmelden. Falls Plätze frei werden, werden diese neu vergeben."
-
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
 A) SEO (header/titles/texte/etc)
 B) SEO Eintragunen bei anderen Seiten
   1. quoka
@@ -30,20 +7,14 @@ B) SEO Eintragunen bei anderen Seiten
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-- bulkmails / mails per cron / mail job queue
-
 - seller id aus session benutzen, anstelle aus url parametern
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-- registrierung rückgängig machen lassen (daten löschen)
 - herr/frau erfassen und anrede in email anpassen
 - Kategorie Sonstige ganz unten
 - Kategorie, größe und preis nebeneinander
-- teilnahmebedingungen auf aktuelle infos anpassen
 - alle fehlermeldungen/validierungen prüfen, ggf. die vom browser deaktivieren, da nicht aussagekräftig
 - onlinehilfe
 - teilnahmebedingungen als mailanhang bei registrierungsbestätigung
 - verkäuferliste paginierbar und sortierbar machen
-- bootstrap responsive design
-- plz und stadt in eine zeile

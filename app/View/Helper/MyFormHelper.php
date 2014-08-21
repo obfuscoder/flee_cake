@@ -104,6 +104,18 @@ class MyFormHelper extends FormHelper {
         $label = $this->Html->tag("label", $checkbox . __(Inflector::humanize(Inflector::underscore($fieldName))));
         return $this->Html->div("checkbox", $label);
     }
+
+    public function deleteButton($title = null, $url = null, $warning = null, $options = array()) {
+        $buttonClass = "btn btn-danger";
+        $options["class"] = $buttonClass;
+        $options["escape"] = false;
+        if ($warning !== null) {
+            $options["confirm"] = $warning;
+        }
+        $title = "<span class='glyphicon glyphicon-trash'></span> " . $title;
+        return parent::postLink($title, $url, $options);
+    }
+
 }
 
 ?>

@@ -14,7 +14,9 @@ class MyHtmlHelper extends HtmlHelper {
 
 	public function buttonLink($title = null, $url = null, $options = array()) {
 		$buttonClass = "btn btn-primary";
-		$options["class"] = $buttonClass;
+		if (!isset($options["class"])) {
+			$options["class"] = $buttonClass;
+		}
 		return parent::link($title, $url, $options);
 	}
 

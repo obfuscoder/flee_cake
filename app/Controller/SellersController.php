@@ -30,6 +30,58 @@ class SellersController extends AppController {
 		$this->set("reservations", $this->Seller->Reservation->findAllBySellerId($id));
 	}
 
+	public function view() {
+		$this->set("seller", $this->sellerFromSession());
+	}
+
+	public function edit() {
+		$seller = $this->sellerFromSession();
+		if ($this->request->isPut()) {
+			if ($this->Seller->save($this->request->data)) {
+				$this->Session->write("Seller", $this->Seller->findById($seller["Seller"]["id"]));
+				$this->Session->setFlash("Stammdaten aktualisiert.", "default", array('class' => 'bg-success'));
+				return $this->redirect(array('action' => 'view'));
+			}
+			$this->Session->setFlash("Die Stammdaten konnten nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
+		} else {
+			$this->request->data = $seller;
+		}
+	}
+
+	private function sellerFromSession() {
+		if ($this->Session->valid() && $this->Session->check("Seller")) {
+			return $seller = $this->Session->read("Seller");
+		} else {
+			return $this->redirect(array("controller" => "pages", "action" => "session_expired"));
+		}
+	}
+
+	public function stopmail() {
+		$seller = $this->sellerFromSession();
+		$seller["Seller"]["nomail"] = true;
+		if ($this->Seller->save($seller)) {
+			$this->Session->write("Seller", $this->Seller->findById($seller["Seller"]["id"]));
+			$this->Session->setFlash("Die Mailbenachrichtigungen wurden für Sie deaktiviert.", "default", array('class' => 'bg-success'));
+			return $this->redirect(array('action' => 'view'));
+		} else {
+			$this->Session->setFlash("Die Änderung konnte leider nicht erfolgreich gespeichert werden. Bitte versuchen Sie es noch einmal", "default", array('class' => 'bg-danger'));
+			return $this->redirect(array('action' => 'edit'));
+		}
+	}
+
+	public function startmail() {
+		$seller = $this->sellerFromSession();
+		$seller["Seller"]["nomail"] = false;
+		if ($this->Seller->save($seller)) {
+			$this->Session->write("Seller", $this->Seller->findById($seller["Seller"]["id"]));
+			$this->Session->setFlash("Die Mailbenachrichtigungen wurden für Sie aktiviert.", "default", array('class' => 'bg-success'));
+			return $this->redirect(array('action' => 'view'));
+		} else {
+			$this->Session->setFlash("Die Änderung konnte leider nicht erfolgreich gespeichert werden. Bitte versuchen Sie es noch einmal", "default", array('class' => 'bg-danger'));
+			return $this->redirect(array('action' => 'edit'));
+		}
+	}
+
 	public function terms() {
 	}
 
@@ -109,8 +161,17 @@ class SellersController extends AppController {
 	}
 
 	public function login($token) {
-		$seller = $this->auth($token);
-		return $this->redirect(array("controller" => "items", "action" => "index", $seller["Seller"]['id']));
+		$this->auth($token);
+		return $this->redirect(array("action" => "view"));
+	}
+
+	public function delete() {
+		$this->request->onlyAllow('post', 'delete');
+		$seller = $this->sellerFromSession();
+		if ($this->Seller->delete($seller["Seller"]["id"])) {
+			$this->Session->destroy();
+			return $this->redirect(array("controller" => "pages", "action" => "deleted"));
+		}
 	}
 
 	public function admin_delete($id = null) {

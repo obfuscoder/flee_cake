@@ -3,7 +3,7 @@
 class SellersController extends AppController {
 	public $components = array("Session");
 
-	function lastUpdated($seller) {
+	private function lastUpdated($seller) {
 		$updated = $seller["Seller"]["modified"];
 		foreach ($seller["Item"] as $item) {
 			if ($updated < $item["modified"]) {
@@ -45,14 +45,6 @@ class SellersController extends AppController {
 			$this->Session->setFlash("Die Stammdaten konnten nicht gespeichert werden.", "default", array('class' => 'bg-danger'));
 		} else {
 			$this->request->data = $seller;
-		}
-	}
-
-	private function sellerFromSession() {
-		if ($this->Session->valid() && $this->Session->check("Seller")) {
-			return $seller = $this->Session->read("Seller");
-		} else {
-			return $this->redirect(array("controller" => "pages", "action" => "session_expired"));
 		}
 	}
 
@@ -128,7 +120,7 @@ class SellersController extends AppController {
 		}
 	}
 
-	function activateIfNecessary($seller) {
+	private function activateIfNecessary($seller) {
 		if ($seller["Seller"]["active"]) {
 			return;
 		}

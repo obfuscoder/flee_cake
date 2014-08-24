@@ -40,7 +40,7 @@
 <p>Sie haben aktuell <strong><?php echo count($items) ?></strong> Artikel angelegt.
 Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - count($items) ?></strong> weitere Artikel anlegen.</p>
 <p class="actions">
-	<?php echo $this->Html->iconLink("file", "Artikel hinzufügen", array("controller" => "items", "action" => "create", $seller["Seller"]["id"])); ?></p>
+	<?php echo $this->Html->iconLink("file", "Artikel hinzufügen", array("controller" => "items", "action" => "create")); ?></p>
 <?php endif; ?>
 <table class="table table-condensed table-hover table-striped">
 	<tr>

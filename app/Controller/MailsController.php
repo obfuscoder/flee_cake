@@ -4,7 +4,6 @@ App::uses('AppModel', 'Model');
 App::uses('Seller', 'Model');
 
 class MailsController extends AppController {
-	public $components = array("Session");
 
 	public function worker() {
 		$unsentMails = $this->Mail->findAllBySent(null);
@@ -20,18 +19,21 @@ class MailsController extends AppController {
 	}
 
 	public function admin_send() {
-		if (!$this->Session->read("Admin")) {
-			return $this->redirect (array("controller" => "pages", "action" => "unauthorized"));
-		}
+		$seller = new Seller();
 		if ($this->request->isPost()) {
 			foreach($this->request->data["Mail"]["to"] as $to) {
-				$this->Mail->enqueue($to, $this->request->data["Mail"]["subject"], $this->request->data["Mail"]["body"]);
+				$recipient = $seller->findById($to);
+				$this->Mail->enqueue($recipient["Seller"]["email"], $this->request->data["Mail"]["subject"], $this->replace_placeholders($this->request->data["Mail"]["body"], $recipient));
 			}
 			$this->Session->setFlash(count($this->request->data["Mail"]["to"]) . " Mails wurden versendet.", "default", array('class' => 'bg-success'));
 		}
-		$seller = new Seller();
 		$sellers = $seller->find("all", array("order" => array("first_name", "last_name"), "conditions" => array("nomail is null or nomail <> 1")));
 		$this->set("sellers", $sellers);
+	}
+
+	private function replace_placeholders($text, $seller) {
+		return str_replace("{{login_link}}", Router::url(
+			array('controller' => 'sellers', 'action' => 'login', 'admin' => false, $seller["Seller"]["token"]), true), $text);
 	}
 }
 

@@ -46,4 +46,13 @@ class AppController extends Controller {
             }
         }
     }
+
+    protected function sellerFromSession() {
+        if ($this->Session->valid() && $this->Session->check("Seller")) {
+            return $seller = $this->Session->read("Seller");
+        } else {
+            return $this->redirect(array("controller" => "pages", "action" => "session_expired"));
+        }
+    }
+
 }

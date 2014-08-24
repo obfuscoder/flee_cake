@@ -9,4 +9,4 @@ Mail: <a href="mailto:<?php echo $seller["Seller"]["email"] ?>"><?php echo $sell
 <?php echo $this->Html->iconLink("user", "Stammdaten bearbeiten", array("action" => "edit")); ?>
 <h3>Artikel</h3>
 <p>Sie haben bisher <?php echo count($seller["Item"]) ?> Artikel angelegt.</p>
-<?php echo $this->Html->iconLink("list", "Artikel bearbeiten", array("controller" => "items", "action" => "index", $seller["Seller"]["id"])); ?>
+<?php echo $this->Html->iconLink("list", "Artikel bearbeiten", array("controller" => "items")); ?>

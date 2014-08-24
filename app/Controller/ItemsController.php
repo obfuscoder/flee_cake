@@ -18,11 +18,11 @@ class ItemsController extends AppController {
 		$this->index($sellerId);
 	}
 
-	public function index($sellerId) {
-		$this->checkSeller($sellerId);
+	public function index() {
+		$seller = $this->sellerFromSession();
+		$sellerId = $seller["Seller"]["id"];
 		$items = $this->Item->findAllBySellerId($sellerId);
 		$this->set("items", $items);
-		$seller = $this->Item->Seller->findById($sellerId);
 		$this->set("seller", $seller);
 		$event = $this->Item->Seller->Reservation->Event->getCurrent();
 		if ($event) {
@@ -36,14 +36,15 @@ class ItemsController extends AppController {
 		$this->create($sellerId);
 	}
 
-	public function create($sellerId) {
-		$this->checkSeller($sellerId);
+	public function create() {
+		$seller = $this->sellerFromSession();
+		$sellerId = $seller["Seller"]["id"];
 		if ($this->request->isPost()) {
 			$this->Item->create();
 	        $this->request->data['Item']['price'] = str_replace(",", ".", $this->request->data['Item']['price']);
 			if ($this->Item->save($this->request->data)) {
 				$this->Session->setFlash(__("Item has been created."), "default", array('class' => 'bg-success'));
-				return $this->redirect(array("action" => "index", $this->request->data["Item"]["seller_id"]));
+				return $this->redirect(array("action" => "index"));
 			}
         	$this->request->data['Item']['price'] = CakeNumber::currency(
         		$this->request->data['Item']['price'], "EUR", array("before" => false, "after" => false));
@@ -68,7 +69,7 @@ class ItemsController extends AppController {
 	        $this->request->data['Item']['price'] = str_replace(",", ".", $this->request->data['Item']['price']);
 			if ($this->Item->save($this->request->data)) {
 				$this->Session->setFlash(__("Item has been updated."), "default", array('class' => 'bg-success'));
-				return $this->redirect(array("action" => "index", $this->request->data["Item"]["seller_id"]));
+				return $this->redirect(array("action" => "index"));
 			}
         	$this->request->data['Item']['price'] = CakeNumber::currency(
         		$this->request->data['Item']['price'], "EUR", array("before" => false, "after" => false));
@@ -94,7 +95,7 @@ class ItemsController extends AppController {
 		$this->checkSeller($item["Item"]["seller_id"]);
 		if ($this->Item->delete($id)) {
 			$this->Session->setFlash(__("The item has been deleted."), "default", array('class' => 'bg-success'));
-			return $this->redirect(array("action" => "index", $item["Item"]["seller_id"]));
+			return $this->redirect(array("action" => "index"));
 		}
 	}
 
@@ -107,7 +108,7 @@ class ItemsController extends AppController {
 		$this->checkSeller($reservation["Reservation"]["seller_id"]);
 		$createdLabelCount = $this->Item->label($reservation);
 		$this->Session->setFlash("Es wurden " . $createdLabelCount . " Etikett(en) erzeugt.", "default", array('class' => 'bg-success'));
-		return $this->redirect(array("action" => "index", $reservation["Seller"]["id"]));
+		return $this->redirect(array("action" => "index"));
 	}
 
 	public function admin_pdf($reservationId) {

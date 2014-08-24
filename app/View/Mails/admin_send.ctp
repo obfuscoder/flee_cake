@@ -23,11 +23,12 @@ $(document).ready(function() {
 <?php
 	echo $this->Form->create("Mail");
 	echo $this->Form->input("subject", array("label" => "Betreff"));
-	echo $this->Form->input("body", array("label" => "Inhalt"));
-
+	echo $this->Form->input("body", array("label" => "Inhalt")); ?>
+<p>Als Einsprunglink für Verkäufer in Ihren Verwaltungsbereich, bitte <strong>{{login_link}}</strong> benutzen.</p>
+<?php
 	$recipients = array();
 	foreach($sellers as $seller) {
-		$recipients[$seller["Seller"]["email"]] = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] . " <" . $seller["Seller"]["email"] . "> - " . count($seller["Item"]) . " Artikel, " . count($seller["Reservation"]) . " Reservierung(en)";
+		$recipients[$seller["Seller"]["id"]] = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] . " <" . $seller["Seller"]["email"] . "> - " . count($seller["Item"]) . " Artikel, " . count($seller["Reservation"]) . " Reservierung(en)";
 	}
 	echo $this->Form->input("to", array("options" => $recipients, "type" => "select", "label" => "Empfänger", "multiple" => true, "empty" => false, "size" => 10));
 

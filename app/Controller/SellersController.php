@@ -31,7 +31,15 @@ class SellersController extends AppController {
 	}
 
 	public function view() {
-		$this->set("seller", $this->sellerFromSession());
+		$seller = $this->sellerFromSession();
+		$sellerId = $seller["Seller"]["id"];
+		$this->set("seller", $seller);
+		$event = $this->Seller->Reservation->Event->getCurrent();
+		if ($event) {
+			$this->set("event", $event);
+			$reservation = $this->Seller->Reservation->findBySellerIdAndEventId($sellerId, $event["Event"]["id"]);
+			$this->set("reservation", $reservation);
+		}
 	}
 
 	public function edit() {

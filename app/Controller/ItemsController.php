@@ -14,8 +14,16 @@ class ItemsController extends AppController {
 		}
 	}
 
-	public function admin_index($sellerId) {
-		$this->index($sellerId);
+	public function admin_index($sellerId = null) {
+		if ($sellerId == null) {
+			$seller = $this->sellerFromSession();
+			$sellerId = $seller["Seller"]["id"];
+		} else {
+			$seller = $this->Item->Seller->findById($sellerId);
+			$this->Session->write("Seller", $seller);
+		}
+		$this->index();
+		$this->render('index');
 	}
 
 	public function index() {
@@ -32,8 +40,15 @@ class ItemsController extends AppController {
 		}
 	}
 
-	public function admin_create($sellerId) {
-		$this->create($sellerId);
+	public function admin_create($sellerId = null) {
+		if ($sellerId == null) {
+			$seller = $this->sellerFromSession();
+			$sellerId = $seller["Seller"]["id"];
+		} else {
+			$seller = $this->Item->Seller->findById($sellerId);
+			$this->Session->write("Seller", $seller);
+		}
+		$this->create();
 	}
 
 	public function create() {

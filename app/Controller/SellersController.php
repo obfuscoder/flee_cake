@@ -145,7 +145,7 @@ class SellersController extends AppController {
 	private function auth($token) {
 		$seller = $this->Seller->findByToken($token);
 		if (!$seller) {
-			return $this->redirect(array("action" => "auth_failed"));
+			return $this->redirect(array("controller" => "pages", "action" => "unauthorized"));
 		}
 		$this->activateIfNecessary($seller);
 		$this->Session->write("Seller", $seller);

@@ -1,0 +1,6 @@
+open mis60.de
+cd /html/floh/app
+lcd ~/floh/app
+mirror --exclude tmp/ --exclude Test/ -R
+quit
+

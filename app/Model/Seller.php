@@ -22,6 +22,10 @@ class Seller extends AppModel {
 		)
 	);
 
+	public function beforeValidate($options = array()) {
+		$this->data["Seller"]["email"] = strtolower($this->data["Seller"]["email"]);
+	}
+
 	public function findAllUnreserved($eventId) {
 		return $this->find('all', array(
     		"conditions" => array(

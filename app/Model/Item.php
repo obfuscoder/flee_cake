@@ -11,8 +11,27 @@ class Item extends AppModel {
 			"number" => array("rule" => "/^\d{1,3}(?:.\d(?:0)?)?$/", "message" => "Der Preis muss zwischen 0 und 1000 € liegen und auf 10 Cent genau sein."),
 			"minmax" => array("rule" => array("range", 0.1, 999.9), "message" => "Der Preis muss zwischen 0 und 1000 € liegen und auf 10 Cent genau sein.")
 		),
-		"category_id" => array("rule" => "notempty", "message" => "Bitte wählen Sie eine Kategorie."),
+		"category_id" => array(
+            "notempty" => array("rule" => "notempty", "message" => "Bitte wählen Sie eine Kategorie."),
+            // TODO extract rule into a more generic CategoryLimitPerSeller model
+            "nomoreshoes" => array(
+                "rule" => array("limitedItemsForCategory", 1, 3),
+                "message" => "Leider können wir aus Platzgründen nicht mehr als 3 Paar Schuhe pro Verkäufer annehmen. Sie haben bereits so viel Artikel dieser Kategorie eingegeben."
+            )
+        )
 	);
+
+    public function limitedItemsForCategory($check, $limitedCategoryId, $limit) {
+        if ($check["category_id"] != $limitedCategoryId) return true;
+        $currentCount = $this->find("count", array(
+            "conditions" => array(
+                "seller_id" => $this->data["Item"]["seller_id"], "category_id" => $limitedCategoryId,
+                "NOT" => array("id" => $this->data["Item"]["id"])
+            ),
+            "recursive" => -1
+        ));
+        return $currentCount < $limit;
+    }
 
 	public function getNextReservedItemNumber($reservationId) {
 		$result = $this->ReservedItem->find("first", array(

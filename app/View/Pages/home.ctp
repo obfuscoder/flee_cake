@@ -15,7 +15,8 @@
 	echo $this->Form->hidden("accept");
 	echo $this->Form->end("Zur Registrierung");
 ?>
-<p><?php echo $this->Html->link("Bereits registriert?", "/sellers/already_registered") ?></p>
+<p/>
+<p>Sie sind <strong>bereits registriert</strong>, finden aber nicht mehr die eMail mit den Zugangsinformationen zu Ihren privaten Bereich? Dann klicken Sie bitte <?php echo $this->Html->link("auf diesen Link.", "/sellers/already_registered") ?></p>
 
 <h3>Kommende Flohmärkte</h3>
 <?php if ($events): ?>

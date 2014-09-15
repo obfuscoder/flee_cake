@@ -17,14 +17,23 @@
 	<dt>Reservierungen</dt><dd><?php echo count($reservations) ?></dd>
 </dl>
 <h3>Reservierungen</h3>
-<p><ul>
-<?php foreach ($reservations as $reservation): ?>
-	<li><?php echo $this->Html->link(
-			$reservation["Seller"]["first_name"] . " " . $reservation["Seller"]["last_name"],
-			array("controller" => "sellers", "action" => "view", $reservation["Seller"]["id"]))
-		?> - Reservierungsnummer <strong><?php echo $reservation["Reservation"]["number"] ?></strong></li>
-<?php endforeach; ?>
-</ul></p>
+<table class="table table-condensed table-hover table-striped">
+    <tr>
+        <th>Nummer</th>
+        <th>Name</th>
+        <th>Ort</th>
+    </tr>
+    <?php foreach ($reservations as $reservation): ?>
+        <tr>
+            <td><?php echo $reservation["Reservation"]["number"] ?></td>
+            <td><?php echo $this->Html->link(
+                    $reservation["Seller"]["first_name"] . " " . $reservation["Seller"]["last_name"],
+                    array("controller" => "sellers", "action" => "view", $reservation["Seller"]["id"]))
+                ?></td>
+            <td><?php echo $reservation["Seller"]["city"] ?></td>
+        </tr>
+    <?php endforeach; ?>
+</table>
 <h3>Aktionen</h3>
 <p class="actions">
 	<?php echo $this->Html->buttonLink("Bearbeiten", array('action' => 'edit', $event['Event']['id'])); ?>

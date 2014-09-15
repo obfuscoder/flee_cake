@@ -54,6 +54,7 @@
             <li><?php echo $this->Html->link("Hauptseite", "/pages/home"); ?></li>
             <li><?php echo $this->Html->link("Teilnahmebedingungen", "/pages/terms"); ?></li>
             <li><?php echo $this->Html->link("Hilfe/Kontakt", "/pages/contact"); ?></li>
+            <li><?php echo $this->Html->link("Ihr Flohmarkt", "/pages/my_basar"); ?></li>
             <li><?php echo $this->Html->link("Impressum", "/pages/imprint"); ?></li>
             <li><?php echo $this->Html->link("Datenschutz", "/pages/privacy"); ?></li>
         	<?php endif ?>

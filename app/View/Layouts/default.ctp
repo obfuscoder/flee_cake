@@ -78,8 +78,8 @@
     }
 ?>
 <?php
-		echo $this->Html->script('bootstrap.min');
 		echo $this->Html->script('jquery-2.1.1.min');
+		echo $this->Html->script('bootstrap.min');
 ?>
 </body>
 </html>

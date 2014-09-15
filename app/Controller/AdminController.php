@@ -78,7 +78,8 @@ class AdminController extends AppController {
 			), "conditions" => array("NOT" => array("ReservedItem.sold" => null)), "group" => "Reservation.number", "order" => "total desc", "limit" => 10));
 		$this->set("totals_per_seller", $totals_per_seller);
 
-		$items_per_day = $item->find("all", array("fields" => array("date(Item.created) as date", "count(*) as count"),
+		$items_per_day = $item->find("all", array("conditions" => array("Item.created > timestampadd(month, -2, now())"),
+            "fields" => array("date(Item.created) as date", "count(*) as count"),
 			"group" => "date(Item.created)", 'recursive' => 0));
 		$this->set("items_per_day", $items_per_day);
 

@@ -1,7 +1,7 @@
 <?php $this->set("title_for_layout", "Ihr Flohmarkt") ?>
 <p>Sie organisieren selbst einen Kommissionsflohmarkt und sind auf der Suche nach einem System, was Ihnen die Arbeit erleichtert?</p>
 <p>Wir bieten Ihnen und Ihren Kommissionsverkäufern die Möglichkeit, die Artikel einfach und schnell zu verkaufen und eine <strong>komplette Abrechnung</strong> der Verkäufe mit nur <strong>wenigen Klicks</strong> zu erreichen.</p>
-<p>Nehmen Sie mit uns Kontakt auf unter <a href="mailto:meinflohmarkt@obfusco.de">meinflohmarkt@obfusco.de</a>.</p>
+<p>Nehmen Sie mit uns Kontakt auf unter <?php echo $this->Html->image("/img/mybasaremail.png") ?></p>
 
 <p>Wir bieten:</p>
 

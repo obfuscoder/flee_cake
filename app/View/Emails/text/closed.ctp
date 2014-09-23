@@ -17,5 +17,21 @@ Sollten Sie die Etiketten für die von Ihnen angelegten Artikel noch nicht herun
 <?php echo $this->Html->url("/sellers/pdf/".$reservation['Seller']['token']."/".$event['Event']['id'], true) ?>
 
 
+Geben Sie bitte Ihre zu verkaufenden Artikel am <?php
+    echo $this->Time->format($event["Event"]["item_handover_date"], "%A, %e. %B %Y")
+?> zwischen <?php
+    echo $this->Time->format($event["Event"]["item_handover_start_time"], "%H:%M")
+?> und <?php
+    echo $this->Time->format($event["Event"]["item_handover_end_time"], "%H:%M")
+?> Uhr bei uns ab.
+
+Der Abholzeitraum ist am <?php
+    echo $this->Time->format($event["Event"]["item_pickup_date"], "%A, %e. %B %Y")
+?> zwischen <?php
+    echo $this->Time->format($event["Event"]["item_pickup_start_time"], "%H:%M")
+?> und <?php
+    echo $this->Time->format($event["Event"]["item_pickup_end_time"], "%H:%M")
+?> Uhr.
+
 Viele Grüße,
 Ihr Flohmarkt-Team

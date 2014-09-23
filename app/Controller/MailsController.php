@@ -21,9 +21,14 @@ class MailsController extends AppController {
 	public function admin_send() {
 		$seller = new Seller();
 		if ($this->request->isPost()) {
+			App::uses('CakeEmail', 'Network/Email');
+			$mail = new CakeEmail('queue');
 			foreach($this->request->data["Mail"]["to"] as $to) {
 				$recipient = $seller->findById($to);
-				$this->Mail->enqueue($recipient["Seller"]["email"], $this->request->data["Mail"]["subject"], $this->replace_placeholders($this->request->data["Mail"]["body"], $recipient));
+				$mail->emailFormat("text")
+					->to($recipient["Seller"]["email"])
+					->subject($this->request->data["Mail"]["subject"])
+					->send($this->replace_placeholders($this->request->data["Mail"]["body"], $recipient));
 			}
 			$this->Session->setFlash(count($this->request->data["Mail"]["to"]) . " Mails wurden versendet.", "default", array('class' => 'bg-success'));
 		}

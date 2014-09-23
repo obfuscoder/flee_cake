@@ -11,11 +11,10 @@ $(document).ready(function() {
 		if (queries.length) {
 			recipients = sellers;
 		}
-		for (var i=0; i<queries.length; i++) {
-			var query = queries[i];
+		queries.forEach(function(query) {
 			recipients = $.grep(recipients, function(e) { return eval ("e." + query) });
-		}
-		$.each(recipients, function(index, e) { $('#MailTo option[value="'+e.Seller.email+'"]').prop('selected', true) });
+		});
+		$.each(recipients, function(index, e) { $('#MailTo option:contains("'+e.Seller.email+'")').prop('selected', true) });
 	});
 });
 

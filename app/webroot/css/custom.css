@@ -25,11 +25,13 @@ ul.thumbs li:hover {
   cursor: pointer;
 }
 
-table tr.sold {
+tbody > tr.sold > td,
+tbody > tr.sold > th {
 	background: #e0ffe0;
 }
 
-table tr.sold:nth-child(even) {
+tbody > tr.sold:nth-child(odd) > td,
+tbody > tr.sold:nth-child(odd) > th {
 	background: #d8f9d8;
 }
 

@@ -12,4 +12,4 @@
 - trennung reviews pro flohmarkt
 - usergroup "manager" mit rechte auf spezifische flohmärkte
 - spielwiese für manager/seller (etiketten mit DEMO/URL Texten, Dummy-Barcodes)
-- 
+- anteile (kitaanteil), gebühren, etc. in events tabelle erfassen und in kassensystem verwenden

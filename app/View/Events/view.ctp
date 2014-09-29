@@ -141,7 +141,8 @@ var moneyChart = new CanvasJS.Chart("moneyChart",
 
 moneyChart.render();
 </script>
-<p>Wir haben beim Verkauf die Postleitzahlen der Käufer erfragt. Hier eine Aufstellung der Käufer:</p>
+<?php
+/*<p>Wir haben beim Verkauf die Postleitzahlen der Käufer erfragt. Hier eine Aufstellung der Käufer:</p>
 <div id="customerChart" style="height: 400px; width: 600px"></div>
 <script type="text/javascript">
 var customerChart = new CanvasJS.Chart("customerChart",
@@ -170,4 +171,5 @@ var customerChart = new CanvasJS.Chart("customerChart",
  ]
 });
 customerChart.render();
-</script>
+</script>*/
+?>

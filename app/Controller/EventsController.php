@@ -246,6 +246,14 @@ class EventsController extends AppController {
 		$this->set("customers_per_city", $customers_per_city);
 
 		$sellers_per_city = $item->Seller->find("all", array("fields" => array("ZipCode.city", "count(*) as count"),
+			"joins" => array(
+				array(
+					'table' => 'reservations',
+        			'alias' => 'Reservation',
+        			'type' => 'INNER',
+        			'conditions' => array('Seller.id = Reservation.seller_id')
+    			),
+			),
 			"group" => "ZipCode.city", "order" => "count desc")
 		);
 		$this->set("sellers_per_city", $sellers_per_city);

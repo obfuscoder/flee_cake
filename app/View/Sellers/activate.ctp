@@ -1,4 +1,4 @@
-<?php $this->set("title_for_layout", "Reservierung") ?>
+<?php $this->set("title_for_layout", "Registrierung abgeschlossen") ?>
 <p>Ihre Registrierung war erfolgreich. Sie werden ab sofort über Neuigkeiten informiert.</p>
 <?php if ($reservable_events): ?>
 <p>Sie können sich bereits für die folgenden Flohmärkte einen Verkäuferplatz reservieren:<p>
@@ -30,8 +30,8 @@
 	<p/>
 	<p>Damit alle die gleichen Chancen auf einen Platz haben, erfolgt die
 	Reservierung zu den oben genanten Zeitpunkten. Sie werden 1-4 Tage vor
-	Reservierungsstart nochmals per Mail Informiert. Ihre Artikel können Sie
-	bereits <?php echo $this->Html->link("hier", "/sellers/login/" . $seller["Seller"]["token"]) ?> eingeben.</p>
+	Reservierungsstart nochmals per Mail informiert. Im geschützten Bereich können Sie ab sofort Artikel anlegen, die Sie später auf unseren Kommissionsflohmärkten verkaufen können.</p>
+    <p>
+        <?php echo $this->Html->iconLink("lock", "Zum geschützten Bereich", "/sellers/login/" . $seller["Seller"]["token"]) ?>
+    </p>
 <?php endif ?>
-<p/>
-<p><?php echo $this->Html->link("Zurück zur Hauptseite", "/") ?></p>

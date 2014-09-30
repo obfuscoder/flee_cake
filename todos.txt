@@ -1,3 +1,5 @@
+- getrennte terms für kommi- tisch-flohmarkt
+- limits pro kategorien
 - herr/frau erfassen und anrede in email anpassen
 - Kategorie Sonstige ganz unten
 - Kategorie, größe und preis nebeneinander

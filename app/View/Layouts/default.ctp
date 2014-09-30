@@ -18,6 +18,9 @@
 		echo $this->Html->css('bootstrap.min');
 		echo $this->Html->css('custom');
 
+		echo $this->Html->script('jquery-2.1.1.min');
+		echo $this->Html->script('bootstrap.min');
+
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
@@ -77,10 +80,6 @@
 	if(Configure::read('debug') > 1) {
 		echo $this->element('sql_dump');
     }
-?>
-<?php
-		echo $this->Html->script('jquery-2.1.1.min');
-		echo $this->Html->script('bootstrap.min');
 ?>
 </body>
 </html>

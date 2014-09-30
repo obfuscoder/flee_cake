@@ -5,36 +5,12 @@
 	<p>Sie haben die Reservierungsnummer <strong><?php echo $reservation["Reservation"]["number"] ?></strong>.
 	<?php if (strtotime($event["Event"]["reservation_end"]) > time()): ?>
 		Alle zu verkaufenden Artikel müssen bis zum <?php echo $this->Time->format($event["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?> eingetragen und die Etiketten erzeugt sein.
-		<?php if (strtotime($event["Event"]["reservation_end"]) > time()): ?>
-			</p><p><strong>Reservierung rückgängig machen:</strong> Sollten Sie nicht mehr als Verkäufer am Flohmarkt teilnehmen können, bitte
-			<?php echo $this->Html->link("geben Sie Ihre Reservierung wieder frei",
-					array("controller" => "reservations", "action" => "delete", $reservation["Reservation"]['id']),
-					array(),
-					"Sind Sie sicher, dass Sie die Reservierung freigeben möchten? Sie können damit nicht mehr als Verkäufer an diesem Flohmarkt teilnehmen.") ?>.
-		<?php endif ?>
 	<?php else: ?>
 		Die Frist zum Erzeugen der Etiketten für den Flohmarkt ist abgelaufen. Sie können keine weiteren Etiketten erzeugen. Sie können jedoch die bereits erzeugten Etiketten ausdrucken.
 	<?php endif ?>
 	</p>
 <?php else: ?>
 	<p>Sie haben noch keine Reservierungsnummer. <strong>Ein Verkauf ist nur mit Reservierungsnummer möglich</strong>.</p>
-	<p>
-	<?php if ($event["Event"]["max_sellers"] <= count($event["Reservation"])): ?>
-		Leider sind alle Plätze bereits vergeben.
-		<?php if ($seller["Seller"]["notify"]): ?>
-			Sie stehen auf der Warteliste und bekommen eine Email sobald ein Platz frei wird.
-        <?php else: ?>
-			<?php echo $this->Form->postLink("Hier", array("controller" => "sellers", "action" => "notify")) ?> können Sie sich auf die Warteliste setzen lassen. Sie erhalten eine Mail sobald ein Platz frei wird.
-		<?php endif; ?>
-	<?php else: ?>
-		<?php if (strtotime($event["Event"]["reservation_start"]) > time()): ?>
-			Sie können sich ab <?php echo $this->Time->format($event["Event"]["reservation_start"], "%A, %e. %B %Y um %H:%M Uhr") ?> einen Verkäuferplatz reservieren.
-		<?php endif; ?>
-		<?php if (strtotime($event["Event"]["reservation_start"]) < time() && strtotime($event["Event"]["reservation_end"]) > time()): ?>
-			Sie können sich <?php echo $this->Html->link("hier", array("controller" => "sellers", "action" => "reservation", $seller["Seller"]['token'], $event["Event"]["id"])) ?> einen Verkäuferplatz reservieren.
-		<?php endif; ?>
-	<?php endif; ?>
-	</p>
 <?php endif ?>
 <?php if (count($items) < $event["Event"]["max_items_per_seller"]): ?>
 <p>Sie haben aktuell <strong><?php echo count($items) ?></strong> Artikel angelegt.
@@ -82,7 +58,7 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 </table>
 <?php if (count($items)): ?>
 <p>Sobald Sie eine Reservierungsnummer erhalten haben, können Sie die Etiketten für die Artikel erzeugen und drucken. Bitte beachten Sie, dass das Erzeugen von Etiketten die bis zu diesem Zeitpunkt angelegten Artikel zur weiteren Bearbeitung sperrt.</p>
-<p class="actions"><?php
+<p><?php
 	if ($reservation && $unreservedItemCount && strtotime($event["Event"]["reservation_end"]) > time()) {
 		echo $this->Html->iconLink("barcode", "$unreservedItemCount Etikett(en) erzeugen",
 			array("action" => "label", $reservation["Reservation"]["id"]),
@@ -94,7 +70,8 @@ Sie können noch <strong><?php echo $event["Event"]["max_items_per_seller"] - co
 	if ($reservation && $reservation["Item"]) {
 		echo $this->Html->iconLink("print", "$reservedItemCount erzeugte Etiketten ausdrucken", array("action" => "pdf", $reservation["Reservation"]["id"]));
 	} ?></p>
- <p><small>Die Etiketten werden als PDF-Dokument generiert.
+<p><?php echo $this->Html->buttonLink("Zur Hauptseite des gesicherten Bereichs", array("controller" => "sellers", "action" => "view"))?></p>
+<p><small>Die Etiketten werden als PDF-Dokument generiert.
  	Zum Anzeigen und Ausdrucken von PDF-Dateien benötigen Sie ein entsprechendes Programm.
  	Falls noch nicht vorhanden, installieren Sie sich bitte ein dazu passendes Programm.
  	Wir empfehlen den <a target="_new" href="http://get.adobe.com/reader/">Adobe Acrobat Reader</a>

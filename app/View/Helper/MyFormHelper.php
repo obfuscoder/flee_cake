@@ -105,6 +105,42 @@ class MyFormHelper extends FormHelper {
         return $this->Html->div("checkbox", $label);
     }
 
+    public function radio($fieldName, $options = array(), $attributes = array()) {
+        $attributes = $this->_initInputField($fieldName, $attributes);
+        $value = null;
+        if (isset($attributes['value'])) {
+            $value = $attributes['value'];
+        } else {
+            $value = $this->value($fieldName);
+        }
+        $items = array();
+        foreach ($options as $optValue => $optTitle) {
+            $optionsHere = array('value' => $optValue);
+            if (isset($value) && strval($optValue) === strval($value)) {
+                $optionsHere['checked'] = 'checked';
+            }
+            $tagName = Inflector::camelize($attributes['id'] . '_' . Inflector::slug($optValue));
+            $allOptions = array_merge($attributes, $optionsHere);
+            $radio = $this->Html->useTag('radio', $attributes['name'], $tagName,
+                array_diff_key($allOptions, array('name' => null, 'type' => null, 'id' => null)), $optTitle);
+            $label = $this->Html->tag("label", $radio);
+            array_push($items, $this->Html->div("radio", $label));
+        }
+        return implode($items);
+    }
+
+    public function input($fieldName, $options = array()) {
+        if (isset($options["label"])) {
+            $label = $options["label"];
+            if (!is_array($label)) {
+                $label = array("text" => $label);
+            }
+            $label["class"] = "control-label";
+            $options["label"] = $label;
+        }
+        return parent::input($fieldName, $options);
+    }
+
     public function deleteButton($title = null, $url = null, $warning = null, $options = array()) {
         $buttonClass = "btn btn-danger";
         $options["class"] = $buttonClass;

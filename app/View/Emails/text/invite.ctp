@@ -21,12 +21,17 @@ Sie können sich ab diesem Zeitpunkt über den folgenden Link einen Verkäuferpl
 <?php echo $this->Html->url("/sellers/reservation/".$seller['Seller']['token']."/".$event['Event']['id'], true) ?>
 
 
-Die Anzahl der Reservierungsplätze ist begrenzt auf <?php echo $event["Event"]["max_sellers"] ?>. Jeder Verkäufer darf maximal <?php echo $event["Event"]["max_items_per_seller"] ?> Artikel anbieten.
+Die Anzahl der Reservierungsplätze ist begrenzt auf <?php echo $event["Event"]["max_sellers"] ?>.
 
 Mit erfolgreicher Reservierung wird Ihnen eine Reservierugnsnummer zugeteilt.
-Sie können mit Erhalt Ihrer Reservierungssnummer die Etiketten für Ihre angebotenen Artikel erzeugen und ausdrucken.
-Um Ihre angebotenen Artikel zu verwalten und die Etiketten zu erzeugen, rufen Sie bitte den folgenden Link auf:
+<?php if ($event["Event"]["type"] == "commission"): ?>
+Jeder Verkäufer darf maximal <?php echo $event["Event"]["max_items_per_seller"] ?> Artikel anbieten.
 
+Sie können mit Erhalt Ihrer Reservierungssnummer die Etiketten für Ihre angebotenen Artikel erzeugen und ausdrucken.
+Um Ihre Artikel zu verwalten und die Etiketten zu erzeugen oder Ihre persönliche Daten zu ändern, rufen Sie bitte den folgenden Link auf:
+<?php else: ?>
+Um Ihre persönliche Daten zu ändern, rufen Sie bitte den folgenden Link auf:
+<?php endif ?>
 <?php echo $this->Html->url("/sellers/login/".$seller["Seller"]["token"], true) ?>
 
 

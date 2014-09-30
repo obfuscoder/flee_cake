@@ -9,102 +9,14 @@ class Event extends AppModel {
 	public $displayField = 'name';
 
 	public $validate = array(
-		'name' => array(
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'date' => array(
-			'date' => array(
-				'rule' => array('date'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'max_sellers' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-			'notempty' => array(
-				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'max_items_per_seller' => array(
-			'numeric' => array(
-				'rule' => array('numeric'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'start_time' => array(
-			'time' => array(
-				'rule' => array('time'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'end_time' => array(
-			'time' => array(
-				'rule' => array('time'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'reservation_start' => array(
-			'datetime' => array(
-				'rule' => array('datetime'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
-		'reservation_end' => array(
-			'datetime' => array(
-				'rule' => array('datetime'),
-				//'message' => 'Your custom message here',
-				//'allowEmpty' => false,
-				//'required' => false,
-				//'last' => false, // Stop validation after this rule
-				//'on' => 'create', // Limit validation to 'create' or 'update' operations
-			),
-		),
+		'name' => array('notEmpty'),
+		'date' => array('date', 'notEmpty'),
+		'max_sellers' => array('numeric', 'notEmpty'),
+		'max_items_per_seller' => array('requiredForCommission'),
+		'start_time' => array('time'),
+		'end_time' => array('time'),
+		'reservation_start' => array('datetime'),
+		'reservation_end' => array('datetime'),
 	);
 
 	public function getCurrent() {
@@ -113,8 +25,10 @@ class Event extends AppModel {
     	));
 	}
 
-	public function getReservable() {
-		return $this->find("all", array("conditions" => "now() between Event.reservation_start and Event.reservation_end"));
+	public function getReservable($sellerId) {
+		return $this->find("all", array("conditions" => array(
+            "now() between Event.reservation_start and Event.reservation_end",
+            "Event.id not in (select event_id from reservations where reservations.seller_id = $sellerId)")));
 	}
 
 	public function getFutureWithSentInvitation() {
@@ -122,4 +36,9 @@ class Event extends AppModel {
 			"now() < Event.reservation_start",
 			"Event.invitation_sent is not null")));
 	}
+
+    public function requiredForCommission($check) {
+        print_r($check);
+        return $this->data["Event"]["type"] != "commission" || Validation::numeric(array_shift($check));
+    }
 }

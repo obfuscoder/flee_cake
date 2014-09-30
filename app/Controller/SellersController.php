@@ -34,12 +34,10 @@ class SellersController extends AppController {
 		$seller = $this->sellerFromSession();
 		$sellerId = $seller["Seller"]["id"];
 		$this->set("seller", $seller);
-		$event = $this->Seller->Reservation->Event->getCurrent();
-		if ($event) {
-			$this->set("event", $event);
-			$reservation = $this->Seller->Reservation->findBySellerIdAndEventId($sellerId, $event["Event"]["id"]);
-			$this->set("reservation", $reservation);
-		}
+		$events = $this->Seller->Reservation->Event->getReservable($sellerId);
+        $this->set("events", $events);
+        $reservations = $this->Seller->Reservation->findAllBySellerId($sellerId);
+        $this->set("reservations", $reservations);
 	}
 
 	public function edit() {
@@ -144,7 +142,7 @@ class SellersController extends AppController {
 	public function activate($token) {
 		$seller = $this->auth($token);
 		$this->set("seller", $seller);
-		$reservable_events = $this->Seller->Reservation->Event->getReservable();
+		$reservable_events = $this->Seller->Reservation->Event->getReservable($seller["Seller"]["id"]);
 		$future_events = $this->Seller->Reservation->Event->find("all", array("conditions" => "now() < Event.reservation_start"));
 		$this->set("reservable_events", $reservable_events);
 		$this->set("future_events", $future_events);

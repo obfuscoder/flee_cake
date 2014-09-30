@@ -1,9 +1,8 @@
 <?php $this->set("title_for_layout", "Mails senden") ?>
-<?php echo $this->Html->script('jquery.min'); ?>
 <script>
 var sellers = <?php echo $this->Js->value($sellers); ?>
 
-$(document).ready(function() {
+$(function() {
 	$('input[type=checkbox][id^=MailCategory][query]').on('click', function() {
 		$('#MailTo option').prop('selected', false);
 		var queries = $('input[type=checkbox][id^=MailCategory][query]:checked').map(function() { return $(this).attr('query'); }).get();

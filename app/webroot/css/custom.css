@@ -45,3 +45,8 @@ tbody > tr.sold:nth-child(odd) > th {
   width: 80%;
   color: #888;
 }
+
+.required-example:after, .form-group.required .control-label:after {
+    content: "*";
+    color: red;
+}

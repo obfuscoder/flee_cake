@@ -51,7 +51,7 @@ class ReservationsController extends AppController {
 		}
 		$this->deleteAndInviteOthers($reservation);
 		$this->Session->setFlash("Reservierung wurde gelöscht", "default", array('class' => 'bg-success'));
-		return $this->redirect(array("controller" => "items", "action" => "index", $seller["Seller"]["id"]));
+		return $this->redirect(array("controller" => "sellers", "action" => "view"));
 	}
 
 	private function deleteAndInviteOthers($reservation) {

@@ -12,10 +12,12 @@
             <strong><?php echo $reservation["Event"]["name"] ?></strong> am <?php echo $this->Time->format($reservation["Event"]["date"], "%A, %e. %B %Y") ?><br/>
             Sie haben die Reservierungsnummer <strong><?php echo $reservation["Reservation"]["number"] ?></strong>.<br/>
     <?php if (strtotime($reservation["Event"]["reservation_end"]) > time()): ?>
+            <?php if ($reservation["Event"]["type"] == "commission"): ?>
             Alle zu verkaufenden Artikel müssen bis zum <?php echo $this->Time->format($reservation["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?> eingetragen und die Etiketten erzeugt sein.
         </p>
         <p>
-            <strong>Reservierung rückgängig machen:</strong> Sollten Sie nicht mehr als Verkäufer am Flohmarkt teilnehmen können, bitte
+            <?php endif ?>
+            Sollten Sie nicht mehr als Verkäufer am Flohmarkt teilnehmen können, bitte
             <?php echo $this->Html->link("geben Sie Ihre Reservierung wieder frei",
                     array("controller" => "reservations", "action" => "delete", $reservation["Reservation"]['id']),
                     array(),
@@ -28,7 +30,9 @@
                 Wir würden uns auch freuen, wenn Sie den <?php echo $this->Html->link("Flohmarkt bewerten", array("controller" => "events", "action" => "review")) ?> würden.
             <?php endif ?>
         <?php else: ?>
+            <?php if ($reservation["Event"]["type"] == "commission"): ?>
             Die Frist zum Erzeugen der Etiketten für den Flohmarkt ist abgelaufen. Sie können keine weiteren Etiketten erzeugen. Sie können jedoch die bereits erzeugten Etiketten ausdrucken.
+            <?php endif ?>
         <?php endif ?>
     <?php endif ?>
         </p>

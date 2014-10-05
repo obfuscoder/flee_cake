@@ -25,13 +25,13 @@
 	<?php endforeach; ?>
 	<?php unset($reservation); ?>
 </table>
+<?php if (count($sellers) > 0 && ($event["Event"]["type"] == "commission" || count($available_numbers) > 0)): ?>
 <h3>Neue Reservierung</h3>
 <?php
-	if (count($sellers) > 0 && ($event["Event"]["type"] == "commission" || count($available_numbers) > 0)) {
-		echo $this->Form->create('Reservation', array("action" => "create"));
-		echo $this->Form->hidden('event_id', array("value" => $event_id));
-		echo $this->Form->input("seller_id");
-        echo $this->Form->input("number", array("options" => $available_numbers));
-		echo $this->Form->end("Reservieren");
-	}
+    echo $this->Form->create('Reservation', array("action" => "create"));
+    echo $this->Form->hidden('event_id', array("value" => $event_id));
+    echo $this->Form->input("seller_id");
+    echo $this->Form->input("number", array("options" => $available_numbers));
+    echo $this->Form->end("Reservieren");
 ?>
+<?php endif ?>

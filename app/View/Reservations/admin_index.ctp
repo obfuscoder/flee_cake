@@ -3,6 +3,7 @@
 	<tr>
 		<th>Nummer</th>
 		<th>Name</th>
+        <th>Ort</th>
 		<th>eMail</th>
 		<th>Artikel</th>
 		<th>Aktionen</th>
@@ -13,6 +14,7 @@
 		<td><?php echo $this->Html->link(
 				$reservation["Seller"]["first_name"] . " " . $reservation["Seller"]["last_name"],
 				array("controller" => "sellers", "action" => "view", $reservation["Seller"]["id"])) ?></td>
+        <td><?php echo $reservation["Seller"]["city"] ?></td>
 		<td><?php echo $reservation["Seller"]["email"] ?></td>
 		<td><?php echo count($reservation["Item"]) ?></td>
 		<td class="actions">
@@ -23,11 +25,13 @@
 	<?php endforeach; ?>
 	<?php unset($reservation); ?>
 </table>
+<h3>Neue Reservierung</h3>
 <?php
-	if (count($sellers) > 0) {
-		echo $this->Form->create('Reservation', array("class" => "form-inline", "action" => "create"));
+	if (count($sellers) > 0 && ($event["Event"]["type"] == "commission" || count($available_numbers) > 0)) {
+		echo $this->Form->create('Reservation', array("action" => "create"));
 		echo $this->Form->hidden('event_id', array("value" => $event_id));
-		echo $this->Form->input("seller_id", array("label" => false));
+		echo $this->Form->input("seller_id");
+        echo $this->Form->input("number", array("options" => $available_numbers));
 		echo $this->Form->end("Reservieren");
 	}
 ?>

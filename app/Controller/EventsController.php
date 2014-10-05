@@ -251,7 +251,7 @@ class EventsController extends AppController {
 					'table' => 'reservations',
         			'alias' => 'Reservation',
         			'type' => 'INNER',
-        			'conditions' => array('Seller.id = Reservation.seller_id')
+        			'conditions' => array('Seller.id = Reservation.seller_id', 'Reservation.event_id' => $id)
     			),
 			),
 			"group" => "ZipCode.city", "order" => "count desc")

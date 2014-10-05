@@ -6,6 +6,8 @@ class ReservationsController extends AppController {
 	public function admin_index($eventId) {
 		$reservations = $this->Reservation->findAllByEventId($eventId);
 		$this->set("reservations", $reservations);
+        $event = $this->Reservation->Event->findById($eventId);
+        $this->set("event", $event);
 		$this->set("event_id", $eventId);
 		$sellers = array();
 		foreach ($this->Reservation->Seller->findAllUnreserved($eventId) as $seller) {
@@ -13,6 +15,7 @@ class ReservationsController extends AppController {
 				$seller["Seller"]["email"] . ") - " . count($seller["Item"]) . " Artikel";
 		}
 		$this->set("sellers", $sellers);
+        $this->set("available_numbers", $this->Reservation->getAvailableNumbers($event));
 	}
 
 	public function admin_create() {
@@ -25,6 +28,59 @@ class ReservationsController extends AppController {
 		}
 		return $this->redirect(array("action" => "index", $reservation["event_id"]));
 	}
+
+    public function create($eventId) {
+        $seller = $this->sellerFromSession();
+        $event = $this->Reservation->Event->findById($eventId);
+        $alreadyReserved = false;
+        $reservation_count = $this->Reservation->count($eventId);
+        foreach($seller["Reservation"] as $reservation) {
+            if ($reservation["event_id"] == $eventId) {
+                $alreadyReserved = true;
+                break;
+            }
+        }
+        if ($alreadyReserved) {
+            $this->Session->setFlash("Sie haben bereits für diesen Termin eine Reservierung erhalten. " .
+                "Ihre Reservierungsnummer ist " . $reservation["number"] . ".", "default", array('class' => 'bg-danger'));
+        } elseif (strtotime($event["Event"]["reservation_start"]) > time()) {
+            $this->Session->setFlash("Die Reservierung ist nocht nicht freigeschaltet. " .
+                "Bitte haben Sie Verständnis dafür, dass wir allen Interessenten die gleiche Chance geben wollen, " .
+                "indem wir alle vorab per Mail über den Reservierungsbeginn informieren, und jeder die Zeit hat, " .
+                "sich auf diesen Termin vorzubereiten. Sie können erst ab " .
+                $this->Time->format($event["Event"]["reservation_start"], "%A, %e. %B %Y") .
+                " um " . $this->Time->format($event["Event"]["reservation_start"], "%H:%M") . " Uhr die Reservierung durchführen.",
+                "default", array('class' => 'bg-danger'));
+        } elseif (strtotime($event["Event"]["reservation_end"]) < time()) {
+            $this->Session->setFlash("Die Reservierung ist leider nicht mehr möglich. " .
+                "Der Veranstaltungstermin steht kurz bevor. Wir benötigen diese Vorlaufzeit, " .
+                "um den Flohmarkt zu organisieren.", "default", array('class' => 'bg-danger'));
+        } elseif ($reservation_count >= $event["Event"]["max_sellers"]) {
+            $this->Session->setFlash("Leider sind mittlerweile alle Verkäuferplätze bereits reserviert. " .
+                "Wir können Sie jedoch per eMail informieren, sobald der nächste Verkäuferplatz frei wird.",
+                "default", array('class' => 'bg-danger'));
+        } else {
+            if ($this->request->isPost() || $event["Event"]["type"] == "commission") {
+                $data = array("seller_id" => $seller["Seller"]["id"], "event_id" => $eventId);
+                if ($event["Event"]["type"] != "commission") {
+                    $data["number"] = $this->request->data["Reservation"]["number"];
+                }
+                $reservationNumber = $this->Reservation->add(array("seller_id" => $seller["Seller"]["id"], "event_id" => $eventId, "number" => $this->request->data["Reservation"]["number"]));
+                if (!$reservationNumber) {
+                    $this->Session->setFlash("Die Reservierung konnte leider nicht durchgeführt werden.",
+                        "default", array('class' => 'bg-danger'));
+                } else {
+                    $this->Session->setFlash("Die Reservierung war erfolgreich. " .
+                        "Ihre Reservierungsnummer lautet $reservationNumber.", "default", array('class' => 'bg-success'));
+                }
+            } else {
+                $this->set("event", $event);
+                $this->set("available_numbers", $this->Reservation->getAvailableNumbers($event));
+                return;
+            }
+        }
+        $this->redirect(array("controller" => "sellers", "action" => "view"));
+    }
 
 	public function admin_delete($id) {
 		$this->request->onlyAllow('post', 'delete');

@@ -1,6 +1,7 @@
 <?php $this->set("title_for_layout", "Ergebnisse " . $event['Event']['name']) ?>
 <?php echo $this->Html->script('canvasjs.min.js') ?>
 <h3><?php echo CakeTime::format($event["Event"]["date"], "%A, %e. %B %Y") ?></h3>
+<?php if ($event["Event"]["type"] == "commission"): ?>
 <p>Insgesamt wurden <strong><?php echo $item_count ?></strong> Artikel auf dem Flohmarkt angeboten. Hier eine Aufstellung der Artikel-Kategorien.</p>
 <div id="categoryChart" style="height: 400px; width: 600px"></div>
 <script type="text/javascript">
@@ -32,6 +33,7 @@ var categoryChart = new CanvasJS.Chart("categoryChart",
 categoryChart.render();
 </script>
 <p>Von den <strong><?php echo $item_count ?></strong> angebotenen Artikeln wurden <strong><?php echo $sold_item_count ?></strong> Artikel verkauft. Damit wurden <strong><?php echo number_format($sold_item_count/$item_count*100) ?>%</strong> aller Artikel verkauft.</p>
+<?php endif ?>
 <p>Die Verkäufer kamen aus den folgenden Ortschaften:</p>
 <div id="sellerZipChart" style="height: 400px; width: 600px"></div>
 <script type="text/javascript">
@@ -62,6 +64,7 @@ var sellerZipChart = new CanvasJS.Chart("sellerZipChart",
 });
 sellerZipChart.render();
 </script>
+<?php if ($event["Event"]["type"] == "commission"): ?>
 <p>Hier die Top10 der Verkäufer:</p>
 <div id="sellerChart" style="height: 400px; width: 600px"></div>
 <script type="text/javascript">
@@ -141,35 +144,4 @@ var moneyChart = new CanvasJS.Chart("moneyChart",
 
 moneyChart.render();
 </script>
-<?php
-/*<p>Wir haben beim Verkauf die Postleitzahlen der Käufer erfragt. Hier eine Aufstellung der Käufer:</p>
-<div id="customerChart" style="height: 400px; width: 600px"></div>
-<script type="text/javascript">
-var customerChart = new CanvasJS.Chart("customerChart",
-{
-  creditText: "",
-  title:{
-    text: "Anzahl Kunden pro Region",
-    fontSize: 30
-  },
-  legend:{
-    verticalAlign: "bottom",
-    horizontalAlign: "center"
-  },
-  data: [
-  {        
-   indexLabelFontSize: 14,
-   indexLabelFontFamily: "Verdana",       
-   indexLabelPlacement: "outside",
-   type: "pie",       
-   dataPoints: [
-   <?php foreach($customers_per_city as $city): ?>
-   {  y: <?php echo $city[0]["count"] ?>, name: "<?php echo $city["ZipCode"]["city"] ?>", indexLabel: "<?php echo $city["ZipCode"]["city"] ?>" },
-   <?php endforeach ?>
-   ]
- }
- ]
-});
-customerChart.render();
-</script>*/
-?>
+<?php endif ?>

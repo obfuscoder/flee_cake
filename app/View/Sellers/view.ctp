@@ -51,7 +51,7 @@
                     <?php echo $this->Form->postLink("Hier", array("controller" => "sellers", "action" => "notify")) ?> können Sie sich auf die Warteliste setzen lassen. Sie erhalten eine Mail sobald ein Platz frei wird.
                 <?php endif; ?>
             <?php else: ?>
-                Sie können sich <?php echo $this->Html->link("hier", array("controller" => "sellers", "action" => "reservation", $seller["Seller"]['token'], $event["Event"]["id"])) ?> einen Verkäuferplatz reservieren.
+                Sie können sich <?php echo $this->Html->link("hier", array("controller" => "reservations", "action" => "create", $event["Event"]["id"])) ?> einen Verkäuferplatz reservieren.
             <?php endif; ?>
         </p>
     </li>

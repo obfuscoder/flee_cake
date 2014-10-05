@@ -49,7 +49,9 @@ class AppController extends Controller {
 
     protected function sellerFromSession() {
         if ($this->Session->valid() && $this->Session->check("Seller")) {
-            return $seller = $this->Session->read("Seller");
+            $seller = $this->Session->read("Seller");
+            $this->loadModel('Seller');
+            return $this->Seller->findById($seller['Seller']['id']);
         } else {
             return $this->redirect(array("controller" => "pages", "action" => "session_expired"));
         }

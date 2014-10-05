@@ -7,6 +7,10 @@ class Reservation extends AppModel {
 	);
 	public $hasAndBelongsToMany = array("Item" => array("with" => "ReservedItem", "unique" => "keepExisting", "order" => "ReservedItem.number"));
 
+    public $validate = array(
+        "number" => array("rule" => "notEmpty", "message" => "Bitte wählen Sie einen Platz aus."),
+    );
+
 	private function getNextReservationNumber($eventId) {
 		$result = $this->find("first", array(
 			"conditions" => array("event_id" => $eventId),
@@ -17,12 +21,14 @@ class Reservation extends AppModel {
 	}
 
 	public function add($reservation) {
-		$nextReservationNumber = $this->getNextReservationNumber($reservation["event_id"]);
-		$this->create();
-		$reservation["number"] = $nextReservationNumber;
+        $this->create();
+        if (!isset($reservation["number"])) {
+            $nextReservationNumber = $this->getNextReservationNumber($reservation["event_id"]);
+            $reservation["number"] = $nextReservationNumber;
+        }
 		if ($this->save($reservation)) {
 			$this->sendConfirmation();
-			return $nextReservationNumber;
+			return $reservation["number"];
 		}
 		return false;
 	}
@@ -42,6 +48,18 @@ class Reservation extends AppModel {
 	public function count($eventId) {
 		return $this->find("count", array('conditions' => array('Reservation.event_id' => $eventId)));
 	}
+
+    public function getAvailableNumbers($event) {
+        $reservations = $this->find('list', array('fields' => array('Reservation.number'),
+            'conditions' => array('Reservation.event_id' => $event["Event"]["id"]), 'recursive' => 0));
+        $available_numbers = array();
+        for($i=1; $i<=$event["Event"]["max_sellers"]; $i++) {
+            if (!in_array($i, $reservations)) {
+                $available_numbers[$i] = $i;
+            }
+        }
+        return $available_numbers;
+    }
 }
 
 ?>

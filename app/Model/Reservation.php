@@ -26,10 +26,13 @@ class Reservation extends AppModel {
             $nextReservationNumber = $this->getNextReservationNumber($reservation["event_id"]);
             $reservation["number"] = $nextReservationNumber;
         }
-		if ($this->save($reservation)) {
-			$this->sendConfirmation();
-			return $reservation["number"];
-		}
+        try {
+            if ($this->save($reservation)) {
+                $this->sendConfirmation();
+                return $reservation["number"];
+            }
+        } catch(PDOException $e) {
+        }
 		return false;
 	}
 

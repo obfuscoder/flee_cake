@@ -24,7 +24,7 @@ class ReservationsController extends AppController {
 		if ($this->Reservation->add($reservation)) {
 			$this->Session->setFlash("Reservierung durchgeführt", "default", array('class' => 'bg-success'));
 		} else {
-			$this->Session->setFlash("Reservierung fehlgeschlagen", "default", array('class' => 'bg-danger'));
+			$this->Session->setFlash("Reservierung fehlgeschlagen. Die Reserverierungsnummer ist bereits vergeben.", "default", array('class' => 'bg-danger'));
 		}
 		return $this->redirect(array("action" => "index", $reservation["event_id"]));
 	}
@@ -56,7 +56,7 @@ class ReservationsController extends AppController {
                 "Der Veranstaltungstermin steht kurz bevor. Wir benötigen diese Vorlaufzeit, " .
                 "um den Flohmarkt zu organisieren.", "default", array('class' => 'bg-danger'));
         } elseif ($reservation_count >= $event["Event"]["max_sellers"]) {
-            $this->Session->setFlash("Leider sind mittlerweile alle Verkäuferplätze bereits reserviert. " .
+            $this->Session->setFlash("Leider sind bereits alle Verkäuferplätze reserviert. " .
                 "Wir können Sie jedoch per eMail informieren, sobald der nächste Verkäuferplatz frei wird.",
                 "default", array('class' => 'bg-danger'));
         } else {
@@ -67,8 +67,10 @@ class ReservationsController extends AppController {
                 }
                 $reservationNumber = $this->Reservation->add(array("seller_id" => $seller["Seller"]["id"], "event_id" => $eventId, "number" => $this->request->data["Reservation"]["number"]));
                 if (!$reservationNumber) {
-                    $this->Session->setFlash("Die Reservierung konnte leider nicht durchgeführt werden.",
+                    $this->Session->setFlash("Die Reservierung konnte leider nicht durchgeführt werden. " .
+                        "Die Reservierungsnummer ist bereits vergeben.",
                         "default", array('class' => 'bg-danger'));
+                    return;
                 } else {
                     $this->Session->setFlash("Die Reservierung war erfolgreich. " .
                         "Ihre Reservierungsnummer lautet $reservationNumber.", "default", array('class' => 'bg-success'));

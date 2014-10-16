@@ -211,6 +211,30 @@ class EventsController extends AppController {
 			), "group" => "Category.id", "order" => "count desc"));
 		$this->set("items_per_category", $items_per_category);
 
+        $sold_items_per_category = $item->ReservedItem->find("all", array("fields" => array("Category.name", "count(*) as count"),
+            "conditions" => array("not" => array("ReservedItem.sold" => null)),
+            "joins" => array(
+                array(
+                    'table' => 'reservations',
+                    'alias' => 'Reservation',
+                    'type' => 'INNER',
+                    'conditions' => array('ReservedItem.reservation_id = Reservation.id', 'Reservation.event_id' => $id)
+                ),
+                array(
+                    'table' => 'items',
+                    'alias' => 'Item',
+                    'type' => 'INNER',
+                    'conditions' => array('ReservedItem.item_id = Item.id')
+                ),
+                array(
+                    'table' => 'categories',
+                    'alias' => 'Category',
+                    'type' => 'INNER',
+                    'conditions' => array('Category.id = Item.category_id')
+                ),
+            ), "group" => "Category.id", "order" => "count desc"));
+        $this->set("sold_items_per_category", $sold_items_per_category);
+
 		$items_per_seller = $item->ReservedItem->find("all", array("fields" => array("Reservation.number", "count(*) as count"),
 			"joins" => array(
 				array(
@@ -239,11 +263,13 @@ class EventsController extends AppController {
 			), "conditions" => array("NOT" => array("ReservedItem.sold" => null)), "group" => "Reservation.number", "order" => "sum desc", "limit" => 10));
 		$this->set("sum_per_seller", $sum_per_seller);
 
+        /*
 		$customer = ClassRegistry::init('Customer');
 		$customers_per_city = $customer->find("all", array("fields" => array("ZipCode.city", "count(*) as count"),
 			"group" => "ZipCode.city", "order" => "count desc")
 		);
 		$this->set("customers_per_city", $customers_per_city);
+        */
 
 		$sellers_per_city = $item->Seller->find("all", array("fields" => array("ZipCode.city", "count(*) as count"),
 			"joins" => array(

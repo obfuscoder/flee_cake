@@ -33,6 +33,35 @@ var categoryChart = new CanvasJS.Chart("categoryChart",
 categoryChart.render();
 </script>
 <p>Von den <strong><?php echo $item_count ?></strong> angebotenen Artikeln wurden <strong><?php echo $sold_item_count ?></strong> Artikel verkauft. Damit wurden <strong><?php echo number_format($sold_item_count/$item_count*100) ?>%</strong> aller Artikel verkauft.</p>
+    <div id="soldCategoryChart" style="height: 400px; width: 600px"></div>
+    <script type="text/javascript">
+        var soldCategoryChart = new CanvasJS.Chart("soldCategoryChart",
+            {
+                creditText: "",
+                title:{
+                    text: "Anzahl verkaufter Artikel pro Kategorie",
+                    fontSize: 30
+                },
+                legend:{
+                    verticalAlign: "bottom",
+                    horizontalAlign: "center"
+                },
+                data: [
+                    {
+                        indexLabelFontSize: 14,
+                        indexLabelFontFamily: "Verdana",
+                        indexLabelPlacement: "outside",
+                        type: "pie",
+                        dataPoints: [
+                            <?php foreach($sold_items_per_category as $category): ?>
+                            {  y: <?php echo $category[0]["count"] ?>, name: "<?php echo $category["Category"]["name"] ?>", indexLabel: "<?php echo $category["Category"]["name"] ?>" },
+                            <?php endforeach ?>
+                        ]
+                    }
+                ]
+            });
+        soldCategoryChart.render();
+    </script>
 <?php endif ?>
 <p>Die Verkäufer kamen aus den folgenden Ortschaften:</p>
 <div id="sellerZipChart" style="height: 400px; width: 600px"></div>

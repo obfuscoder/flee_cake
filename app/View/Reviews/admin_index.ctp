@@ -24,7 +24,8 @@ Anzahl: <?php echo count($reviews) ?>
     <tr>
         <td>&nbsp;</td>
         <?php foreach($reviews as $review): ?>
-        <th><?php echo $this->Html->link($review["Seller"]["id"], array("controller" => "sellers", "action" => "view",
+        <th><?php echo ((
+            /*$this->Html->link($review["Seller"]["id"], array("controller" => "sellers", "action" => "view",*/
                 $review["Seller"]["id"])) ?></th>
         <?php endforeach ?>
         <th>&Oslash;</th>

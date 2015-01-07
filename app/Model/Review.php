@@ -1,5 +1,5 @@
 <?php
 
 class Review extends AppModel {
-	public $belongsTo = array("Seller");
+	public $belongsTo = array("Seller", "Event");
 }

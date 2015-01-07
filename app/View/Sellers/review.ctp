@@ -3,7 +3,7 @@
 <p>Um Ihnen in Zukunft die Arbeit noch weiter zu erleichtern, sind wir an Ihrem persönlichen Urteil interessiert. Bitte nehmen Sie sich ein paar Minuten Zeit und helfen uns, das System für Sie noch mehr zu verbessern, indem Sie uns bewerten und uns mitteilen, was Ihnen gut gefallen hat, aber besonders, was Sie persönlich für verbesserungswürdig halten.</p>
 <p>Bewerten Sie bitte die folgenden Punkte entsprechend dem <strong>Schulnotensystem</strong> (1=sehr gut bis 6=ungenügend). Wenn Sie einen Punkt nicht beantworten wollen/können, lassen Sie ihn einfach leer.</p>
 <?php echo $this->Form->create('Review');
-	$options = array(1 => "", 2 => "", 3 => "", 4 => "", 5 => "", 6 => "");
+	$options = array(1, 2, 3, 4, 5, 6);
 	$attributes = array(
 				'value' => null,
 			    'label' => false,
@@ -15,12 +15,7 @@
 	<thead>
 		<tr>
 			<th>Wie zufrieden waren Sie mit ...</th>
-			<th>1</th>
-			<th>2</th>
-			<th>3</th>
-			<th>4</th>
-			<th>5</th>
-			<th>6</th>
+			<th>&nbsp;</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -42,17 +37,12 @@
 			foreach($questions as $type => $question): ?>
 			<tr>
 				<td>... <?php echo $question ?>?</td>
-				<td><?php echo $this->Form->radio($type, $options, $attributes); ?></td>
+				<td><?php echo $this->Form->radio($type, $options); ?></td>
 			</tr>
 		<?php endforeach; ?>
 		<tr>
 			<th>Bitte geben Sie noch eine Gesamtnote</th>
-			<th>1</th>
-			<th>2</th>
-			<th>3</th>
-			<th>4</th>
-			<th>5</th>
-			<th>6</th>
+			<th>&nbsp;</th>
 		</tr>
 		<tr>
 			<td>&nbsp;</td>

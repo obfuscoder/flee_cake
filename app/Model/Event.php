@@ -3,7 +3,8 @@ App::uses('AppModel', 'Model');
 
 class Event extends AppModel {
 	public $hasMany = array(
-		"Reservation"
+		"Reservation",
+		"Review"
 	);
 
 	public $displayField = 'name';

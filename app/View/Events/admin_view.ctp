@@ -24,6 +24,7 @@
 <p class="actions">
 	<?php echo $this->Html->buttonLink("Bearbeiten", array('action' => 'edit', $event['Event']['id'])); ?>
 	<?php echo $this->Html->buttonLink("Reservierungen", array("controller" => "reservations", 'action' => 'index', $event['Event']['id'])); ?>
+	<?php echo $this->Html->buttonLink("Bewertungen", array("controller" => "reviews", 'action' => 'index', $event['Event']['id'])); ?>
 </p>
 <p class="actions">
 	<?php

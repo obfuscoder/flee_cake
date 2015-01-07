@@ -265,13 +265,18 @@ class SellersController extends AppController {
 		$this->set("customers_per_region", $customers_per_region);
 	}
 
-	public function review($token) {
+	public function review($token, $event_id) {
 		$seller = $this->auth($token);
-		if ($this->Seller->Review->findBySellerId($seller["Seller"]["id"])) {
+		$event = $this->Seller->Review->Event->findById($event_id);
+		if (!$event) {
+			throw new NotFoundException("Die Veranstaltung konnte nicht gefunden werden");
+		}
+		if ($this->Seller->Review->findBySellerIdAndEventId($seller["Seller"]["id"], $event_id)) {
 			return $this->render("review_done");
 		}
 		if ($this->request->isPost()) {
 			$this->request->data["Review"]["seller_id"] = $seller["Seller"]["id"];
+			$this->request->data["Review"]["event_id"] = $event_id;
 			$this->Seller->Review->create();
 			$this->Seller->Review->save($this->request->data);
 			return $this->render("review_done");

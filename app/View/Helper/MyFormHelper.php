@@ -123,10 +123,10 @@ class MyFormHelper extends FormHelper {
             $allOptions = array_merge($attributes, $optionsHere);
             $radio = $this->Html->useTag('radio', $attributes['name'], $tagName,
                 array_diff_key($allOptions, array('name' => null, 'type' => null, 'id' => null)), $optTitle);
-            $label = $this->Html->tag("label", $radio);
-            array_push($items, $this->Html->div("radio", $label));
+            $label = $this->Html->tag("label", $radio, array("class" => "radio-inline"));
+            array_push($items, $label);
         }
-        return implode($items);
+        return $this->Html->div("radio", implode($items));
     }
 
     public function input($fieldName, $options = array()) {

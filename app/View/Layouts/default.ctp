@@ -49,7 +49,6 @@
 			<li><?php echo $this->Html->link("Termine", array("controller" => "events", "action" => "index")); ?></li>
 			<li><?php echo $this->Html->link("Verkäufer", array("controller" => "sellers", "action" => "index")); ?></li>
 			<li><?php echo $this->Html->link("Kategorien", array("controller" => "categories", "action" => "index")); ?></li>
-			<li><?php echo $this->Html->link("Bewertungen", array("controller" => "reviews", "action" => "index")); ?></li>
 			<li><?php echo $this->Html->link("Mails schreiben", array("controller" => "mails", "action" => "send")); ?></li>
 			<li><?php echo $this->Html->link("Mails triggern", "/mails/worker"); ?></li>
 			<li><?php echo $this->Html->link("DB Dump", array("controller" => "admin", "action" => "dump")); ?></li>

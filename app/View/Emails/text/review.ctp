@@ -11,7 +11,7 @@ Wir haben einige Auswertungen über die Verkäufe auf der folgenden Webseite fü
 
 Außerdem würden wir uns sehr freuen, wenn Sie uns Ihre persönlichen Erfahrungen mitteilen könnten. Sie haben unter dem folgenden Link die Möglichkeit, unseren Flohmarkt zu bewerten und Empfehlungen zu geben, wie wir unser System und den Flohmarkt in Zukunft verbessern können, um das Erlebnis für Verkäufer und Käufer noch schöner zu gestalten:
 
-<?php echo $this->Html->url("/sellers/review/".$reservation['Seller']['token'], true) ?>
+<?php echo $this->Html->url("/sellers/review/".$reservation['Seller']['token']."/".$event['Event']['id'], true) ?>
 
 
 Wir hoffen, Sie auch beim nächsten Mal wieder als Verkäufer begrüßen zu dürfen.

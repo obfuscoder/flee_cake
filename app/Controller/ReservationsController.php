@@ -44,12 +44,14 @@ class ReservationsController extends AppController {
             $this->Session->setFlash("Sie haben bereits für diesen Termin eine Reservierung erhalten. " .
                 "Ihre Reservierungsnummer ist " . $reservation["number"] . ".", "default", array('class' => 'bg-danger'));
         } elseif (strtotime($event["Event"]["reservation_start"]) > time()) {
+			App::uses('CakeTime', 'Utility');
             $this->Session->setFlash("Die Reservierung ist nocht nicht freigeschaltet. " .
                 "Bitte haben Sie Verständnis dafür, dass wir allen Interessenten die gleiche Chance geben wollen, " .
                 "indem wir alle vorab per Mail über den Reservierungsbeginn informieren, und jeder die Zeit hat, " .
                 "sich auf diesen Termin vorzubereiten. Sie können erst ab " .
-                $this->Time->format($event["Event"]["reservation_start"], "%A, %e. %B %Y") .
-                " um " . $this->Time->format($event["Event"]["reservation_start"], "%H:%M") . " Uhr die Reservierung durchführen.",
+				CakeTime::format($event["Event"]["reservation_start"], "%A, %e. %B %Y") .
+                " um " . CakeTime::format($event["Event"]["reservation_start"], "%H:%M") . " Uhr " .
+                "die Reservierung durchführen.",
                 "default", array('class' => 'bg-danger'));
         } elseif (strtotime($event["Event"]["reservation_end"]) < time()) {
             $this->Session->setFlash("Die Reservierung ist leider nicht mehr möglich. " .

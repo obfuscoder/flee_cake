@@ -4,9 +4,10 @@
 <?php if (!$reservations): ?>
 <p>Sie haben keine aktuellen Reservierungen. <strong>Ein Verkauf ist nur mit Reservierung möglich</strong>.</p>
 <?php else: ?>
-<p>Sie haben die folgenden Reservierungen:</p>
+<p>Sie haben die folgenden aktuellen Reservierungen:</p>
 <ul>
 <?php foreach($reservations as $reservation): ?>
+    <?php if (!$reservation["Event"]["current"]) continue; ?>
     <li>
         <p>
             <strong><?php echo $reservation["Event"]["name"] ?></strong> am <?php echo $this->Time->format($reservation["Event"]["date"], "%A, %e. %B %Y") ?><br/>

@@ -16,7 +16,7 @@ Ihre Reservierungsnummer ist <?php echo $reservation["Reservation"]["number"] ?>
 <?php if ($reservation["Event"]["type"] == "commission"): ?>
 Sie können ab sofort Etiketten für Ihre Artikel erzeugen und drucken über den Zugang zu Ihrem geschützten Bereich.
 
-Bitte beachten Sie, dass sämtliche Artikel bis zum <?php echo $this->Time->format($event["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?> eingegeben und die Etiketten dafür erzeugt sein müssen.
+Bitte beachten Sie, dass sämtliche Artikel bis zum <?php echo $this->Time->format($reservation["Event"]["reservation_end"], "%A, %e. %B %Y um %H:%M Uhr") ?> eingegeben und die Etiketten dafür erzeugt sein müssen.
 <?php endif ?>
 Ihren geschützten Bereich erreichen Sie über folgenden Link:
 

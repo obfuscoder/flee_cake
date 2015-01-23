@@ -67,7 +67,7 @@ class ReservationsController extends AppController {
                 if ($event["Event"]["type"] != "commission") {
                     $data["number"] = $this->request->data["Reservation"]["number"];
                 }
-                $reservationNumber = $this->Reservation->add(array("seller_id" => $seller["Seller"]["id"], "event_id" => $eventId, "number" => $this->request->data["Reservation"]["number"]));
+                $reservationNumber = $this->Reservation->add($data);
                 if (!$reservationNumber) {
                     $this->Session->setFlash("Die Reservierung konnte leider nicht durchgeführt werden. " .
                         "Die Reservierungsnummer ist bereits vergeben.",

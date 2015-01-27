@@ -12,7 +12,7 @@ class ReservationsController extends AppController {
 		$sellers = array();
 		foreach ($this->Reservation->Seller->findAllUnreserved($eventId) as $seller) {
 			$sellers[$seller["Seller"]["id"]] = $seller["Seller"]["first_name"] . " " . $seller["Seller"]["last_name"] . " (" .
-				$seller["Seller"]["email"] . ") - " . count($seller["Item"]) . " Artikel";
+				$seller["Seller"]["email"] . ") - PLZ: " . $seller["Seller"]["zip_code"] . " - " . count($seller["Item"]) . " Artikel";
 		}
 		$this->set("sellers", $sellers);
         $this->set("available_numbers", $this->Reservation->getAvailableNumbers($event));

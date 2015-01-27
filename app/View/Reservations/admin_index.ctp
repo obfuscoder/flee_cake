@@ -31,7 +31,9 @@
     echo $this->Form->create('Reservation', array("action" => "create"));
     echo $this->Form->hidden('event_id', array("value" => $event_id));
     echo $this->Form->input("seller_id");
-    echo $this->Form->input("number", array("options" => $available_numbers));
+	if ($event["Event"]["type"] != "commission") {
+		echo $this->Form->input("number", array("options" => $available_numbers));
+	}
     echo $this->Form->end("Reservieren");
 ?>
 <?php endif ?>

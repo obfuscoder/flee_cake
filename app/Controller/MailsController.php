@@ -32,7 +32,11 @@ class MailsController extends AppController {
 			}
 			$this->Session->setFlash(count($this->request->data["Mail"]["to"]) . " Mails wurden versendet.", "default", array('class' => 'bg-success'));
 		}
-		$sellers = $seller->find("all", array("order" => array("first_name", "last_name"), "conditions" => array("nomail is null or nomail <> 1")));
+		$sellers = $seller->find("all", array(
+			"fields" => array("Seller.id", "Seller.first_name", "Seller.last_name", "Seller.email", "Seller.active", "Seller.notify"),
+			"conditions" => array("nomail is null or nomail <> 1"),
+			"order" => array("Seller.first_name", "Seller.last_name")
+		));
 		$this->set("sellers", $sellers);
 	}
 

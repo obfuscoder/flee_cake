@@ -32,10 +32,11 @@ $(function() {
 
 	$categories = array(
 		1 => array("value" => 1, "name" => "aktiv", "query" => "Seller.active == true"),
-		2 => array("value" => 2, "name" => "mit Reservierung", "query" => "Reservation.length > 0"),
-		3 => array("value" => 3, "name" => "ohne Reservierung", "query" => "Reservation.length == 0"),
-		4 => array("value" => 4, "name" => "mit Artikeln", "query" => "Item.length > 0"),
-		5 => array("value" => 5, "name" => "ohne Artikel", "query" => "Item.length == 0"),
+		2 => array("value" => 2, "name" => "auf Warteliste", "query" => "Seller.notify == true"),
+		3 => array("value" => 3, "name" => "mit Reservierung", "query" => "Reservation.length > 0"),
+		4 => array("value" => 4, "name" => "ohne Reservierung", "query" => "Reservation.length == 0"),
+		5 => array("value" => 5, "name" => "mit Artikeln", "query" => "Item.length > 0"),
+		6 => array("value" => 6, "name" => "ohne Artikel", "query" => "Item.length == 0"),
 	);
 	echo $this->Form->input("category", array("type" => "select", "multiple" => "checkbox", "label" => "Kategorien", "empty" => false, "options" => $categories));
 

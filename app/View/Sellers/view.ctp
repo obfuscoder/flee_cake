@@ -28,7 +28,7 @@
         <?php if (strtotime($reservation["Event"]["date"]) < time()): ?>
             Der Flohmarkt ist beendet. Sie können sich <?php echo $this->Html->link("hier", array("controller" => "events", "action" => "view", $reservation["Event"]["id"])) ?> die Ergebnisse des Flohmarkts anschauen.
             <?php if (!$seller["Review"]): ?>
-                Wir würden uns auch freuen, wenn Sie den <?php echo $this->Html->link("Flohmarkt bewerten", array("controller" => "events", "action" => "review")) ?> würden.
+                Wir würden uns auch freuen, wenn Sie den <?php echo $this->Html->link("Flohmarkt bewerten", array("controller" => "reviews", "action" => "review", $reservation["Event"]["id"])) ?> würden.
             <?php endif ?>
         <?php else: ?>
             <?php if ($reservation["Event"]["type"] == "commission"): ?>

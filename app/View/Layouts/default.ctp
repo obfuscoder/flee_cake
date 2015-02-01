@@ -2,7 +2,7 @@
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
-	<title>Flohmarkt Königsbach
+	<title><?php echo Configure::read('Brand.name') ?>
 		<?php if ($title_for_layout != ""): ?>
 			-
 			<?php echo $title_for_layout; ?>
@@ -40,7 +40,7 @@
           	<?php if($this->Session->read("Admin")): ?>
           <?php echo $this->Html->link("Adminbereich", "/admin", array("class" => "navbar-brand")); ?>
           	<?php else: ?>
-          <a class="navbar-brand" href="#">Flohmarkt Königsbach</a>
+          <a class="navbar-brand" href="#"><?php echo Configure::read('Brand.name') ?></a>
         	<?php endif ?>
         </div>
         <div class="collapse navbar-collapse">
@@ -66,7 +66,7 @@
     </div>
 	<div class="container">
 		<h2><?php if ($title_for_layout == ""): ?>
-			Flohmarkt Königsbach
+			<?php echo Configure::read('Brand.name') ?>
 			<?php else: ?>
 			<?php echo $title_for_layout ?>
 			<?php endif ?>

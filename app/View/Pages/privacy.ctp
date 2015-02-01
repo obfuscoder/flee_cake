@@ -27,7 +27,7 @@ Schutz der Daten vor dem Zugriff durch Dritte ist nicht möglich.</p>
 bei uns gespeicherten Daten. Sie können jederzeit Ihre bei uns erhobenen Daten 
 sperren, berichtigen oder löschen lassen. Sie können jederzeit die uns erteilten 
 Einwilligung zur Datenerhebung und Verwendung ohne Angaben von Gründen 
-widerrufen. Wenden Sie sich dazu an privacy@flohmarkt-koenigsbach.de.
+widerrufen. Wenden Sie sich dazu an <?php echo Configure::read('Brand.privacy_mail') ?>.
 
 <p>(1) Zur Durchführung von Verträgen (Anbahnung, Abschluss, Abwicklung, Gewährleistungen und Rückabwicklung, Kommissionierung), für unsere Servicedienste, die technische Administration und der Sicherstellung der zwischen Ihnen und uns bestehenden Korrespondenz erheben wir für die
 	Registrierung personenbezogene Daten, die im Einzelnen umfassen: Name, Adresse, Telefonnummer, eMail-Adresse.</p>

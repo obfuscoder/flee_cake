@@ -96,22 +96,22 @@ define ('PDF_PAGE_ORIENTATION', 'P');
 /**
  * Document creator.
  */
-define ('PDF_CREATOR', 'Flohmarkt Koenigsbach');
+define ('PDF_CREATOR', 'flohmarkthelfer.de');
 
 /**
  * Document author.
  */
-define ('PDF_AUTHOR', 'Flohmarkt Koenigsbach');
+define ('PDF_AUTHOR', 'flohmarkthelfer.de');
 
 /**
  * Header title.
  */
-define ('PDF_HEADER_TITLE', 'Flohmarkt Koenigsbach Eticketten');
+define ('PDF_HEADER_TITLE', 'flohmarkthelfer.de Etiketten');
 
 /**
  * Header description string.
  */
-define ('PDF_HEADER_STRING', "ausschliesslich zum Gebrauch beim Flohmarkt Koenigsbach");
+define ('PDF_HEADER_STRING', "ausschließlich zum Gebrauch bei von flohmarkthelfer.de betreuten Flohmärkten");
 
 /**
  * Document unit of measure [pt=point, mm=millimeter, cm=centimeter, in=inch].

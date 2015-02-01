@@ -20,21 +20,15 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-/**
- * CakePHP Debug Level:
- *
- * Production Mode:
- * 	0: No error messages, errors, or warnings shown. Flash messages redirect.
- *
- * Development Mode:
- * 	1: Errors and warnings shown, model caches refreshed, flash messages halted.
- * 	2: As in 1, but also with full debug messages and SQL output.
- *
- * In production mode, flash messages redirect after a time interval.
- * In development mode, you need to click the flash message to continue.
- */
+App::uses('PhpReader', 'Configure');
+Configure::config('default', new PhpReader());
 
-Configure::write('debug', (!isset($_SERVER['SERVER_NAME']) || $_SERVER['SERVER_NAME'] == 'localhost') ? 2 : 0);
+try {
+	Configure::load('config', 'default');
+}
+catch (Exception $ex) {
+	Configure::load('config_default', 'default');
+}
 
 /**
  * Configure the Error handler used to handle errors for your application. By default
@@ -222,16 +216,6 @@ Configure::write("Routing.prefixes", array("admin"));
 	Configure::write('Session', array(
 		'defaults' => 'php'
 	));
-
-/**
- * A random string used in security hashing methods.
- */
-	Configure::write('Security.salt', 'V2d0kijxStO3w6xaAm73GoUG1hSMCDNGttg15CwukaXDBzIaWpKXoGtiX6njomz6');
-
-/**
- * A random numeric string (digits only) used to encrypt/decrypt strings.
- */
-	Configure::write('Security.cipherSeed', '598391485038656422199915352281');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

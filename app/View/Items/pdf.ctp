@@ -5,7 +5,7 @@
 	$tcpdf = new XTCPDF();
 	$textfont = 'helvetica';
 
-	$tcpdf->SetAuthor("Flohmarkt Koenigsbach");
+	$tcpdf->SetAuthor("flohmarkthelfer.de");
 	$tcpdf->SetAutoPageBreak(true);
 
 	// add a page (required with recent versions of tcpdf)

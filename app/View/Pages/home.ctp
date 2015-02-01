@@ -1,10 +1,5 @@
 <?php $this->set("title_for_layout", "") ?>
-<p>
-	<?php
-		echo $this->Html->image("/img/kitaregenbogen.jpg");
-		echo $this->Html->image("/img/archenoahkita.jpg");
-	?>
-</p>
+<?php echo Configure::read('Brand.home.intro_html') ?>
 <p>
 	Auf diesen Seiten können Sie sich für unsere kommenden Flohmärkte als Verkäufer registrieren. Sie werden dann zeitnah per Mail über den weiteren Ablauf informiert.
 </p>
@@ -44,9 +39,4 @@
 <?php else: ?>
 	<p>Aktuell sind keine Flohmärkte geplant.</p>
 <?php endif ?>
-<p><small>Hier noch ein paar Impressionen unseres Flohmarkts in der Festhalle Königsbach</small></p>
-<?php
-	echo $this->Html->image("flohmarkt.jpg", array("width" => 300, "style" => "margin: 5px"));
-	echo $this->Html->image("flohmarkt2.jpg", array("width" => 300, "style" => "margin: 5px"));
-	echo $this->Html->image("kinderbetreuung.jpg", array("width" => 300, "style" => "margin: 5px"));
-?>
+<?php echo Configure::read('Brand.home.outro_html') ?>

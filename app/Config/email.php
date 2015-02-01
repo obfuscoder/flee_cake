@@ -39,59 +39,14 @@ class EmailConfig {
 
 	public $default = array(
 		'transport' => 'Mail',
-		'from' => array('info@flohmarkt-koenigsbach.de' => 'Flohmarkt Königsbach'),
+		'from' => array(Configure::read('Brand.mail_from') => Configure::read('Brand.name')),
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);
 
 	public $queue = array(
 		'transport' => 'Queue',
-		'from' => array('info@flohmarkt-koenigsbach.de' => 'Flohmarkt Königsbach'),
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
-	);
-
-	public $smtp = array(
-		'transport' => 'Smtp',
-		'from' => array('info@flohmarkt-koenigsbach.de' => 'Flohmarkt Königsbach'),
-		'host' => 'localhost',
-		'port' => 25,
-		'timeout' => 30,
-		'username' => 'user',
-		'password' => 'secret',
-		'client' => null,
-		'log' => false,
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
-	);
-
-	public $fast = array(
-		'from' => 'info@flohmarkt-koenigsbach.de',
-		'sender' => null,
-		'to' => null,
-		'cc' => null,
-		'bcc' => null,
-		'replyTo' => null,
-		'readReceipt' => null,
-		'returnPath' => null,
-		'messageId' => true,
-		'subject' => null,
-		'message' => null,
-		'headers' => null,
-		'viewRender' => null,
-		'template' => false,
-		'layout' => false,
-		'viewVars' => null,
-		'attachments' => null,
-		'emailFormat' => null,
-		'transport' => 'Smtp',
-		'host' => 'localhost',
-		'port' => 25,
-		'timeout' => 30,
-		'username' => 'user',
-		'password' => 'secret',
-		'client' => null,
-		'log' => true,
+		'from' => array(Configure::read('Brand.mail_from') => Configure::read('Brand.name')),
 		//'charset' => 'utf-8',
 		//'headerCharset' => 'utf-8',
 	);

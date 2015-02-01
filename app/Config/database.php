@@ -85,19 +85,6 @@ class DATABASE_CONFIG {
 
 	function __construct ()
     {       
-        if(isset($_SERVER['SERVER_NAME'])){
-            switch($_SERVER['SERVER_NAME']){
-                case 'localhost':
-                    $this->default = $this->dev;
-                    break;
-                default:
-                    $this->default = $this->prod;
-                    break;
-            }
-        }
-        else // we are likely baking, use our local db
-        {
-            $this->default = $this->dev;
-        }
+		$this->default = Configure::read('Database');
     }
 }

@@ -36,18 +36,16 @@
  *
  */
 class EmailConfig {
-
 	public $default = array(
-		'transport' => 'Mail',
-		'from' => array(Configure::read('Brand.mail_from') => Configure::read('Brand.name')),
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
+		'transport' => 'Mail'
 	);
 
 	public $queue = array(
-		'transport' => 'Queue',
-		'from' => array(Configure::read('Brand.mail_from') => Configure::read('Brand.name')),
-		//'charset' => 'utf-8',
-		//'headerCharset' => 'utf-8',
+		'transport' => 'Queue'
 	);
+
+	function __construct () {
+		$this->default['from'] = array(Configure::read('Brand.mail_from') => Configure::read('Brand.name'));
+		$this->queue['from'] = array(Configure::read('Brand.mail_from') => Configure::read('Brand.name'));
+	}
 }

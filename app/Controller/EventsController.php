@@ -263,14 +263,6 @@ class EventsController extends AppController {
 			), "conditions" => array("NOT" => array("ReservedItem.sold" => null)), "group" => "Reservation.number", "order" => "sum desc", "limit" => 10));
 		$this->set("sum_per_seller", $sum_per_seller);
 
-        /*
-		$customer = ClassRegistry::init('Customer');
-		$customers_per_city = $customer->find("all", array("fields" => array("ZipCode.city", "count(*) as count"),
-			"group" => "ZipCode.city", "order" => "count desc")
-		);
-		$this->set("customers_per_city", $customers_per_city);
-        */
-
 		$sellers_per_city = $item->Seller->find("all", array("fields" => array("ZipCode.city", "count(*) as count"),
 			"joins" => array(
 				array(

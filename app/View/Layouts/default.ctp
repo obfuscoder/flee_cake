@@ -50,8 +50,6 @@
 			<li><?php echo $this->Html->link("Verkäufer", "/admin/sellers"); ?></li>
 			<li><?php echo $this->Html->link("Kategorien", "/admin/categories"); ?></li>
 			<li><?php echo $this->Html->link("Mails schreiben", "/admin/mails/send"); ?></li>
-			<li><?php echo $this->Html->link("Mails triggern", "/mails/worker"); ?></li>
-			<li><?php echo $this->Html->link("DB Dump", array("controller" => "admin", "action" => "dump")); ?></li>
           	<?php else: ?>
             <li><?php echo $this->Html->link("Hauptseite", "/pages/home"); ?></li>
             <li><?php echo $this->Html->link("Teilnahmebedingungen", "/pages/terms"); ?></li>

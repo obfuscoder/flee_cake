@@ -43,20 +43,20 @@ class Item extends AppModel {
 	}
 
 	// http://en.wikipedia.org/wiki/Luhn_algorithm
-	public function getChecksum($number) {
-		$digits = strrev($number);
+	public function getChecksum($code) {
+		$chars = strrev($code);
 		$checksum = 0;
-		for ($i=0; $i<strlen($digits); $i++) {
-			$digit = $digits[$i] * (($i+1)%2+1);
-			$sum = array_sum(str_split($digit));
+		for ($i=0; $i<strlen($chars); $i++) {
+			$value = ord($chars[$i]) * (($i+1)%2+1);
+			$sum = array_sum(str_split($value));
 			$checksum += $sum;
 		}
 		return $checksum % 10;
 	}
 
 	public function getCode($eventNumber, $sellerNumber, $itemNumber) {
-		$number = sprintf("%02d%03d%02d", $eventNumber, $sellerNumber, $itemNumber);
-		return $number . $this->getChecksum($number);
+		$code = sprintf("%s%02d%03d%03d", Configure::read('code.prefix'), $eventNumber, $sellerNumber, $itemNumber);
+		return $code . $this->getChecksum($code);
 	}
 
 	public function getItemCountForReservations() {

@@ -21,15 +21,6 @@
   <li>gesamt: <?php echo $review_count ?></li>
 </ul>
 </p>
-<h3>Mailqueue</h3>
-<p>
-<ul>
-	<li>gesamt: <?php echo $sent_mails + $unsent_mails ?></li>
-	<li>gesendet: <?php echo $sent_mails ?></li>
-	<li>in Queue: <?php echo $unsent_mails ?></li>
-	<li>zuletzt gesendete Mail: <?php echo $last_sent_mail ?></li>
-</ul>
-</p>
 <?php echo $this->Html->script('canvasjs.min.js') ?>
 <div id="categoryChart" style="height: 400px; width: 500px"></div>
 <script type="text/javascript">

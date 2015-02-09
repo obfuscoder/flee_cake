@@ -1,6 +1,8 @@
 <?php
 $config = array (
     'debug' => 2,
+
+    'code' => array('prefix' => ''),
     'Security' => array (
         'salt' => 'V2d0kijxStO3w6xaAm73GoUG1hSMCDNGttg15CwukaXDBzIaWpKXoGtiX6njomz6',
         'cipherSeed' => '598391485038656422199915352281',

@@ -1,7 +1,6 @@
 <?php $this->set("title_for_layout", "Bewertungen") ?>
 <p>
 Anzahl: <?php echo count($reviews) ?>
-    <?php print_r($reviews); ?>
 </p>
 <p>
 <?php

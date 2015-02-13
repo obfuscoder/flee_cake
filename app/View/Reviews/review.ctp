@@ -3,7 +3,10 @@
 <p>Um Ihnen in Zukunft die Arbeit noch weiter zu erleichtern, sind wir an Ihrem persönlichen Urteil interessiert. Bitte nehmen Sie sich ein paar Minuten Zeit und helfen uns, das System für Sie noch mehr zu verbessern, indem Sie uns bewerten und uns mitteilen, was Ihnen gut gefallen hat, aber besonders, was Sie persönlich für verbesserungswürdig halten.</p>
 <p>Bewerten Sie bitte die folgenden Punkte entsprechend dem <strong>Schulnotensystem</strong> (1=sehr gut bis 6=ungenügend). Wenn Sie einen Punkt nicht beantworten wollen/können, lassen Sie ihn einfach leer.</p>
 <?php echo $this->Form->create('Review');
-	$options = array(1, 2, 3, 4, 5, 6);
+    $options = array();
+    for($i=1; $i<=6; $i++) {
+        $options[$i] = $i;
+    }
 	$attributes = array(
 				'value' => null,
 			    'label' => false,

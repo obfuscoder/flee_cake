@@ -87,16 +87,6 @@ class AdminController extends AppController {
 		$review_count = $review->find("count");
 		$this->set("review_count", $review_count);
 	}
-
-	public function admin_dump() {
-		$date = strftime("%Y%m%d%H%M%S");
-		header("Content-Disposition: attachment; filename=\"database_dump_$date.sql.gz\"");
-		$this->response->type('gz');
-        $this->layout = 'plain';
-        $db = new DATABASE_CONFIG();
-		$db_config = $db->default;
-		passthru("mysqldump --user=" . $db_config["login"] . " --password=" . $db_config["password"] . " --host=" . $db_config["host"] . " " . $db_config["database"] . " | gzip");
-	}
 }
 
 ?>

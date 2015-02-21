@@ -26,6 +26,20 @@ class EventsController extends AppController {
 		$this->render("admin_edit");
 	}
 
+    public function admin_db($id) {
+        $this->layout = 'plain';
+        header("Content-Disposition: attachment; filename=\"floh.mv.db\"");
+        $this->response->type('application/octet-stream');
+        $db_config = Configure::read("Database");
+        $db_host = $db_config['host'];
+        $db_name = $db_config['database'];
+        $db_user = $db_config['login'];
+        $db_pass = $db_config['password'];
+        system("groovy ../dbprepare.groovy $db_host $db_name $db_user $db_pass $id");
+        readfile("floh.mv.db");
+        unlink("floh.mv.db");
+    }
+
 	public function admin_edit($id = null) {
 		if (!$this->Event->exists($id)) {
 			throw new NotFoundException(__('Invalid event'));

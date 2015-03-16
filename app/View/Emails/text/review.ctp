@@ -2,7 +2,7 @@ Sehr geehrte(r) Flohmarkt Verkäufer/in,
 
 der Flohmarkt <?php echo $event["Event"]["name"]; ?> (vom <?php echo $this->Time->format($event["Event"]["date"], "%A, %e. %B %Y") ?>) ist beendet.
 
-Vielen Dank für Ihre Teilnahme als Verkäufer. Sie haben zu einer großartigen Spende an die Kindergärten in Königsbach beigetragen. Wir hoffen, dass es für Sie genau so ein tolles und erfolgreiches Ergebnis war, wie für uns.
+Vielen Dank für Ihre Teilnahme als Verkäufer. Sie haben zu einer großartigen Spende beigetragen. Wir hoffen, dass es für Sie genau so ein tolles und erfolgreiches Ergebnis war, wie für uns.
 <?php if ($event["Event"]["type"] == "commission"): ?>
 Wir haben einige Auswertungen über die Verkäufe auf der folgenden Webseite für Sie zusammengestellt. Sie können dort auch sehen, ob Sie unter den Top 10 der Verkäufer gelandet sind:
 

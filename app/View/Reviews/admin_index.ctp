@@ -37,7 +37,8 @@ Anzahl: <?php echo count($reviews) ?>
         2 => "info",
         3 => "warning",
         4 => "danger",
-        5 => "danger"
+        5 => "danger",
+        6 => "danger"
     );
     foreach($categories as $category => $category_name): ?>
     <tr>

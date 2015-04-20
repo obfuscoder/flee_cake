@@ -9,6 +9,6 @@
         $passwordHasher = new SimplePasswordHasher();
 
 		$digest = $this->request->data["Digest"];
-		echo "Digest of " . $digest["p"] . " = " . $passwordHasher->hash($digest["p"]);
+		echo "Digest of " . $digest["u"] . " = " . $passwordHasher->hash($digest["p"]);
 	}
 ?>

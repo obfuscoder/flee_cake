@@ -39,7 +39,6 @@ class Event extends AppModel {
 	}
 
     public function requiredForCommission($check) {
-        print_r($check);
         return $this->data["Event"]["type"] != "commission" || Validation::numeric(array_shift($check));
     }
 }

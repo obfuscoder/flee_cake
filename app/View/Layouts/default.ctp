@@ -49,7 +49,8 @@
 			<li><?php echo $this->Html->link("Termine", "/admin/events"); ?></li>
 			<li><?php echo $this->Html->link("Verkäufer", "/admin/sellers"); ?></li>
 			<li><?php echo $this->Html->link("Kategorien", "/admin/categories"); ?></li>
-			<li><?php echo $this->Html->link("Mails schreiben", "/admin/mails/send"); ?></li>
+			<li><?php echo $this->Html->link("Mails", "/admin/mails/send"); ?></li>
+			<li><?php echo $this->Html->link("Passwort", "/admin/password"); ?></li>
           	<?php else: ?>
             <li><?php echo $this->Html->link("Hauptseite", "/pages/home"); ?></li>
             <li><?php echo $this->Html->link("Teilnahmebedingungen", "/pages/terms"); ?></li>

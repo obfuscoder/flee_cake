@@ -3,6 +3,8 @@
 App::uses('Mail', 'Model');
 App::uses('Seller', 'Model');
 App::uses('Item', 'Model');
+App::uses('User', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 
 class AdminController extends AppController {
 	public $components = array(
@@ -14,6 +16,27 @@ class AdminController extends AppController {
         	)
 		)
 	);
+
+	public function admin_password() {
+        if ($this->request->isPost()) {
+            $user = new User();
+            $hasher = new SimplePasswordHasher();
+            $admin = $user->findById($this->Auth->user('id'));
+            if ($admin["User"]["password"] != $hasher->hash($this->request->data["User"]["old_password"])) {
+                $this->Session->setFlash("Das aktuelle Passwort ist nicht korrekt", "default", array('class' => 'bg-danger'));
+                return;
+            }
+            if ($this->request->data["User"]["password"] != $this->request->data["User"]["password_again"]) {
+                $this->Session->setFlash("Die beiden neuen Passwörter stimmen nicht überein", "default", array('class' => 'bg-danger'));
+                return;
+            }
+            $admin["User"]["password"] = $hasher->hash($this->request->data["User"]["password"]);
+            $user->save($admin);
+            $this->Session->setFlash("Das neue Passwort wurde erfolgreich gespeichert. " .
+                "Sobald en Adminbereich erneut betreten, müssen Sie das neue Passwort angeben.",
+                "default", array('class' => 'bg-success'));
+        }
+	}
 
 	public function admin_index() {
 		$this->Session->write("Admin", true);

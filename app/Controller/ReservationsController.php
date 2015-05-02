@@ -30,6 +30,8 @@ class ReservationsController extends AppController {
 	}
 
     public function create($eventId) {
+
+
         $seller = $this->sellerFromSession();
         $event = $this->Reservation->Event->findById($eventId);
         $alreadyReserved = false;

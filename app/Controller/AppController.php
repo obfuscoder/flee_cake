@@ -37,7 +37,7 @@ class AppController extends Controller {
     public $helpers = array("Form" => array("className" => "MyForm"), "Html" => array("className" => "MyHtml"), "Time");
     
     function beforeFilter () {
-    	if ($this->request->url == "admin" || $this->request->url == "admin/dump") {
+    	if ($this->request->url == "admin") {
     		return;
     	}
         if (isset($this->params["admin"]) && $this->params["admin"]) {
